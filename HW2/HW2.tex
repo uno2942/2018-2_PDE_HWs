@@ -51,5 +51,41 @@
  \maketitle
 
 \section*{Problem 1}
-
+\begin{enumerate}
+	\item [Step 1.] Let a linear transformation from $\rr^{n+1}$ to $\rr^{n+1}$ sending $s\mapsto r^2 s$ and $y_i\mapsto ry_i$, then $T$ sends $E(0, \bm{0}, r)$ to $E(0, \bm{0}, 1)$. Then
+	\begin{equation*}
+	\begin{split}
+	\frac{1}{4}\int\int_{E(0, \bm{0}, 1)}\frac{\abs{y}^2}{s^2}dyds&=\frac{1}{4}\int\int_{E(0, \bm{0}, r)}\frac{\abs{y}^2/r^2}{s^2/r^4}\frac{1}{r^{n+2}}dyds \\
+	&=\frac{1}{4r^n}\int\int_{E(0, \bm{0}, r)}\frac{\abs{y}^2}{s^2}dyds
+	\end{split}
+	\end{equation*}
+    \item [Step 2.] Since $e^x\leq 1$ if $x\leq 0$,
+    \begin{equation*}
+        \begin{split}
+            &\frac{1}{\left(4\pi(-s)\right)^{n/2}}e^{\frac{\abs{y}^2}{4s}}\geq 1 \text{ for }s\leq 0\\
+            &\Leftrightarrow 4\pi(-s)\leq 1 \text{ and }e^{\frac{\abs{y}^2}{4s}}\geq \left(4\pi(-s)\right)^{n/2} \text{ and } s\leq 0\\
+            &\Leftrightarrow -\frac{1}{4\pi}\leq s\leq 0 \text{ and } \abs{y}^2\leq 2sn\ln{(-4\pi s)}
+        \end{split}
+    \end{equation*}
+    Therefore, $E(0,0,1)=\left\{(s,y)\in R^{n+1}:-\frac{1}{4\pi}\leq s\leq 0 , \abs{y}^2\leq -2sn\ln{\left(\frac{1}{-4\pi s}\right)}\right\}$
+    
+    \item[Step 3.] Since $\abs{y}^2\leq -2sn\ln\left(\frac{1}{-4\pi s}\right)$ is the ball with radius $\left(-2sn\ln\left(\frac{1}{-4\pi s}\right)\right)^{1/2}$, 
+    \begin{equation*}
+    \begin{split}
+        \int\int_{E(0, \bm{0}, 1)} \frac{\abs{y}^2}{s^2}dyds&=\int_{-1/4\pi}^0\int_{B_s}\frac{\abs{y}^2}{s^2}dyds \text{ (By Fubini theorem)}\\
+        &=\int_{-1/4\pi}^0 \frac{1}{s^2} \int_{S^{n-1}}\int_0^{\left(-2sn\ln\left(\frac{1}{-4\pi s}\right)\right)^{1/2}} r^{n+1}drd\sigma ds \text{ (By Spherical Coord.)}\\
+        &=\int_{-1/4\pi}^0 \frac{1}{s^2}\frac{\frac{n}{2}\pi^{n/2}}{\Gamma(\frac{n}{2}+2)} \left(-2sn\ln\left(\frac{1}{-4\pi s}\right)\right)^{n/2+1} ds
+    \end{split}
+    \end{equation*}
+    Let $t=\ln\left(\frac{1}{-4\pi s}\right)$, then 
+    \begin{equation*}
+        \begin{split}
+            &\frac{1}{4}\left(\frac{n}{2\pi}\right)^{n/2+2}\frac{\pi^{n/2}}{\Gamma(n/2+2)}\int_{0}^\infty \frac{(4\pi)^2}{e^{-2t}} \left(e^{-t}t\right)^{n/2+1} e^{-t}dt \\
+            &=4\left(\frac{n}{2}\right)^{n/2+2}\frac{1}{\Gamma(n/2+2)}\int_0^\infty t^{n/2+1}e^{-(n/2)t}dt \\
+            &=4\left(\frac{n}{2}\right)^{n/2+2}\frac{1}{\Gamma(n/2+2)}\left(\frac{2}{n}\right)^{n/2+2}\Gamma(n/2+2)=4.
+        \end{split}
+    \end{equation*}
+    Therefore, $\frac{1}{4}\int\int_{E(0, \bm{0}, 1)} \frac{\abs{y}^2}{s^2}dyds=1$.
+\end{enumerate}
+Summarising the results, $\frac{1}{4r^n}\int \int_{E(0, \bm{0}, r)}\frac{\abs{y}^2}{s^2}dydx=1$ for all $r>0$.
 \end{document}
