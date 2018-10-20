@@ -124,7 +124,7 @@ Since
 &=0
 \end{split}
 \end{equation*}
-for $\varphi\equiv 0$ in $\partial E-\{0,\bm{0}\}$.
+for $\varphi\equiv 0$ in $\partial E-\{0,\bm{0}\}$.($\nu^i$ is ....)
 
 Since $\pdv{s}\left(u_{y_i}y_i\varphi\right)=u_{sy_i}y_i\varphi+u_{y_i}\varphi$ ...
 \begin{equation*}
@@ -141,4 +141,31 @@ We know that
 \end{split}
 \end{equation*}
 
+\section*{Problem 3}
+\begin{enumerate}
+\item[Step 1.] To satisfy $u_t-u_{xx}=0$ for $t>0, x\in \rr$, (...Assume convergence) 
+\begin{equation*}
+u_t-u_{xx}=\sum_{j=0}^\infty \left(\pdv{g_j(t)}{t}-(j+1)(j+2)g_{j+2}(t)\right)x^{j}=0.
+\end{equation*}
+By uniqueness of power series(...), $\pdv{g_j(t)}{t}-(j+1)(j+2)g_{j+2}=0$ for all $j\geq 0$ make u satisfies $u_t-u_{xx}=0$.
+
+To satisfy initial condition $u(0, x)=0$ for $x\in \rr$, $\sum_{j=0}^\infty g_j(0)x^j=0$, implying $g_j(0)=0$ for all $j$.
+
+\item[Step 2.] I'll use induction for proof. Let $g_j$ be
+\begin{equation}\label{Eq:3.1}
+g_j(t)=\begin{cases}
+0 & j\text{ is odd.} \\
+\frac{1}{(2(j/2))!}\frac{d^{(j/2)}}{dt^{(j/2)}}g(t) & j\text{ is even.}
+\end{cases}
+\end{equation}
+for $j<2n$. The starting case is given in the problem. For $j=2n$,
+\begin{equation*}
+g_{2n}=\frac{1}{(2n-1)(2n)}\pdv{g_{2n-2}(t)}{t}=\frac{1}{2n!}\frac{d^{n}}{dt^{n}}g(t).
+\end{equation*}
+For $j=2n+1$,
+\begin{equation*}
+g_{2n+1}=\frac{1}{(2n)(2n+1)}\pdv{g_{2n-1}(t)}{t}=0.
+\end{equation*}
+Therefore, \eqref{Eq:3.1} is valid.
+\end{enumerate}
 \end{document}
