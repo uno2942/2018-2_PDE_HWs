@@ -55,8 +55,8 @@
 	\item [Step 1.] Let a linear transformation from $\rr^{n+1}$ to $\rr^{n+1}$ sending $s\mapsto r^2 s$ and $y_i\mapsto ry_i$, then $T$ sends $E(0, \bm{0}, r)$ to $E(0, \bm{0}, 1)$. Then
 	\begin{equation*}
 	\begin{split}
-	\frac{1}{4}\int\int_{E(0, \bm{0}, 1)}\frac{\abs{y}^2}{s^2}dyds&=\frac{1}{4}\int\int_{E(0, \bm{0}, r)}\frac{\abs{y}^2/r^2}{s^2/r^4}\frac{1}{r^{n+2}}dyds \\
-	&=\frac{1}{4r^n}\int\int_{E(0, \bm{0}, r)}\frac{\abs{y}^2}{s^2}dyds
+	\frac{1}{4}\iint_{E(0, \bm{0}, 1)}\frac{\abs{y}^2}{s^2}dyds&=\frac{1}{4}\iint_{E(0, \bm{0}, r)}\frac{\abs{y}^2/r^2}{s^2/r^4}\frac{1}{r^{n+2}}dyds \\
+	&=\frac{1}{4r^n}\iint_{E(0, \bm{0}, r)}\frac{\abs{y}^2}{s^2}dyds
 	\end{split}
 	\end{equation*}
     \item [Step 2.] Since $e^x\leq 1$ if $x\leq 0$,
@@ -72,7 +72,7 @@
     \item[Step 3.] Since $\abs{y}^2\leq -2sn\ln\left(\frac{1}{-4\pi s}\right)$ is the ball with radius $\left(-2sn\ln\left(\frac{1}{-4\pi s}\right)\right)^{1/2}$, 
     \begin{equation*}
     \begin{split}
-        \int\int_{E(0, \bm{0}, 1)} \frac{\abs{y}^2}{s^2}dyds&=\int_{-1/4\pi}^0\int_{B_s}\frac{\abs{y}^2}{s^2}dyds \text{ (By Fubini theorem)}\\
+        \iint_{E(0, \bm{0}, 1)} \frac{\abs{y}^2}{s^2}dyds&=\int_{-1/4\pi}^0\int_{B_s}\frac{\abs{y}^2}{s^2}dyds \text{ (By Fubini theorem)}\\
         &=\int_{-1/4\pi}^0 \frac{1}{s^2} \int_{S^{n-1}}\int_0^{\left(-2sn\ln\left(\frac{1}{-4\pi s}\right)\right)^{1/2}} r^{n+1}drd\sigma ds \text{ (By Spherical Coord.)}\\
         &=\int_{-1/4\pi}^0 \frac{1}{s^2}\frac{\frac{n}{2}\pi^{n/2}}{\Gamma(\frac{n}{2}+2)} \left(-2sn\ln\left(\frac{1}{-4\pi s}\right)\right)^{n/2+1} ds
     \end{split}
@@ -85,7 +85,60 @@
             &=4\left(\frac{n}{2}\right)^{n/2+2}\frac{1}{\Gamma(n/2+2)}\left(\frac{2}{n}\right)^{n/2+2}\Gamma(n/2+2)=4.
         \end{split}
     \end{equation*}
-    Therefore, $\frac{1}{4}\int\int_{E(0, \bm{0}, 1)} \frac{\abs{y}^2}{s^2}dyds=1$.
+    Therefore, $\frac{1}{4}\iint_{E(0, \bm{0}, 1)} \frac{\abs{y}^2}{s^2}dyds=1$.
 \end{enumerate}
-Summarising the results, $\frac{1}{4r^n}\int \int_{E(0, \bm{0}, r)}\frac{\abs{y}^2}{s^2}dydx=1$ for all $r>0$.
+Summarising the results, $\frac{1}{4r^n}\iint_{E(0, \bm{0}, r)}\frac{\abs{y}^2}{s^2}dydx=1$ for all $r>0$.
+
+\section*{Problem 2}
+By change of variable shifting $x$ and $t$ to 0, we can rearrange the formula by \begin{equation*}
+\frac{1}{r^n}\iint_{E(t,x;r)}u(s,y)\frac{\abs{s-y}^2}{\abs{t-s}^2}dyds=\iint_{E(0,\bm{0};r)}u(r^2s,ry)\frac{\abs{y}^2}{s^2}dyds
+\end{equation*}
+Let $\phi(r)$ be the RHS of above equation. Our strategy is showing that $\phi(r)$ is constant function, and it means $\phi(r)=\lim\limits_{r\rightarrow 0} \phi(r)=r^n u(x,t)$ using continuity of $u$ and the result from problem 1. I'll write $E(r)=E(0,\bm{0};r)$.
+Computing $\phi'(r)$,
+\begin{equation*}
+\begin{split}
+\phi'(r)&=\dv{r}\iint_{E(1)} u(r^2s,ry)\frac{\abs{y}^2}{s^2}dyds \\
+&= \iint_{E(1)}(2rsu_s(r^2s, ry)+y\cdot \nabla_y u)\frac{\abs{y}^2}{s^2}dyds \text { (Since }\frac{\abs{y}^2}{s^2}\in L^1(E(1)) \text{ and } u\in C(\overline{E(1)}) \\
+&= \frac{1}{r^{n+1}}\iint_{E(r)}(2su_s(s,y)+y\cdot \nabla_y u)\frac{\abs{y}^2}{s^2}dyds
+\end{split}
+\end{equation*}
+Let the first term $A$ and last term $B$.
+
+For simple calculation, I'll introduce a function
+\begin{equation*}
+\varphi(s, y)= -\frac{n}{2}\ln(-4\pi s)+\frac{\abs{y}^2}{4s}+n\ln r
+\end{equation*}
+Then, we can get a relation $\abs{y}^2=\sum\limits_{i=1}^n 2sy_i\varphi_{y_i}$, and
+\begin{equation*}
+\begin{split}
+r^{n+1}A&=\iint_{E(r)} 4u_s \sum\limits_{i=1}^n y_i \varphi_{y_i} dyds \\
+&=\iint_{E(r)} 4 \sum\limits_{i=1}^n \left(\pdv{y_i}\left(y_iu_s\varphi\right)-u_s\varphi-y_i\varphi_{sy_i}\right) dyds \\
+&=-4\iint_{E(r)} nu_s\varphi + \varphi\sum\limits_{i=1}^n u_{sy_i} y_i  dyds
+\end{split}
+\end{equation*}
+Since
+\begin{equation*}
+\begin{split}
+\iint_{E(r)} \sum\limits_{i=1}^n \pdv{y_i}\left(y_i u_s\varphi\right) dyds&=\sum\limits_{i=1}^n \int_{-\frac{r^2}{4\pi}}^0 \int_{B\left(\bm{0}, -2ns \ln{\left(-\frac{4\pi s}{r^2}\right)}\right)}  \pdv{y_i}\left(y_i u_s\varphi\right) dyds \\
+&=\sum\limits_{i=1}^n \int_{-\frac{r^2}{4\pi}}^0 \int_{\partial B\left(\bm{0}, -2ns \ln{\left(-\frac{4\pi s}{r^2}\right)}\right)}  \left(y_i u_s\varphi\right)\nu^i dyds \\
+&=0
+\end{split}
+\end{equation*}
+for $\varphi\equiv 0$ in $\partial E-\{0,\bm{0}\}$.
+
+Since $\pdv{s}\left(u_{y_i}y_i\varphi\right)=u_{sy_i}y_i\varphi+u_{y_i}\varphi$ ...
+\begin{equation*}
+\iint_{E(r)}\pdv{s}\left(u_{y_i}y_i\varphi\right)dyds=\int_{\abs{y}^2\leq\frac{nr^2}{2\pi e}}\int_{s_0(y)}^{s_1(y)}\pdv{s}\left(u_{y_i}y_i\varphi\right)dsdy=0
+\end{equation*}
+where $s_0(y)$ and $s_1(y)$ is the $s$ ... for $y\neq \bm{0}$ because $s_0(y)\neq 0$.
+
+We know that
+\begin{equation*}
+\begin{split}
+-4\iint_{E(r)} nu_s\varphi - \varphi\sum\limits_{i=1}^n u_{sy_i} y_i  dyds &= -4\iint_{E(r)} nu_s\varphi - \varphi\sum\limits_{i=1}^n u_{y_i} y_i \varphi_s dyds \\
+&=-4\iint_{E(r)} nu_s\varphi - \sum\limits_{i=1}^n u_{y_i} y_i \left(-\frac{n}{2s}-\frac{\abs{y}^2}{4s^2}\right) dyds \\
+&=\iint_{E(r)} -4nu_s\varphi - \frac{2n}{s}\sum\limits_{i=1}^n u_{y_i} y_i dyds - B.
+\end{split}
+\end{equation*}
+
 \end{document}
