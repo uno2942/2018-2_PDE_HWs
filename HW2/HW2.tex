@@ -167,5 +167,37 @@ For $j=2n+1$,
 g_{2n+1}=\frac{1}{(2n)(2n+1)}\pdv{g_{2n-1}(t)}{t}=0.
 \end{equation*}
 Therefore, \eqref{Eq:3.1} is valid.
+\item[Step 3.] Since $\frac{1}{z^2}$ is holomorphic without $z= 0$, $e^{-\frac{1}{z^2}}$ is holomorphic without $z=0$. For $z\neq 0$, there is a open disk of radius $r>0$ such that the disk does not contain $0$. Then by Cauchy integral formula,
+\begin{equation*}
+\abs{\frac{d^k}{dt^k}g(t)}\leq \frac{k!}{2\pi}\int_0^{2\pi} \abs{\frac{g(t+Re^{i\theta})}{R^{n}}}d\theta
+\end{equation*}
+sibal....
+
+\item[Step 4.] Let $g_i$ as in Step 2. ..
 \end{enumerate}
+
+\section*{Problem 4}
+Consider the following PDE:
+\begin{equation}\label{Eq:P4-1}
+u_t-\Laplace_x u=f(t,x)e^{ct}~~\text{for }t>0,x\in\rr^n,~~u(0,x)=g(x)
+\end{equation}
+Then, $f(t,x)e^{ct}$ and $g(x)$ are smooth and have compact supports. Therefore, there exists a unique solution $u$ satisfying \eqref{Eq:P4-1}:
+\begin{equation*}
+u(x,y)=\int_{\rr^n}\Phi(x-y,t)g(y)dy+\int_0^t\int_{\rr^n}\Phi(x-y,t-s)f(y,s)e^{ct}dyds
+\end{equation*}
+Let's consider $u'=ue^{-ct}$, then
+\begin{equation*}
+\begin{split}
+&u'_t-\Laplace_x u'+cu'=u_te^{-ct}-cue^{ct}-\Laplace_x ue^{ct}+cue^{ct}=(u_t-\Laplace_x u)e^{ct}=f(t,x) \\
+&u'(0,x)=ue^{c\cdot 0}=u=g(x)
+\end{split}
+\end{equation*}
+for $t>0$ and $x\in \rr^n$. By the uniqueness of the solution ....
+\begin{equation*}
+e^{ct}\left(\int_{\rr^n}\Phi(x-y,t)g(y)dy+\int_0^t\int_{\rr^n}\Phi(x-y,t-s)f(y,s)e^{ct}dyds\right)
+\end{equation*}
+is a... solution for the problem.
+
+\section*{Problem 6}
+WLOG, let $x,y$. By Mean value theorem, $\abs{u(x)-u(y)}\leq \abs{x-y}\abs{u'(t)}$ for some $x<t<y$.
 \end{document}
