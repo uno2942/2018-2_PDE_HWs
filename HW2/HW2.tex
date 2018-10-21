@@ -199,5 +199,20 @@ e^{ct}\left(\int_{\rr^n}\Phi(x-y,t)g(y)dy+\int_0^t\int_{\rr^n}\Phi(x-y,t-s)f(y,s
 is a... solution for the problem.
 
 \section*{Problem 6}
-WLOG, let $x,y$. By Mean value theorem, $\abs{u(x)-u(y)}\leq \abs{x-y}\abs{u'(t)}$ for some $x<t<y$.
+WLOG, let $x\leq y$. I'll show that
+\begin{equation*}
+u(y)-u(x)=\int_y^x u' dt
+\end{equation*}
+Since $u'\in L^p(0, 1)$, $\abs{\int_x^y u' dt}\leq \norm{u'}_{L^p(\Omega)}$, and $u'\in L^1(\Omega)$.
+
+Fix small enough $\epsilon>0$ and consider $\phi_\epsilon(t)\in C_c^\infty((x, y))$ such that $\phi_\epsilon\equiv 1$ in $[x+\epsilon, y-\epsilon]$. It can be generated using $C^\infty$ Urysohn's lemma. Then,
+\begin{equation*}
+\begin{split}
+\int_\Omega u\phi_\epsilon'dt&=\int_{x}^{x+\epsilon} u \phi_\epsilon' dt + \int_{y-\epsilon}^{y} u \phi_\epsilon' dt \\
+&=\int_\Omega u'\phi_\epsilon dt=\int_{x}^{y} u'\phi_\epsilon dt.
+\end{split}
+\end{equation*}
+Since ...$\phi$ is continuous function with compact support, $\abs{\int_{x-\epsilon}^{y+\epsilon} u'\phi dt} \leq \norm{\phi}_{L^\infty(\Omega)}\int_{x-\epsilon}^{y+\epsilon} \abs{u'} dt< \infty$, so by Lebesgue dominance convergence theorem, $\lim\limits_{\epsilon\rightarrow 0} \int_0^{x+\epsilon} u'\phi_\epsilon dt=\int_0^x u' dt$.
+
+Let's consider $\int_0^\epsilon u\phi_\epsilon' dt$. We know that $\int_0^\epsilon \phi_\epsilon' dt=\phi_\epsilon(\epsilon)-\phi_\epsilon(0)=1$. $\int_0^\epsilon u\phi_\epsilon' dt=\int_0^\epsilon (u-u(x))\phi_\epsilon' dt + \int_0^\epsilon u(x)\phi_\epsilon' dt$
 \end{document}
