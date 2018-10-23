@@ -10,6 +10,7 @@
 \usepackage{mathrsfs}
 \usepackage{mathtools}
 \usepackage{physics}
+\usepackage{ esint }
 
 \textwidth 6.5 truein 
 \oddsidemargin 0 truein 
@@ -90,10 +91,14 @@
 Summarising the results, $\frac{1}{4r^n}\iint_{E(0, \bm{0}, r)}\frac{\abs{y}^2}{s^2}dydx=1$ for all $r>0$.
 
 \section*{Problem 2}
-By change of variable shifting $x$ and $t$ to 0, we can rearrange the formula by \begin{equation*}
-\frac{1}{r^n}\iint_{E(t,x;r)}u(s,y)\frac{\abs{s-y}^2}{\abs{t-s}^2}dyds=\iint_{E(0,\bm{0};r)}u(r^2s,ry)\frac{\abs{y}^2}{s^2}dyds
+By change of variable shifting $x$ and $t$ to 0, we can rearrange the formula by 
+\begin{equation*}
+\begin{split}
+\frac{1}{r^n}\iint_{E(t,x;r)}u(s,y)\frac{\abs{s-y}^2}{\abs{t-s}^2}dyds&=\frac{1}{r^n}\iint_{E(0,\bm{0};r)}u(s,y)\frac{\abs{y}^2}{s^2}dyds\\
+&=\iint_{E(0,\bm{0};1)}u(r^2s,ry)\frac{\abs{y}^2}{s^2}dyds
+\end{split}
 \end{equation*}
-Let $\phi(r)$ be the RHS of above equation. Our strategy is showing that $\phi(r)$ is constant function, and it means $\phi(r)=\lim\limits_{r\rightarrow 0} \phi(r)=r^n u(x,t)$ using continuity of $u$ and the result from problem 1. I'll write $E(r)=E(0,\bm{0};r)$.
+Let $\phi(r)$ be the RHS of above equation. Our strategy is showing that $\phi(r)$ is constant function, and it means $\phi(r)=\lim\limits_{r\rightarrow 0} \phi(r)=r^n u(0,0)$ using continuity of $u$ and the result from problem 1. I'll write $E(r)=E(0,\bm{0};r)$.
 Computing $\phi'(r)$,
 \begin{equation*}
 \begin{split}
@@ -112,7 +117,7 @@ Then, we can get a relation $\abs{y}^2=\sum\limits_{i=1}^n 2sy_i\varphi_{y_i}$, 
 \begin{equation*}
 \begin{split}
 r^{n+1}A&=\iint_{E(r)} 4u_s \sum\limits_{i=1}^n y_i \varphi_{y_i} dyds \\
-&=\iint_{E(r)} 4 \sum\limits_{i=1}^n \left(\pdv{y_i}\left(y_iu_s\varphi\right)-u_s\varphi-y_i\varphi_{sy_i}\right) dyds \\
+&=\iint_{E(r)} 4 \sum\limits_{i=1}^n \left(\pdv{y_i}\left(y_iu_s\varphi\right)-u_s\varphi-u_{sy_i}y_i\varphi\right) dyds \\
 &=-4\iint_{E(r)} nu_s\varphi + \varphi\sum\limits_{i=1}^n u_{sy_i} y_i  dyds
 \end{split}
 \end{equation*}
@@ -126,21 +131,50 @@ Since
 \end{equation*}
 for $\varphi\equiv 0$ in $\partial E-\{0,\bm{0}\}$.($\nu^i$ is ....)
 
-Since $\pdv{s}\left(u_{y_i}y_i\varphi\right)=u_{sy_i}y_i\varphi+u_{y_i}\varphi$ ...
-\begin{equation*}
-\iint_{E(r)}\pdv{s}\left(u_{y_i}y_i\varphi\right)dyds=\int_{\abs{y}^2\leq\frac{nr^2}{2\pi e}}\int_{s_0(y)}^{s_1(y)}\pdv{s}\left(u_{y_i}y_i\varphi\right)dsdy=0
-\end{equation*}
-where $s_0(y)$ and $s_1(y)$ is the $s$ ... for $y\neq \bm{0}$ because $s_0(y)\neq 0$.
-
-We know that
+By $\pdv{s}\left(u_{y_i}y_i\varphi\right)=u_{sy_i}y_i\varphi+u_{y_i}\varphi y_i \varphi_s$ 
 \begin{equation*}
 \begin{split}
--4\iint_{E(r)} nu_s\varphi - \varphi\sum\limits_{i=1}^n u_{sy_i} y_i  dyds &= -4\iint_{E(r)} nu_s\varphi - \varphi\sum\limits_{i=1}^n u_{y_i} y_i \varphi_s dyds \\
+\iint_{E(r)} \varphi\sum\limits_{i=1}^n u_{sy_i} y_i  dyds&=\iint_{E(r)} \sum\limits_{i=1}^n \pdv{s}\left(u_{y_i}y_i\varphi\right) - u_{y_i}y_i \varphi_s dyds
+\end{split}
+\end{equation*}
+Let $s_0(y)$ and $s_1(y)$ is the the boundary points of $s$ for fixed $y\neq \bm{0}$, and $\{y\}\times(s_0(y),s_1(y))$ is in the heat ball. In the integration on $E(r)$, we can neglect $y=0$ case since it $\{\bm{0}\}\times(-1/4\pi, 0)$ is measure zero set in $\Omega$. Then,
+\begin{equation*}
+\begin{split}
+\iint_{E(r)}\pdv{s}\left(u_{y_i}y_i\varphi\right)dyds&=\int_{\abs{y}^2\leq\frac{nr^2}{2\pi e}}\int_{s_0(y)}^{s_1(y)}\pdv{s}\left(u_{y_i}y_i\varphi\right)dsdy \\
+&=\int_{\abs{y}^2\leq\frac{nr^2}{2\pi e}}u_{y_i}(s_1(y), y), y)y_i\varphi(s_1(y))-u_{y_i}(s_0(y), y), y)y_i\varphi(s_0(y))dy=0.
+\end{split}
+\end{equation*}
+because $\varphi(s_0(y))=\varphi(s_1(y))=0$ for $y\neq \bm{0}$.
+
+Therefore,
+\begin{equation*}
+\begin{split}
+r^{n+1}A=-4\iint_{E(r)} nu_s\varphi + \varphi\sum\limits_{i=1}^n u_{sy_i} y_i  dyds &= -4\iint_{E(r)} nu_s\varphi - \varphi\sum\limits_{i=1}^n u_{y_i} y_i \varphi_s dyds \\
 &=-4\iint_{E(r)} nu_s\varphi - \sum\limits_{i=1}^n u_{y_i} y_i \left(-\frac{n}{2s}-\frac{\abs{y}^2}{4s^2}\right) dyds \\
 &=\iint_{E(r)} -4nu_s\varphi - \frac{2n}{s}\sum\limits_{i=1}^n u_{y_i} y_i dyds - B.
 \end{split}
 \end{equation*}
+Since $u$ is a solution for heat equation,
+\begin{equation*}
+\begin{split}
+\phi'(r)=A+B&=\iint_{E(r)} -4nu_s\varphi - \frac{2n}{s}\sum\limits_{i=1}^n u_{y_i} y_i dyds \\
+&=\iint_{E(r)} -4n\varphi\Laplace_y u - \frac{2n}{s}\sum\limits_{i=1}^n u_{y_i} y_i dyds \\
+&=\iint_{E(r)} \sum\limits_{i=1}^n-4n u_{y_i}\varphi_{y_i} - \frac{2n}{s}\sum\limits_{i=1}^n u_{y_i} y_i dyds \\
+&=\iint_{E(r)} \sum\limits_{i=1}^n\frac{2n}{s} u_{y_i}y_i - \frac{2n}{s}\sum\limits_{i=1}^n u_{y_i} y_i dyds = 0.
+\end{split}
+\end{equation*}
+The intermediate step $\varphi\Laplace_y u \rightarrow u_{y_i}\varphi_{y_i}$ uses the fact that $\varphi=0$ on $\partial E(r)-\{(0, \bm{0}\}$ as in $s$ case.
 
+Consequently, $\phi$ is a constant function. Since $u$ is continuous and by problem 1,
+\begin{equation*}
+\lim\limits_{r\rightarrow 0+}\frac{1}{r^n}\iint_{E(0,\bm{0};r)}u(s,y)\frac{\abs{y}^2}{s^2}dyds =4u(0,0) 
+\end{equation*}
+Hence, 
+\begin{equation*}
+\frac{1}{4r^n}\iint_{E(t,x;r)}u(s,y)\frac{\abs{s-y}^2}{\abs{t-s}^2}dyds = u(t,x)
+\end{equation*}
+for all $r>0$.
+...Check $u(x,t)$ and $u(t,x)$.
 \section*{Problem 3}
 \begin{enumerate}
 \item[Step 1.] To satisfy $u_t-u_{xx}=0$ for $t>0, x\in \rr$, (...Assume convergence) 
@@ -168,13 +202,37 @@ g_{2n+1}=\frac{1}{(2n)(2n+1)}\pdv{g_{2n-1}(t)}{t}=0.
 \end{equation*}
 Therefore, \eqref{Eq:3.1} is valid.
 \item[Step 3.] Since $\frac{1}{z^2}$ is holomorphic without $z= 0$, $e^{-\frac{1}{z^2}}$ is holomorphic without $z=0$.
-For $z\neq 0$, there is a open disk of radius $r>0$ such that the disk does not contain $0$. Then by Cauchy integral formula,
+For $t> 0$, let $r=t/8$ be a radius of open disk centred at $t\in \rr$ in $\mathbb{C}$. Let the boundary of the disk $C$. Then by Cauchy integral formula,
 \begin{equation*}
-\abs{\frac{d^k}{dt^k}g(t)}\leq \frac{k!}{2\pi}\int_0^{2\pi} \abs{\frac{g(t+Re^{i\theta})}{R^{n}}}d\theta
+\abs{\frac{d^k}{dt^k}g(t)}\leq \frac{k!}{2\pi}\varointctrclockwise_C \abs{\frac{e^{-\frac{1}{z^2}}}{(z-t)^{k+1}}}dz\leq \frac{k!}{2\pi} r^{-k} \max\limits_C\abs{e^{-\frac{1}{z^2}}}
 \end{equation*}
-sibal....
+and if we let $z=x+iy$, $x,y\in \rr$,
+\begin{equation*}
+\abs{e^{-\frac{1}{z^2}}}=\abs{e^{-\frac{x^2-y^2}{(x^2+y^2)^2}}}\leq \abs{e^{-\frac{7t^2/8}{(41/32)^2t^4}}}\leq\abs{e^{-\frac{1}{2t^2}}}.
+\end{equation*}
+Therefore, if we set $\theta=\frac{1}{8}$,
+\begin{equation*}
+\abs{\frac{d^k}{dt^k}g(t)}\leq k!\left(\frac{1}{8}t\right)^{-k}e^{-\frac{1}{2t^2}}
+\end{equation*}
+If $t\leq 0$, it is obvious relation.
+\item[Step 4.] Let $g_i$ as in Step 2. Then,
+\begin{equation*}
+\abs{g_{2k}(t)x^{2k}}\leq \frac{k!}{(2k)!}e^{-\frac{1}{2t^2}}\left(\frac{8x^2}{t}\right)^k.
+\end{equation*}
+The radius of convergence of RHS is
+\begin{equation*}
+R^2\leq \lim\limits_{k\rightarrow \infty}(2k+1)\frac{t}{4},
+\end{equation*}
+and it means $\sum g_{2k}(t)x^{2k}$ converges for all $t>0$ and $x\in \rr$.
 
-\item[Step 4.] Let $g_i$ as in Step 2. ..
+Since $\frac{k!}{(2k)!}e^{-\frac{1}{2t^2}}\left(\frac{8x^2}{t}\right)^k\leq \frac{1}{k!}e^{-\frac{1}{2t^2}}\left(\frac{8x^2}{t}\right)^k$, by replacing $\frac{8x^2}{t}$ by $z$, we can get
+\begin{equation*}
+\abs{\sum g_{2k}(t)x^{2k}}\leq e^{-\frac{1}{2t^2}}\sum\frac{1}{k!}z^k=e^{-\frac{1}{2t^2}+\frac{8x^2}{t}}
+\end{equation*}
+for fixed $t>0$ with convergence of radius $\infty$. As $t\rightarrow 0$, $e^{-\frac{1}{2t^2}+\frac{8x^2}{t}}\rightarrow 0$. Therefore, 
+\begin{equation*}
+\sum g_{2k}(t)x^{2k}\rightarrow 0 ~\text{ as }t\rightarrow 0.
+\end{equation*}
 \end{enumerate}
 
 \section*{Problem 4}
@@ -182,7 +240,7 @@ Consider the following PDE:
 \begin{equation}\label{Eq:P4-1}
 u_t-\Laplace_x u=f(t,x)e^{ct}~~\text{for }t>0,x\in\rr^n,~~u(0,x)=g(x)
 \end{equation}
-Then, $f(t,x)e^{ct}$ and $g(x)$ are smooth and have compact supports. Therefore, there exists a unique solution $u$ satisfying \eqref{Eq:P4-1}:
+Then, $f(t,x)e^{ct}$ and $g(x)$ are smooth and have compact supports. Therefore, there exists a solution $u$ satisfying \eqref{Eq:P4-1}:
 \begin{equation*}
 u(x,y)=\int_{\rr^n}\Phi(x-y,t)g(y)dy+\int_0^t\int_{\rr^n}\Phi(x-y,t-s)f(y,s)e^{ct}dyds
 \end{equation*}
@@ -193,25 +251,25 @@ Let's consider $u'=ue^{-ct}$, then
 &u'(0,x)=ue^{c\cdot 0}=u=g(x)
 \end{split}
 \end{equation*}
-for $t>0$ and $x\in \rr^n$. By the uniqueness of the solution ....
+for $t>0$ and $x\in \rr^n$. Therefore, 
 \begin{equation*}
 e^{ct}\left(\int_{\rr^n}\Phi(x-y,t)g(y)dy+\int_0^t\int_{\rr^n}\Phi(x-y,t-s)f(y,s)e^{ct}dyds\right)
 \end{equation*}
-is a... solution for the problem.
+is a solution for the problem.
 
 \section*{Problem 5}
 Let $u$ be:
 \begin{equation}
 u(x,t)=\frac{1}{2}[g(x+t)+g(x-t)]+\frac{1}{2}\int_{x-t}^{x+t} h(y)dy + \frac{1}{2}\int_0^t\int_{x-s}^{x+s}f(y, t-s)dyds 
 \end{equation}
-...
+Then,
 
 \section*{Problem 6}
 WLOG, let $x\leq y$. I'll show that
 \begin{equation*}
 u(y)-u(x)=\int_y^x u' dt
 \end{equation*}
-Since $u'\in L^p(0, 1)$, $\abs{\int_x^y u' dt}\leq \norm{u'}_{L^p(\Omega)}$, and $u'\in L^1(\Omega)$.
+Since $u'\in L^p(0, 1)$, $\int_x^y \abs{u'} dt\leq \norm{u'}_{L^p(\Omega)}$, and $u'\in L^1(\Omega)$.
 
 Fix small enough $0<\epsilon<\frac{x+y}{2}$ and consider $\phi_\epsilon(t)\in C_c^\infty((x, y))$ such that $\phi_\epsilon\equiv 1$ in $[x+\epsilon, y-\epsilon]$. Define 
 \begin{equation*}
@@ -236,7 +294,8 @@ Then,
 &=\int_\Omega u'\phi_\epsilon dt=\int_{x}^{y} u'\phi_\epsilon dt.
 \end{split}
 \end{equation*}
-Since ...$\phi$ is continuous function with compact support, $\abs{\int_{x-\epsilon}^{y+\epsilon} u'\phi dt} \leq \norm{\phi}_{L^\infty(\Omega)}\int_{x-\epsilon}^{y+\epsilon} \abs{u'} dt< \infty$, so by Lebesgue dominance convergence theorem, $\lim\limits_{\epsilon\rightarrow 0} \int_0^{x+\epsilon} u'\phi_\epsilon dt=\int_0^x u' dt$.
+
+Since $u'\in L^1(\Omega)$, $\abs{u'\phi_\epsilon}\leq \abs{u'}$, and $\phi_\epsilon\rightarrow 1$ in $[x,y]$ a.e.(... if $x=0$?), so by Lebesgue dominance convergence theorem, $\lim\limits_{\epsilon\rightarrow 0} \int_x^y u'\phi_\epsilon dt=\int_x^y u' dt$.
 
 Let's consider $\int_x^{x+\epsilon} u\phi_\epsilon' dt$. We know that $\int_x^{x+\epsilon} \phi_\epsilon' dt=\phi_\epsilon(x+\epsilon)-\phi_\epsilon(x)=1$. $\int_x^{x+\epsilon} u\phi_\epsilon' dt=\int_x^{x+\epsilon} (u - u(x)) \eta_\epsilon(t-x) dt + \int_0^\epsilon u(x)\phi_\epsilon' dt$. Since $\norm{\eta_\epsilon}_{L^\infty}=e^{-1}$ and $\int_x^{x+\epsilon} (u - u(x)) \eta_\epsilon(t-x) dt \leq \frac{\norm{\eta_\epsilon}_{L^\infty}}{\epsilon}\int_x^{x+\epsilon} (u - u(x)) dt$, by Lebesgue differential theorem..., $\int_x^{x+\epsilon} (u - u(x)) \eta_\epsilon(t-x) dt\rightarrow 0$ as $\epsilon\rightarrow 0$. 
 Therefore, $\int_x^{x+\epsilon} u\phi_\epsilon' dt \rightarrow u(x)$ as $\epsilon\rightarrow 0$. 
