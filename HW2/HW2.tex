@@ -177,13 +177,13 @@ for all $r>0$.
 ...Check $u(x,t)$ and $u(t,x)$.
 \section*{Problem 3}
 \begin{enumerate}
-\item[Step 1.] To satisfy $u_t-u_{xx}=0$ for $t>0, x\in \rr$, (...Assume convergence) 
+\item[Step 1.] First, we need to assume that the convergence radius of $u$ is $\infty$, so that we can safely differentiate the series term by term. To satisfy $u_t-u_{xx}=0$ for $t>0, x\in \rr$,
 \begin{equation*}
 u_t-u_{xx}=\sum_{j=0}^\infty \left(\pdv{g_j(t)}{t}-(j+1)(j+2)g_{j+2}(t)\right)x^{j}=0.
 \end{equation*}
-By uniqueness of power series(...), $\pdv{g_j(t)}{t}-(j+1)(j+2)g_{j+2}=0$ for all $j\geq 0$ make u satisfies $u_t-u_{xx}=0$.
+By uniqueness of power series in the convergence region, $\pdv{g_j(t)}{t}-(j+1)(j+2)g_{j+2}=0$ for all $j\geq 0$ iff $u_t-u_{xx}=0$.
 
-To satisfy initial condition $u(0, x)=0$ for $x\in \rr$, $\sum_{j=0}^\infty g_j(0)x^j=0$, implying $g_j(0)=0$ for all $j$.
+To satisfy initial condition $u(0, x)=0$ for $x\in \rr$, $\sum_{j=0}^\infty g_j(0)x^j=0$, $g_j(0)$ should be $0$ for all $j$ followed by uniqueness of power series.
 
 \item[Step 2.] I'll use induction for proof. Let $g_j$ be
 \begin{equation}\label{Eq:3.1}
@@ -237,9 +237,9 @@ for fixed $t>0$ with convergence of radius $\infty$. As $t\rightarrow 0$, $e^{-\
 
 \section*{Problem 4}
 Consider the following PDE:
-\begin{equation}\label{Eq:P4-1}
+\begin{equation*}
 u_t-\Laplace_x u=f(t,x)e^{ct}~~\text{for }t>0,x\in\rr^n,~~u(0,x)=g(x)
-\end{equation}
+\end{equation*}
 Then, $f(t,x)e^{ct}$ and $g(x)$ are smooth and have compact supports. Therefore, there exists a solution $u$ satisfying \eqref{Eq:P4-1}:
 \begin{equation*}
 u(x,y)=\int_{\rr^n}\Phi(x-y,t)g(y)dy+\int_0^t\int_{\rr^n}\Phi(x-y,t-s)f(y,s)e^{ct}dyds
@@ -253,17 +253,35 @@ Let's consider $u'=ue^{-ct}$, then
 \end{equation*}
 for $t>0$ and $x\in \rr^n$. Therefore, 
 \begin{equation*}
-e^{ct}\left(\int_{\rr^n}\Phi(x-y,t)g(y)dy+\int_0^t\int_{\rr^n}\Phi(x-y,t-s)f(y,s)e^{ct}dyds\right)
+e^{-ct}\left(\int_{\rr^n}\Phi(x-y,t)g(y)dy+\int_0^t\int_{\rr^n}\Phi(x-y,t-s)f(y,s)e^{ct}dyds\right)
 \end{equation*}
 is a solution for the problem.
 
 \section*{Problem 5}
 Let $u$ be:
-\begin{equation}
-u(x,t)=\frac{1}{2}[g(x+t)+g(x-t)]+\frac{1}{2}\int_{x-t}^{x+t} h(y)dy + \frac{1}{2}\int_0^t\int_{x-s}^{x+s}f(y, t-s)dyds 
+\begin{equation}\label{Eq:P5-1}
+u(x,t)=\frac{1}{2}[g(x+t)+g(x-t)]+\frac{1}{2}\int_{x-t}^{x+t} h(y)dy + \frac{1}{2}\int_0^t\int_{x+t-s}^{x-t+s}f(y, s)dyds.
 \end{equation}
-Then,
+First, $u$ is a smooth function since $g,h,f$ are. Also,
+\begin{equation*}
+\begin{split}
+u_t&=\frac{1}{2}\left(g'(x+t)-g'(x-t)\right)+\left(h(x+t)+h(x-t)\right)+\frac{1}{2}\int_0^t f(x+t-s, s)+f(x-t+s, s)ds\\
+u_{tt}&=\frac{1}{2}\left(g''(x+t)+g''(x-t)\right)+\left(h'(x+t)-h'(x-t)\right)+f(x)+\int_0^t f_t(x+t-s)+f_t(x-t+s)ds\\
+u_x&=\frac{1}{2}\left(g'(x+t)+g'(x-t)\right)+\left(h(x+t)-h(x-t)\right)+\frac{1}{2}\int_0^t f(x+t-s, s)-f(x-t+s, s)ds \\
+u_{xx}&=\frac{1}{2}\left(g''(x+t)+g''(x-t)\right)+\left(h'(x+t)-h'(x-t)\right)+\frac{1}{2}\int_0^t f_x(x+t-s, s)-f_x(x-t+s, s)ds \\
+&=\frac{1}{2}\left(g''(x+t)+g''(x-t)\right)+\left(h'(x+t)-h'(x-t)\right)+\frac{1}{2}\int_0^t f_t(x+t-s, s)+f_t(x-t+s, s)ds \\
+&=u_{tt}-f(x,t)
+\end{split}
+\end{equation*}
+Therefore, $u_{tt}-u_{xx}=f(x,t)$.
 
+Also,
+\begin{equation*}
+\lim_{\mathclap{\substack{(x,t)\rightarrow (x_0, 0)\\ t>0}}} u(x,t)=g(x_0, 0),~~\lim_{\mathclap{\substack{(x,t)\rightarrow (x_0, 0)\\ t>0}}} u_t(x,t)=h(x_0, 0)
+\end{equation*}
+since $u_t$ and $u$ is continuous on $\rr^2$.
+
+Hence, \eqref{Eq:P5-1} is a solution for the problem.
 \section*{Problem 6}
 WLOG, let $x\leq y$. I'll show that
 \begin{equation*}
@@ -271,7 +289,7 @@ u(y)-u(x)=\int_y^x u' dt
 \end{equation*}
 Since $u'\in L^p(0, 1)$, $\int_x^y \abs{u'} dt\leq \norm{u'}_{L^p(\Omega)}$, and $u'\in L^1(\Omega)$.
 
-Fix small enough $0<\epsilon<\frac{x+y}{2}$ and consider $\phi_\epsilon(t)\in C_c^\infty((x, y))$ such that $\phi_\epsilon\equiv 1$ in $[x+\epsilon, y-\epsilon]$. Define 
+If $x=y$, it is trivially equal, so I'll set $x<y$. Fix small enough $0<\epsilon<\frac{x+y}{2}$ and consider $\phi_\epsilon(t)\in C_c^\infty((x, y))$ such that $\phi_\epsilon\equiv 1$ in $[x+\epsilon, y-\epsilon]$. Define 
 \begin{equation*}
 \eta_\delta(x)=
 \begin{cases}
@@ -284,7 +302,7 @@ I'll set the $\phi_\epsilon(t)$ by
 \phi_\epsilon(t)=
 \begin{cases}
 \int_x^t \eta_\epsilon(\sigma-x)d\sigma/\int_x^{x+\epsilon} \eta_\epsilon(\sigma-x)d\sigma & \text{(For }x\leq t<\frac{x+y}{2}\text{)} \\
-1-\left(\int_t^y \eta_\epsilon(\sigma-y)d\sigma/\int_{y-\epsilon}^y \eta_\epsilon(\sigma-y)d\sigma\right) & \text{(For }\frac{x+y}{2}\leq t\leq y\text{)}...
+1-\left(\int_{y-\epsilon}^t \eta_\epsilon(\sigma-(y-\epsilon))d\sigma/\int_{y-\epsilon}^y \eta_\epsilon(\sigma-(y-\epsilon))d\sigma\right) & \text{(For }\frac{x+y}{2}\leq t\leq y\text{)}...
 \end{cases}
 \end{equation*}
 Then,
@@ -297,7 +315,14 @@ Then,
 
 Since $u'\in L^1(\Omega)$, $\abs{u'\phi_\epsilon}\leq \abs{u'}$, and $\phi_\epsilon\rightarrow 1$ in $[x,y]$ a.e.(... if $x=0$?), so by Lebesgue dominance convergence theorem, $\lim\limits_{\epsilon\rightarrow 0} \int_x^y u'\phi_\epsilon dt=\int_x^y u' dt$.
 
-Let's consider $\int_x^{x+\epsilon} u\phi_\epsilon' dt$. We know that $\int_x^{x+\epsilon} \phi_\epsilon' dt=\phi_\epsilon(x+\epsilon)-\phi_\epsilon(x)=1$. $\int_x^{x+\epsilon} u\phi_\epsilon' dt=\int_x^{x+\epsilon} (u - u(x)) \eta_\epsilon(t-x) dt + \int_0^\epsilon u(x)\phi_\epsilon' dt$. Since $\norm{\eta_\epsilon}_{L^\infty}=e^{-1}$ and $\int_x^{x+\epsilon} (u - u(x)) \eta_\epsilon(t-x) dt \leq \frac{\norm{\eta_\epsilon}_{L^\infty}}{\epsilon}\int_x^{x+\epsilon} (u - u(x)) dt$, by Lebesgue differential theorem..., $\int_x^{x+\epsilon} (u - u(x)) \eta_\epsilon(t-x) dt\rightarrow 0$ as $\epsilon\rightarrow 0$. 
+Let's consider $\int_x^{x+\epsilon} u\phi_\epsilon' dt$. We know that $\int_x^{x+\epsilon} \phi_\epsilon' dt=\phi_\epsilon(x+\epsilon)-\phi_\epsilon(x)=1$ and $\int_0^\epsilon \eta_\epsilon(\sigma)\sigma=\int_0^1 \eta(\sigma)\sigma=C>0$. Therefore,
+\begin{equation*}
+\begin{split}
+\int_x^{x+\epsilon} u\phi_\epsilon' dt&=C^{-1}\int_x^{x+\epsilon} (u - u(x)) \eta_\epsilon(t-x) dt + \int_0^\epsilon u(x)\phi_\epsilon' dt \\
+&=\int_x^{x+\epsilon} (u - u(x)) \eta_\epsilon(t-x) dt+u(x).
+\end{split}
+\end{equation*}
+Since $\norm{\eta_\epsilon}_{L^\infty}=\frac{1}{\epsilon}$ and $C^{-1}\abs{\int_x^{x+\epsilon} (u - u(x)) \eta_\epsilon(t-x) dt} \leq \frac{\norm{\eta_\epsilon}_{L^\infty}}{C}\abs{\frac{1}{\epsilon}\int_x^{x+\epsilon} (u - u(x)) dt}$, by Lebesgue differential theorem, $\int_x^{x+\epsilon} (u - u(x)) \eta_\epsilon(t-x) dt\rightarrow 0$ as $\epsilon\rightarrow 0$. 
 Therefore, $\int_x^{x+\epsilon} u\phi_\epsilon' dt \rightarrow u(x)$ as $\epsilon\rightarrow 0$. 
 By the same reason, $\int_{y-\epsilon}^y u\phi_\epsilon' dt \rightarrow u(y)$ as $\epsilon\rightarrow 0$.
 
