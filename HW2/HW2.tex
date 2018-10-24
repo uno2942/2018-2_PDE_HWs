@@ -311,5 +311,29 @@ a.e. and
 \end{equation*}
 by H\"older's inequality.
 \section*{Problem 7}
+Because $u$ is compactly supported, we can set $B$ be a large ball containing the compact support of $u$ and set $u=0$ out of compact support for integration; it does not effect the integration. Since $p\geq 2$, we can do integration by parts:
+\begin{equation*}
+\begin{split}
+\int_U \abs{Du}^p dx&=\sum\limits_{i=1}^n \int_B u_{x_i} u_{x_i} \abs{Du}^{p-2}dx \\
+&=-\sum\limits_{i,j=1}^n \int_B u \left(u_{x_ix_i}\abs{Du}^{p-2}+u_{x_i}u_{x_j}u_{x_jx_i}\abs{Du}^{p-4}\right)dx ~\text{ Since }u\equiv 0\text{ at boundary}\\
+&\leq-\sum\limits_{i,j=1}^n \int_B u \left(u_{x_ix_i}\abs{Du}^{p-2}+Bu_{x_jx_i}\abs{Du}^{p-2}\right)dx~\text{ Since }\sum_{i,j} u_{x_i}u_{x_j}\leq n\abs{Du^2}\text{ by Cauchy-Schwarz inequality} \\
+&\leq -C\int_B u \abs{D^2u}\left(\abs{Du}^{p-2}\right)dx~\text{ By the same reason}. \\
+&\leq \abs{C\int_U u \abs{D^2u}\left(\abs{Du}^{p-2}\right)dx}
+\end{split}
+\end{equation*}
+for some constant $B$ and $C$ depends on $n$.
 
+Let $p>2$, then by the H\"older's inequality, 
+\begin{equation*}
+\abs{\int_U u \abs{D^2u}\left(\abs{Du}^{p-2}\right)dx}^p\leq \left(\int_U \abs{u\abs{D^2u}}^{\frac{p}{2}} dx\right)^2\left(\int_U \abs{Du}^{p} dx\right)^{p-2}
+\end{equation*}
+If $\int_U \abs{Du}^{p} dx=0$, then the original inequality satisfied, so we can assume $\int_U \abs{Du}^{p} dx>0$. Then,
+\begin{equation*}
+\left(\int_U \abs{Du}^{p} dx\right)^2\leq C^p\left(\int_U \abs{u\abs{D^2u}}^{\frac{p}{2}} dx\right)^2\leq C^p\left(\int_U \abs{u}^p dx\right) \left(\int_U \abs{D^2 u}^p dx\right)
+\end{equation*}
+Therefore, 
+\begin{equation*}
+\norm{Du}_{L^p}\leq C\norm{u}_{L^p}^{1/2}\norm{D^u}_{L^p}^{1/2}
+\end{equation*}
+for $2\leq p\leq \infty $ and all $u\in C^\infty_c(U)$.
 \end{document}
