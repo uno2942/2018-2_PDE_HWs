@@ -94,16 +94,18 @@ Summarising the results, $\frac{1}{4r^n}\iint_{E(0, \bm{0}, r)}\frac{\abs{y}^2}{
 By change of variable shifting $x$ and $t$ to 0, we can rearrange the formula by 
 \begin{equation*}
 \begin{split}
-\frac{1}{r^n}\iint_{E(t,x;r)}u(s,y)\frac{\abs{s-y}^2}{\abs{t-s}^2}dyds&=\frac{1}{r^n}\iint_{E(0,\bm{0};r)}u(s,y)\frac{\abs{y}^2}{s^2}dyds\\
-&=\iint_{E(0,\bm{0};1)}u(r^2s,ry)\frac{\abs{y}^2}{s^2}dyds
+\frac{1}{r^n}\iint_{E(t,x;r)}u(s,y)\frac{\abs{s-y}^2}{\abs{t-s}^2}dyds&=\frac{1}{r^n}\iint_{E(0,\bm{0};r)}u'(s,y)\frac{\abs{y}^2}{s^2}dyds\\
+&=\iint_{E(0,\bm{0};1)}u'(r^2s',ry')\frac{\abs{y'}^2}{s'^2}dy'ds'
 \end{split}
 \end{equation*}
+where $u'(s,y)=u(s+t, y+x)$ and $s=r^2s'$, $y=ry'$. For simplicity, I'll write $u$ by $u'$
+.
 Let $\phi(r)$ be the RHS of above equation. Our strategy is showing that $\phi(r)$ is constant function, and it means $\phi(r)=\lim\limits_{r\rightarrow 0} \phi(r)=r^n u(0,0)$ using continuity of $u$ and the result from problem 1. I'll write $E(r)=E(0,\bm{0};r)$.
 Computing $\phi'(r)$,
 \begin{equation*}
 \begin{split}
-\phi'(r)&=\dv{r}\iint_{E(1)} u(r^2s,ry)\frac{\abs{y}^2}{s^2}dyds \\
-&= \iint_{E(1)}(2rsu_s(r^2s, ry)+y\cdot \nabla_y u)\frac{\abs{y}^2}{s^2}dyds \text { (Since }\frac{\abs{y}^2}{s^2}\in L^1(E(1)) \text{ and } u\in C(\overline{E(1)}) \\
+\phi'(r)&=\dv{r}\iint_{E(1)} u(r^2s',ry')\frac{\abs{y'}^2}{s'^2}dy'ds' \\
+&= \iint_{E(1)}(2rs'u_s(r^2s', ry')+y'\cdot \nabla_y u(r^2s', ry'))\frac{\abs{y'}^2}{s'^2}dy'ds' \text { (Since }\frac{\abs{y}^2}{s^2}\in L^1(E(1)) \text{ and } u\in C(\overline{E(1)}) \\
 &= \frac{1}{r^{n+1}}\iint_{E(r)}(2su_s(s,y)+y\cdot \nabla_y u)\frac{\abs{y}^2}{s^2}dyds
 \end{split}
 \end{equation*}
@@ -129,7 +131,7 @@ Since
 &=0
 \end{split}
 \end{equation*}
-for $\varphi\equiv 0$ in $\partial E-\{0,\bm{0}\}$.($\nu^i$ is ....)
+for $\varphi\equiv 0$ in $\partial E-\{0,\bm{0}\}$.($\nu^i$ is $i$th component of outward pointing unit normal vector.)
 
 By $\pdv{s}\left(u_{y_i}y_i\varphi\right)=u_{sy_i}y_i\varphi+u_{y_i}\varphi y_i \varphi_s$ 
 \begin{equation*}
@@ -174,7 +176,6 @@ Hence,
 \frac{1}{4r^n}\iint_{E(t,x;r)}u(s,y)\frac{\abs{s-y}^2}{\abs{t-s}^2}dyds = u(t,x)
 \end{equation*}
 for all $r>0$.
-...Check $u(x,t)$ and $u(t,x)$.
 \section*{Problem 3}
 \begin{enumerate}
 \item[Step 1.] First, we need to assume that the convergence radius of $u$ is $\infty$, so that we can safely differentiate the series term by term. To satisfy $u_t-u_{xx}=0$ for $t>0, x\in \rr$,
@@ -208,13 +209,13 @@ For $t> 0$, let $r=t/8$ be a radius of open disk centred at $t\in \rr$ in $\math
 \end{equation*}
 and if we let $z=x+iy$, $x,y\in \rr$,
 \begin{equation*}
-\abs{e^{-\frac{1}{z^2}}}=\abs{e^{-\frac{x^2-y^2}{(x^2+y^2)^2}}}\leq \abs{e^{-\frac{7t^2/8}{(41/32)^2t^4}}}\leq\abs{e^{-\frac{1}{2t^2}}}.
+\abs{e^{-\frac{1}{z^2}}}=\abs{e^{-\frac{x^2-y^2}{(x^2+y^2)^2}}}\leq \abs{e^{-\frac{1280}{1681}t^{-2}}}\leq\abs{e^{-\frac{1}{2t^2}}}.
 \end{equation*}
 Therefore, if we set $\theta=\frac{1}{8}$,
 \begin{equation*}
 \abs{\frac{d^k}{dt^k}g(t)}\leq k!\left(\frac{1}{8}t\right)^{-k}e^{-\frac{1}{2t^2}}
 \end{equation*}
-If $t\leq 0$, it is obvious relation.
+If $t\leq 0$, it is obvious inequality since $g^(k)(t)=0$ for $t<0$ and $\lim\limits_{t\rightarrow 0} g(k)(t)=0$....
 \item[Step 4.] Let $g_i$ as in Step 2. Then,
 \begin{equation*}
 \abs{g_{2k}(t)x^{2k}}\leq \frac{k!}{(2k)!}e^{-\frac{1}{2t^2}}\left(\frac{8x^2}{t}\right)^k.
@@ -237,9 +238,9 @@ for fixed $t>0$ with convergence of radius $\infty$. As $t\rightarrow 0$, $e^{-\
 
 \section*{Problem 4}
 Consider the following PDE:
-\begin{equation*}
+\begin{equation}\label{Eq:P4-1}
 u_t-\Laplace_x u=f(t,x)e^{ct}~~\text{for }t>0,x\in\rr^n,~~u(0,x)=g(x)
-\end{equation*}
+\end{equation}
 Then, $f(t,x)e^{ct}$ and $g(x)$ are smooth and have compact supports. Therefore, there exists a solution $u$ satisfying \eqref{Eq:P4-1}:
 \begin{equation*}
 u(x,y)=\int_{\rr^n}\Phi(x-y,t)g(y)dy+\int_0^t\int_{\rr^n}\Phi(x-y,t-s)f(y,s)e^{ct}dyds
@@ -260,7 +261,7 @@ is a solution for the problem.
 \section*{Problem 5}
 Let $u$ be:
 \begin{equation}\label{Eq:P5-1}
-u(x,t)=\frac{1}{2}[g(x+t)+g(x-t)]+\frac{1}{2}\int_{x-t}^{x+t} h(y)dy + \frac{1}{2}\int_0^t\int_{x+t-s}^{x-t+s}f(y, s)dyds.
+u(t,x)=\frac{1}{2}[g(x+t)+g(x-t)]+\frac{1}{2}\int_{x-t}^{x+t} h(y)dy + \frac{1}{2}\int_0^t\int_{x+t-s}^{x-t+s}f(y, s)dyds.
 \end{equation}
 First, $u$ is a smooth function since $g,h,f$ are. Also,
 \begin{equation*}
@@ -277,7 +278,7 @@ Therefore, $u_{tt}-u_{xx}=f(x,t)$.
 
 Also,
 \begin{equation*}
-\lim_{\mathclap{\substack{(x,t)\rightarrow (x_0, 0)\\ t>0}}} u(x,t)=g(x_0, 0),~~\lim_{\mathclap{\substack{(x,t)\rightarrow (x_0, 0)\\ t>0}}} u_t(x,t)=h(x_0, 0)
+\lim_{\mathclap{\substack{(x,t)\rightarrow (x_0, 0)\\ t>0}}} u(t,x)=g(x_0, 0),~~\lim_{\mathclap{\substack{(x,t)\rightarrow (x_0, 0)\\ t>0}}} u_t(x,t)=h(x_0, 0)
 \end{equation*}
 since $u_t$ and $u$ is continuous on $\rr^2$.
 
@@ -302,18 +303,18 @@ I'll set the $\phi_\epsilon(t)$ by
 \phi_\epsilon(t)=
 \begin{cases}
 \int_x^t \eta_\epsilon(\sigma-x)d\sigma/\int_x^{x+\epsilon} \eta_\epsilon(\sigma-x)d\sigma & \text{(For }x\leq t<\frac{x+y}{2}\text{)} \\
-1-\left(\int_{y-\epsilon}^t \eta_\epsilon(\sigma-(y-\epsilon))d\sigma/\int_{y-\epsilon}^y \eta_\epsilon(\sigma-(y-\epsilon))d\sigma\right) & \text{(For }\frac{x+y}{2}\leq t\leq y\text{)}...
+1-\left(\int_{y-\epsilon}^t \eta_\epsilon(\sigma-(y-\epsilon))d\sigma/\int_{y-\epsilon}^y \eta_\epsilon(\sigma-(y-\epsilon))d\sigma\right) & \text{(For }\frac{x+y}{2}\leq t\leq y\text{)}
 \end{cases}
 \end{equation*}
 Then,
 \begin{equation*}
 \begin{split}
 \int_\Omega u\phi_\epsilon'dt&=\int_{x}^{x+\epsilon} u \phi_\epsilon' dt + \int_{y-\epsilon}^{y} u \phi_\epsilon' dt \\
-&=\int_\Omega u'\phi_\epsilon dt=\int_{x}^{y} u'\phi_\epsilon dt.
+&=-\int_\Omega u'\phi_\epsilon dt=-\int_{x}^{y} u'\phi_\epsilon dt.
 \end{split}
 \end{equation*}
 
-Since $u'\in L^1(\Omega)$, $\abs{u'\phi_\epsilon}\leq \abs{u'}$, and $\phi_\epsilon\rightarrow 1$ in $[x,y]$ a.e.(... if $x=0$?), so by Lebesgue dominance convergence theorem, $\lim\limits_{\epsilon\rightarrow 0} \int_x^y u'\phi_\epsilon dt=\int_x^y u' dt$.
+Since $u'\in L^1(\Omega)$, $\abs{u'\phi_\epsilon}\leq \abs{u'}$, and $\phi_\epsilon\rightarrow 1$ in $[x,y]$ a.e., so by Lebesgue dominance convergence theorem, $\lim\limits_{\epsilon\rightarrow 0} \int_x^y u'\phi_\epsilon dt=\int_x^y u' dt$.
 
 Let's consider $\int_x^{x+\epsilon} u\phi_\epsilon' dt$. We know that $\int_x^{x+\epsilon} \phi_\epsilon' dt=\phi_\epsilon(x+\epsilon)-\phi_\epsilon(x)=1$ and $\int_0^\epsilon \eta_\epsilon(\sigma)\sigma=\int_0^1 \eta(\sigma)\sigma=C>0$. Therefore,
 \begin{equation*}
@@ -324,7 +325,7 @@ Let's consider $\int_x^{x+\epsilon} u\phi_\epsilon' dt$. We know that $\int_x^{x
 \end{equation*}
 Since $\norm{\eta_\epsilon}_{L^\infty}=\frac{1}{\epsilon}$ and $C^{-1}\abs{\int_x^{x+\epsilon} (u - u(x)) \eta_\epsilon(t-x) dt} \leq \frac{\norm{\eta_\epsilon}_{L^\infty}}{C}\abs{\frac{1}{\epsilon}\int_x^{x+\epsilon} (u - u(x)) dt}$, by Lebesgue differential theorem, $\int_x^{x+\epsilon} (u - u(x)) \eta_\epsilon(t-x) dt\rightarrow 0$ as $\epsilon\rightarrow 0$. 
 Therefore, $\int_x^{x+\epsilon} u\phi_\epsilon' dt \rightarrow u(x)$ as $\epsilon\rightarrow 0$. 
-By the same reason, $\int_{y-\epsilon}^y u\phi_\epsilon' dt \rightarrow u(y)$ as $\epsilon\rightarrow 0$.
+By the same reason, $\int_{y-\epsilon}^y u\phi_\epsilon' dt \rightarrow -u(y)$ as $\epsilon\rightarrow 0$.
 
 Therefore,
 \begin{equation*}
