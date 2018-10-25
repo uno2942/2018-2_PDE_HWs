@@ -53,14 +53,14 @@
 
 \section*{Problem 1}
 \begin{enumerate}
-	\item [Step 1.] Let a linear transformation from $\rr^{n+1}$ to $\rr^{n+1}$ sending $s\mapsto r^2 s$ and $y_i\mapsto ry_i$, then $T$ sends $E(0, \bm{0}, r)$ to $E(0, \bm{0}, 1)$. Then
+	\item [Step 1.] Let a linear transformation from $\rr^{n+1}$ to $\rr^{n+1}$ sending $s\mapsto r^2 s$ and $y_i\mapsto ry_i$, then $T$ sends $E(0, \bm{0}, 1)$ to $E(0, \bm{0}, r )$ bijectively. To check it, let $(s,y)\in E(0, \bm{0}, 1)$, then $r^2s\leq 0$ and $\frac{1}{\left(4\pi(-r^2s)\right)^{n/2}}e^{\frac{\abs{ry}^2}{4r^2s}}=\frac{1}{r^n}\frac{1}{\left(4\pi(-s)\right)^{n/2}}e^{\frac{\abs{y}^2}{4s}}\geq \frac{1}{r^n}$. Since $T$ is injective, $T$ is bijective between $E(0, \bm{0}, r)$ and $E(0, \bm{0}, 1)$. Therefore,
 	\begin{equation*}
 	\begin{split}
 	\frac{1}{4}\iint_{E(0, \bm{0}, 1)}\frac{\abs{y}^2}{s^2}dyds&=\frac{1}{4}\iint_{E(0, \bm{0}, r)}\frac{\abs{y}^2/r^2}{s^2/r^4}\frac{1}{r^{n+2}}dyds \\
 	&=\frac{1}{4r^n}\iint_{E(0, \bm{0}, r)}\frac{\abs{y}^2}{s^2}dyds
 	\end{split}
 	\end{equation*}
-    \item [Step 2.] Since $e^x\leq 1$ if $x\leq 0$,
+    \item [Step 2.] Since $e^x\leq 1$ for $x\leq 0$,
     \begin{equation*}
         \begin{split}
             &\frac{1}{\left(4\pi(-s)\right)^{n/2}}e^{\frac{\abs{y}^2}{4s}}\geq 1 \text{ for }s\leq 0\\
@@ -88,7 +88,7 @@
     \end{equation*}
     Therefore, $\frac{1}{4}\iint_{E(0, \bm{0}, 1)} \frac{\abs{y}^2}{s^2}dyds=1$.
 \end{enumerate}
-Summarising the results, $\frac{1}{4r^n}\iint_{E(0, \bm{0}, r)}\frac{\abs{y}^2}{s^2}dydx=1$ for all $r>0$.
+Consequently, $\frac{1}{4r^n}\iint_{E(0, \bm{0}, r)}\frac{\abs{y}^2}{s^2}dydx=1$ for all $r>0$.
 
 \section*{Problem 2}
 By change of variable shifting $x$ and $t$ to 0, we can rearrange the formula by 
@@ -215,7 +215,7 @@ Therefore, if we set $\theta=\frac{1}{8}$,
 \begin{equation*}
 \abs{\frac{d^k}{dt^k}g(t)}\leq k!\left(\frac{1}{8}t\right)^{-k}e^{-\frac{1}{2t^2}}
 \end{equation*}
-If $t\leq 0$, it is obvious inequality since $g^(k)(t)=0$ for $t<0$ and $\lim\limits_{t\rightarrow 0} g(k)(t)=0$....
+If $t\leq 0$, it is obvious inequality since $g^{(k)}(t)=0$ for $t<0$ and $\lim\limits_{t\rightarrow 0} g^{(k)}(t)=0$.(For all $k\in \mathbb{N}$, there exists polynomial about $\frac{1}{t}$ $P_k\left(\frac{1}{t}\right)$ such that $g^{(k)}(t)=P_k\left(\frac{1}{t}\right)e^{-\frac{1}{t^2}}$ and we know that for any $j\in\mathbb{N}$, $\frac{1}{t^j}e^{-\frac{1}{t^2}}\rightarrow 0$ as $t\rightarrow 0+$. Therefore, $g^{(k)}(t)\rightarrow 0$ as $t\rightarrow 0$.)
 \item[Step 4.] Let $g_i$ as in Step 2. Then,
 \begin{equation*}
 \abs{g_{2k}(t)x^{2k}}\leq \frac{k!}{(2k)!}e^{-\frac{1}{2t^2}}\left(\frac{8x^2}{t}\right)^k.
