@@ -52,5 +52,30 @@
  \maketitle
 
 \section*{Problem 1}
+I'll imitate the proof in Evans.
+\begin{proof}
+Since each $\Gamma_j$ is compact, $\partial \Omega$ is compact and we can choose finite points $x_i\in \partial \Omega$ with radius $r_i>0$ and $\partial \Omega\subset \cup_{i=1}^n B\left(x_i, \frac{r_i}{2}\right)$. If $x_i$ is not in end point of some $\Gamma_j$ for all $j$, then we can use the argument in the Evans, so we only need to consider the case that $x_i$ is in end point of $\Gamma_j$ for some $j$.
 
+Fix $x^0$ is in end point of $\Gamma_j$ and assume that $x^0$ is also a end point of $\Gamma_{j+1}$. As $\Gamma_j$, $\Gamma_{j+1}$ are $C^1$, there exists $r_1,r_2>0$ and a $C^1$ function $\gamma_1$, $\gamma_2:\rr\rightarrow\rr$ implicit function theorem.
+
+\section*{Problem 2}
+\begin{enumerate}
+\item[1.] $W_0^{1,p}(\Omega)$ is a vector space: For $f=0$, $f\in W_0^{1,p}(\Omega)$, so $W_0^{1,p}(\Omega)\neq \phi$. For $f_1, f_2\in W_0^{1,p}(\Omega)$, there exists $f_1^j, f_2^j$ such that $(f_1^j), (f_2^j)\in C_c^\infty (\Omega)$ and $f_1^j\rightarrow f_1$, $f_2^j\rightarrow f_2$ in $W^{1,p}(U)$. Since union of two compact set in $\Omega$ is compact in $\Omega$, $f_1^j+f_2^j\in C_c^\infty(\Omega)$ and for large enough $N$ satisfying $\norm{f_1^j-f_1}_{W^{1,p}(\Omega)} , \norm{f_2^j-f_2}_{W^{1,p}(\Omega)}\leq \epsilon/2$ for $j>N$, $\norm{f_1^j+f_2^j-f_1-f_2}_{W^{1,p}(\Omega)}\leq \norm{f_1^j-f_1}_{W^{1,p}(\Omega)}+\norm{f_2^j-f_2}_{W^{1,p}(\Omega)}\leq \epsilon$. Therefore, $f_1^j+f_2^j\rightarrow f_1+f_2$ and $f_1+f_2\in W^{1,p}(\Omega)$. Also, $\lambda f^j\rightarrow \lambda f$ in $W^{1,p}(\Omega)$ for scalar $\lambda$. Therefore, $W^{1,p}$ is vector space.(Other ...)
+\item[2.] With the norm $\norm{\cdot}_{W^{1,p}(\Omega)}$, ${W_0^{1,p}(\Omega)}$ is Banach space: Let $f_j$ be a cauchy sequence in ${W_0^{1,p}(\Omega)}$. Since ${W^{1,p}(\Omega)}$ is Banach space, $f_j\rightarrow f$ in $W^{1,p}(\Omega)$. Since $\Omega$ is bounded and $\partial \Omega$ is $C^1$, there exists bounded linear operator $T:{W^{1,p}(\Omega)}\rightarrow L^p(\partial \Omega)$ and $Tf_j\equiv 0$ on $\partial U$ as $f_j\in {W_0^{1,p}(\Omega)}$. Then,
+\begin{equation*}
+\lim\limits_{j\rightarrow\infty}\norm{Tf_j-Tf}_{W^{1,p}(\Omega)}=\lim\limits_{j\rightarrow\infty}\norm{T(f_j-f)}_{W^{1,p}(\Omega)}\leq \lim\limits_{j\rightarrow\infty}\norm{T}_{W^{1,p}(\Omega)}\norm{f_j-f}_{W^{1,p}(\Omega)}=0
+\end{equation*}
+as $\norm{T}_{W^{1,p}(\Omega)}$ is bounded. Therefore, $Tf_j\rightarrow Tf$ and $\lim\limits_{j\rightarrow \infty}\norm{Tf_j}_{W^{1,p}(\Omega)}=\norm{Tf}_{W^{1,p}(\Omega)}=0$. As a result, $f\in W_0^{1,p}(\Omega)$ implying Cauchy sequence in ${W_0^{1,p}(\Omega)}$ converges.
+\end{enumerate}
+Therefore, $W_0^{1,p}(\Omega)$ is Banach space.
+\section*{Problem 3}
+For $k\in \mathbb{N}$ and $\alpha\in(0,1]$,
+\begin{equation*}
+C^{k,p}(\bar{\Omega})\coloneqq \{u\in C^{k}(\bar{\Omega}):\norm{u}_{C^{k,\alpha}(\bar{\Omega})}<\infty\}
+\end{equation*}
+\begin{enumerate}
+\item[(a)] Clearly, $0\in C^{k,p}(\bar{\Omega})$. For $f_1, f_2\in C^{k,p}(\bar{\Omega})$,
+\end{enumerate}
+\section*{Problem 4}
+\end{proof}
 \end{document}
