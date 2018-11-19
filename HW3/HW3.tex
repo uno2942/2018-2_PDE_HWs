@@ -56,7 +56,11 @@ I'll imitate the proof in Evans.
 \begin{proof}
 Since each $\Gamma_j$ is compact, $\partial \Omega$ is compact and we can choose finite points $x_i\in \partial \Omega$ with radius $r_i>0$ and $\partial \Omega\subset \cup_{i=1}^n B\left(x_i, \frac{r_i}{2}\right)$. If $x_i$ is not in end point of some $\Gamma_j$ for all $j$, then we can use the argument in the Evans, so we only need to consider the case that $x_i$ is in end point of $\Gamma_j$ for some $j$.
 
-Fix $x^0$ is in end point of $\Gamma_j$ and assume that $x^0$ is also a end point of $\Gamma_{j+1}$. As $\Gamma_j$, $\Gamma_{j+1}$ are $C^1$, there exists $r_1,r_2>0$ and a $C^1$ function $\gamma_1$, $\gamma_2:\rr\rightarrow\rr$ implicit function theorem.
+Fix $x^0$ be in end point of $\Gamma_j$ and assume that $x^0$ is also a end point of $\Gamma_{j+1}$. Let $v_{j}$ be the tangential vector of $\Gamma_j$ such that $v_j$ is toward the $\Gamma_j$. In other words, if $\Gamma_j:[a,b]\rightarrow \rr^2$ and $x_0=\Gamma_j(b)$, then $v_j=\lim\limits_{h\rightarrow 0+}\frac{\Gamma_j(b-h)-\Gamma_j(b)}{h}$. For $v_{j+1}$, set it be tangential vector of $\Gamma_{j+1}$ toward $\Gamma_{j+1}$ curve. If $v{j}$ and $v_{j+1}$ are parallel, $\Gamma_j$ and $\Gamma_{j+1}$ can be connected with $C^1$ property, I'll ignore the case. Let the angle between $v_j$ and $v_{j+1}$ be $\theta>0$. Let $e_0$ be a unit vector such that parallel with $\frac{v_j+v_{j+1}}{2}$ and inward direction, i.e., $x_0+\lambda e_0\in \text{int }\Omega$ for small enough $\lambda$.(This requires Jordan curve theorem.)
+
+As $\Gamma_j$, $\Gamma_{j+1}$ are $C^1$, there exists $r>0$ such that with $B(x_0, r)$, the tangential direction of $\Gamma_j$ and $\Gamma_{j+1}$ does not change much. More precisely, if we let $w_j$ be a tangential vector of $\Gamma_j$ at $y\in B(x_0, r)$, then the angle between $w_j$ and $v_j$ is less than $\theta/10$, and this is true for $\Gamma_{j+1}$. Let $w^1_j$ (resp. $w^2_j$) be the vector made by rotating $v_j$ by $\theta/10$ clockwise (resp. counter-clockwise). Do the same for $w^1_{j+1}$, $w^2_{j+1}$.
+
+Now, let's repeat proof in Evans. Let's consider $U\cap B(x_0, r)$ and $V\coloneqq U\cap B(x_0, r/2)$. Define $x_\epsilon\coloneqq x+\epsilon e_0$ for $x\in V$, small enough $\epsilon>0$ satisfying $x+\epsilon e_0\in U\cap B(x_0, r)$. WLOG, I'll assume that $x$ is inside the interior enclosed by $\Gamma_j$ and the line through $x_0$ with tangential vector $\frac{v_j+v_{j+1}}{2}$. Now, we draw lines through $x$ such that the tangential vectors $w^1_j$ and $w^2_j$. Then, we know that the angle between $e_0$ and $w^1_j$ or $w^2_j$ is $(1/2-1/10)\theta$ and there is a room to set small enough $\lambda<1$ such that $B(x+\epsilon e_0, \lambda \epsilon)\subset U\cap B(x_0, r)$. In this room, we can mollify $u_\epsilon(x)=u(x_\epsilon)$ and denote it $v_\epsilon$, and make $\epsilon\rightarrow 0$. The remaining part is same as the proof in Evans: Since $\partial U$ is compact, we can choose finitely many points $x_0^i\in \partial U$ including end point of $\Gamma_j$ and make Global approximation.
 \end{proof}
 \section*{Problem 2}
 \begin{enumerate}
@@ -103,14 +107,24 @@ Therefore, $\norm{\cdot}_{C^{k,\alpha}(\bar{\Omega})}$ is a norm.
 \begin{enumerate}
 \item[(a)] Clearly, $0\in C^{k,p}(\bar{\Omega})$. For $f_1, f_2\in C^{k,p}(\bar{\Omega})$, $f_1+f_2\in C^k(\Omega)$ and $\norm{f_1+f_2}_{C^{k,\alpha}(\bar{\Omega})}\leq \norm{f_1}_{C^{k,\alpha}(\bar{\Omega})}+\norm{f_2}_{C^{k,\alpha}(\bar{\Omega})}< \infty$. Therefore, $f_1+f_2\in {C^{k,\alpha}(\bar{\Omega})}$. $f_1+f_2=f_2+f_1$ and for scalar $\lambda$, $\lambda f_1\in {C^{k,\alpha}(\bar{\Omega})}$ for $\norm{\lambda f_1}_{C^{k,\alpha}(\bar{\Omega})}=\abs{\lambda}\norm{f_1}_{C^{k,\alpha}(\bar{\Omega})}\leq \infty$. Therefore, $C^{k,p}(\bar{\Omega})$ is a vector space.
 \item[(b)] Fix $x\in \Omega$ and take an open neighborhood $B(x,r)\subset \Omega$ for some $r>0$. Then there exists $N\in \mathbb{N}$ such that for $\frac{1}{N}<\epsilon$, then $B(x, \frac{1}{n})\subset \Omega$ for $n>N$. I'll use $C^\infty$ Urysohn lemma to show that there exists infinitely many linearly independent elements in $C^{k,\alpha}(\bar{\Omega})$. For $n>N$, take $K_n=\overline{B(x, \frac{1}{n+1})}$ and $U_n=B\left(x, \frac{1}{n+1}+\left(\frac{1}{n}-\frac{1}{n+1}\right)/2\right)$. Using $C^\infty$ Urysohn lemma, take $\phi^n\in C^\infty$ such that $1$ on $K_n$ and has support in $U$. Take finite elements in the set: $\{\phi^j\}_{j=N_1}^{N_n}$,
-\item[(c)] Let $\{u_i\}$ be a Cauchy sequence in $C^{k,p}(\bar{\Omega})$. For fixed $\epsilon>0$, there exists $N$ such that $i,j>N\Rightarrow \norm{u_i-u_j}_C^{k,p}(\bar{\Omega})\leq \epsilon$. It implies
+\item[(c)] Let $\{u_i\}$ be a Cauchy sequence in $C^{k,p}(\bar{\Omega})$. For fixed $\epsilon>0$, there exists $N$ such that $i,j>N\Rightarrow \norm{u_i-u_j}_{C^{k,p}(\bar{\Omega})}\leq \epsilon$. It implies
 \begin{equation*}
 \begin{cases}
 \norm{D^\alpha u_i-D^\alpha u_j}_{C(\bar{\Omega})}\leq \epsilon & \text{For }\abs{\alpha}\leq k \\
 \left[D^\alpha u_i-D^\alpha u_j\right]_{C^{0,\gamma}(\bar{\Omega})}\leq \epsilon & \text{For }\abs{\alpha}=k.
 \end{cases}
 \end{equation*}
-Since $D^\alpha u_i$ is uniformly Cauchy for $\abs{\alpha}\leq k$, $D^\alpha u_i$ converges to $u_\alpha$ for $\abs{\alpha}\leq k$ pointwisely. Also, this convergence is uniform...
+Since $D^\alpha u_i$ is uniformly Cauchy for $\abs{\alpha}\leq k$, $D^\alpha u_i$ converges to $u_\alpha$ for $\abs{\alpha}\leq k$ pointwisely. Also, these convergences are uniform. Therefore, $D^\alpha u=u_\alpha$. for all $\abs{\alpha}\leq k$.
+
+Letting $i\rightarrow \infty$, $\left[D^\alpha u-D^\alpha u_j\right]_{C^{0,\gamma}(\bar{\Omega})}\leq \epsilon$ for $j>N$. Also,
+\begin{equation*}
+\begin{split}
+\frac{\abs{D^\alpha u(x)-D^\alpha u(y)}}{\abs{x-y}^\gamma}-\sup_{\substack{x,y\in \Omega \\ x\neq y}}\left\{\frac{\abs{D^\alpha u_j(x)-D^\alpha u_j(y)}}{\abs{x-y}^\gamma}\right\}&\leq \frac{\abs{D^\alpha u(x)-D^\alpha u(y)}}{\abs{x-y}^\gamma}-\frac{\abs{D^\alpha u_j(x)-D^\alpha u_j(y)}}{\abs{x-y}^\gamma} \\
+&\leq \frac{\abs{D^\alpha (u-u_j)(x)-D^\alpha (u-u_j)(y)}}{\abs{x-y}^\gamma} \\
+&\leq \left[D^\alpha u-D^\alpha u_j\right]_{C^{0,\gamma}(\bar{\Omega})}\leq \epsilon
+\end{split}
+\end{equation*}
+for all $x,y\in \Omega$, $x\neq y$. Therefore, $\frac{\abs{D^\alpha u(x)-D^\alpha u(y)}}{\abs{x-y}^\gamma}\leq [D^\alpha u_j]_{C^{0, \gamma}(\bar{\Omega})}+\epsilon$ and $[D^\alpha u]_{C^{0, \gamma}(\bar{\Omega})}<\infty$. Therefore, $u\in C^{k, \alpha}(\bar{\Omega})$. It means $C^{k, \alpha}(\bar{\Omega})$ is Banach space.
 \end{enumerate}
 \end{proof}
 \section*{Problem 4}
@@ -120,13 +134,20 @@ Since $U$ is bounded, open subset of $\rr^n$, and $\partial \Omega$ is $C^1$,
 \begin{equation*}
 W^{1,p}(\Omega)\subset C^{0, \alpha}(\bar{\Omega}),~\norm{u}_{C^{0, \alpha}(\bar{\Omega})}\leq C\norm{u}_{W^{1,p}(\Omega)}
 \end{equation*}
-for $\alpha=1-n/p$ and $C$ depends only on $p,n$ and $\Omega$. Now, we need to show that each bounded sequence in $W^{1,p}(\Omega)$ is precompact in $C^{0, \alpha}(\bar{\Omega})$. Let a bounded sequence in $W^{1,p}(\Omega)$: $\{u_m\}_{m=1}^\infty$.
+for $\alpha=1-n/p$ and $C$ depends only on $p,n$ and $\Omega$. Also, $C^{0, \alpha}(\bar{\Omega})\subset C^{0, \tilde{\alpha}}(\Omega)$ since $\norm{u}_{C(\bar{U})}$ is same for both norm and if $[u]_{C^{0, \alpha}(\bar{\Omega})}<\infty$, then as $\abs{x-y}\rightarrow 0$, $\frac{\abs{u(x)-u(y)}}{\abs{x-y}^{\tilde{\alpha}}}\rightarrow 0$ because $\frac{\abs{u(x)-u(y)}}{\abs{x-y}^{\alpha}}<\infty$ for all $x,y\in \Omega$, $x\neq y$, $[u]_{C^{0,\tilde{\alpha}}(\bar{\Omega})}<\infty$ and $u\in C^{0, \tilde{\alpha}}(\bar{\Omega})$.
 
-Using Extension Theorem, we can assume that $\Omega=\rr^n$, all $\{u_m\}$ have compact support in some bounded open set $V\subset \rr^n$, and
+Now, we need to show that each bounded sequence in $W^{1,p}(\Omega)$ is precompact in $C^{0, \alpha}(\bar{\Omega})$. Let a bounded sequence in $W^{1,p}(\Omega)$: $\{u_m\}_{m=1}^\infty$ and $\sup\limits_m\left\{\norm{u_m}_{W^{1,p}(\Omega)}\right\}=K$. 
+By Morney's inequality, we can assume that $\{u_m\}\subset C^{0, \alpha}(\bar{\Omega})\subset C^{0, \tilde{\alpha}}(\bar{\Omega})$ and there exists constant $K'$ such that $\norm{u}_{C^{0, \alpha}(\bar{\Omega})}\leq K'$ for all $m$. Let's check the condition for Arzela-Ascoli theorem
+\begin{enumerate}
+\item[1.] For each $m$, $u_m$ is continuous on compact set $\bar{\Omega}$.
+\item[2.] Since $\norm{u_m}_{C(\bar{\Omega})}\leq K'$, $\{u_m\}$ is pointwisely bounded.
+\item[3.] $\frac{\abs{u_m(x)-u_m(y)}}{\abs{x-y}^{\alpha}}\leq K'$ for all $x,y\in \Omega$, $x\neq y$. Therefore, $\abs{u_m(x)-u_m(y)}\leq K'\abs{x-y}^\alpha$ for $x,y\in \bar{\Omega}$ for all $m$ and it means $\{u_m\}$ is equicontinuous on $\bar{\Omega}$.
+\end{enumerate}
+Therefore, we can use Arzela-Ascoli theorem and find a uniformly convergent subsequence $\{u_{m_j}\}$ in $C^{0, \tilde{\alpha}}(\bar{\Omega})$. Since $C^{0, \tilde{\alpha}}(\bar{\Omega})$ is Banach space, the converging point is in $C^{0, \tilde{\alpha}}(\bar{\Omega})$. Hence,
 \begin{equation*}
-\sup\limits_m \norm{u_m}_{W^{1,p}(V)}<\infty
+W^{1,p}(\Omega)\subset\subset C^{0, \tilde{\alpha}}(\bar{\Omega})
 \end{equation*}
-... (make support $B_R$
+for all $\tilde{\alpha}\in [0, \alpha)$.
 \end{proof}
 \section*{Problem 5}
 Fix $\epsilon>0$. Define $\Omega_\epsilon\coloneqq\{x\in \Omega|d(x,\partial \Omega)>\epsilon\}$. Let's mollify the $u$ with standard mollifier $\eta_\epsilon$ and denote it $u^\epsilon$. Then,
