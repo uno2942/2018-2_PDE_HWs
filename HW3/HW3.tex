@@ -57,7 +57,7 @@ I'll imitate the proof in Evans.
 Since each $\Gamma_j$ is compact, $\partial \Omega$ is compact and we can choose finite points $x_i\in \partial \Omega$ with radius $r_i>0$ and $\partial \Omega\subset \cup_{i=1}^n B\left(x_i, \frac{r_i}{2}\right)$. If $x_i$ is not in end point of some $\Gamma_j$ for all $j$, then we can use the argument in the Evans, so we only need to consider the case that $x_i$ is in end point of $\Gamma_j$ for some $j$.
 
 Fix $x^0$ is in end point of $\Gamma_j$ and assume that $x^0$ is also a end point of $\Gamma_{j+1}$. As $\Gamma_j$, $\Gamma_{j+1}$ are $C^1$, there exists $r_1,r_2>0$ and a $C^1$ function $\gamma_1$, $\gamma_2:\rr\rightarrow\rr$ implicit function theorem.
-
+\end{proof}
 \section*{Problem 2}
 \begin{enumerate}
 \item[1.] $W_0^{1,p}(\Omega)$ is a vector space: For $f=0$, $f\in W_0^{1,p}(\Omega)$, so $W_0^{1,p}(\Omega)\neq \phi$. For $f_1, f_2\in W_0^{1,p}(\Omega)$, there exists $f_1^j, f_2^j$ such that $(f_1^j), (f_2^j)\in C_c^\infty (\Omega)$ and $f_1^j\rightarrow f_1$, $f_2^j\rightarrow f_2$ in $W^{1,p}(U)$. Since union of two compact set in $\Omega$ is compact in $\Omega$, $f_1^j+f_2^j\in C_c^\infty(\Omega)$ and for large enough $N$ satisfying $\norm{f_1^j-f_1}_{W^{1,p}(\Omega)} , \norm{f_2^j-f_2}_{W^{1,p}(\Omega)}\leq \epsilon/2$ for $j>N$, $\norm{f_1^j+f_2^j-f_1-f_2}_{W^{1,p}(\Omega)}\leq \norm{f_1^j-f_1}_{W^{1,p}(\Omega)}+\norm{f_2^j-f_2}_{W^{1,p}(\Omega)}\leq \epsilon$. Therefore, $f_1^j+f_2^j\rightarrow f_1+f_2$ and $f_1+f_2\in W^{1,p}(\Omega)$. Also, $\lambda f^j\rightarrow \lambda f$ in $W^{1,p}(\Omega)$ for scalar $\lambda$. Therefore, $W^{1,p}$ is vector space.(Other ...)
@@ -71,11 +71,126 @@ Therefore, $W_0^{1,p}(\Omega)$ is Banach space.
 \section*{Problem 3}
 For $k\in \mathbb{N}$ and $\alpha\in(0,1]$,
 \begin{equation*}
-C^{k,p}(\bar{\Omega})\coloneqq \{u\in C^{k}(\bar{\Omega}):\norm{u}_{C^{k,\alpha}(\bar{\Omega})}<\infty\}
+C^{k,\alpha}(\bar{\Omega})\coloneqq \{u\in C^{k}(\bar{\Omega}):\norm{u}_{C^{k,\alpha}(\bar{\Omega})}<\infty\}
 \end{equation*}
+Before starting, I need to show that $\norm{\cdot}_{C^{k,\alpha}(\bar{\Omega})}$ is a norm on ${C^{k,\alpha}(\bar{\Omega})}$.
+\begin{proof}
 \begin{enumerate}
-\item[(a)] Clearly, $0\in C^{k,p}(\bar{\Omega})$. For $f_1, f_2\in C^{k,p}(\bar{\Omega})$,
+\item[1.] By the definition of ${C^{k,\alpha}(\bar{\Omega})}$, we know that $\norm{u}_{C^{k,\alpha}(\bar{\Omega})}< \infty$ for any $u\in{C^{k,\alpha}(\bar{\Omega})}$. Let $u,v\in {C^{k,\alpha}(\bar{\Omega})}$. Then
+\begin{equation*}
+\begin{split}
+\norm{u+v}_{C^{k,\alpha}(\bar{\Omega})}&=\sum\limits_{\abs{\alpha}\leq k}\norm{D^\alpha (u+v)}_{C(\bar{\Omega})}+\sum\limits_{\abs{\alpha}=k}\left[D^\alpha (u+v)\right]_{C^{0, \alpha}(\bar{\Omega})} \\
+&=\sum\limits_{\abs{\alpha}\leq k}\sup_{x\in \Omega}\abs{D^\alpha (u+v)}+\sum\limits_{\abs{\alpha}=k}\sup_{\substack{x,y\in \Omega \\ x\neq y}} \left\{  \frac{\abs{D^\alpha (u+v)(x)-D^\alpha (u+v)(y)}}{\abs{x-y}^\alpha}\right\} \\
+&\leq \sum\limits_{\abs{\alpha}\leq k}\sup_{x\in \Omega}\abs{D^\alpha u}+\sup_{x\in \Omega}\abs{D^\alpha v}+\sum\limits_{\abs{\alpha}=k}\sup_{\substack{x,y\in \Omega \\ x\neq y}} \left\{  \frac{\abs{D^\alpha u(x)-D^\alpha u(y)}+\abs{D^\alpha v(x)-D^\alpha v(y)}}{\abs{x-y}^\alpha}\right\} \\
+&\leq \sum\limits_{\abs{\alpha}\leq k}\sup_{x\in \Omega}\abs{D^\alpha u}+\sup_{x\in \Omega}\abs{D^\alpha v}+\sum\limits_{\abs{\alpha}=k}\sup_{\substack{x,y\in \Omega \\ x\neq y}} \left\{  \frac{\abs{D^\alpha u(x)-D^\alpha u(y)}}{{\abs{x-y}^\alpha}}\right\}+\sup_{\substack{x,y\in \Omega \\ x\neq y}}\left\{  \frac{\abs{D^\alpha v(x)-D^\alpha v(y)}}{{\abs{x-y}^\alpha}}\right\} \\
+&=\norm{u}_{C^{k,\alpha}(\bar{\Omega})}+\norm{v}_{C^{k,\alpha}(\bar{\Omega})}
+\end{split}
+\end{equation*}
+Therefore, $\norm{u+v}_{C^{k,\alpha}(\bar{\Omega})}\leq \norm{u}_{C^{k,\alpha}(\bar{\Omega})}+\norm{v}_{C^{k,\alpha}(\bar{\Omega})}$.
+\item[2.] For $\lambda\in \rr$,
+\begin{equation*}
+\begin{split}
+\norm{\lambda}_{C^{k,\alpha}(\bar{\Omega})}&=\sum\limits_{\abs{\alpha}\leq k}\sup_{x\in \Omega}\abs{D^\alpha \lambda u}+\sum\limits_{\abs{\alpha}=k}\sup_{\substack{x,y\in \Omega \\ x\neq y}} \left\{  \frac{\abs{D^\alpha \lambda u(x)-D^\alpha \lambda u(y)}}{\abs{x-y}^\alpha}\right\} \\
+&=\abs{\lambda}\sum\limits_{\abs{\alpha}\leq k}\sup_{x\in \Omega}\abs{D^\alpha  u}+\abs{\lambda}\sum\limits_{\abs{\alpha}=k}\sup_{\substack{x,y\in \Omega \\ x\neq y}} \left\{  \frac{\abs{D^\alpha  u(x)-D^\alpha  u(y)}}{\abs{x-y}^\alpha}\right\}\\
+&=\lambda\norm{u}_{C^{k,\alpha}(\bar{\Omega})}.
+\end{split}
+\end{equation*}
+\item[3.] For $u=0$, $\norm{u}_{C^{k,\alpha}(\bar{\Omega})}=0.$ Conversely, if $\norm{u}_{C^{k,\alpha}(\bar{\Omega})}=0$, then $\norm{u}_{C(\Omega)}=0$ with continuity of $u$, so $u=0$ on $\bar{\Omega}$.
 \end{enumerate}
-\section*{Problem 4}
+Therefore, $\norm{\cdot}_{C^{k,\alpha}(\bar{\Omega})}$ is a norm.
+
+
+\begin{enumerate}
+\item[(a)] Clearly, $0\in C^{k,p}(\bar{\Omega})$. For $f_1, f_2\in C^{k,p}(\bar{\Omega})$, $f_1+f_2\in C^k(\Omega)$ and $\norm{f_1+f_2}_{C^{k,\alpha}(\bar{\Omega})}\leq \norm{f_1}_{C^{k,\alpha}(\bar{\Omega})}+\norm{f_2}_{C^{k,\alpha}(\bar{\Omega})}< \infty$. Therefore, $f_1+f_2\in {C^{k,\alpha}(\bar{\Omega})}$. $f_1+f_2=f_2+f_1$ and for scalar $\lambda$, $\lambda f_1\in {C^{k,\alpha}(\bar{\Omega})}$ for $\norm{\lambda f_1}_{C^{k,\alpha}(\bar{\Omega})}=\abs{\lambda}\norm{f_1}_{C^{k,\alpha}(\bar{\Omega})}\leq \infty$. Therefore, $C^{k,p}(\bar{\Omega})$ is a vector space.
+\item[(b)] $C^\infty $ Uryshon lemma
+\item[(c)] Let $\{u_i\}$ be a Cauchy sequence in $C^{k,p}(\bar{\Omega})$. For fixed $\epsilon>0$, there exists $N$ such that $i,j>N\Rightarrow \norm{u_i-u_j}_C^{k,p}(\bar{\Omega})\leq \epsilon$. It implies
+\begin{equation*}
+\begin{cases}
+\norm{D^\alpha u_i-D^\alpha u_j}_{C(\bar{\Omega})}\leq \epsilon & \text{For }\abs{\alpha}\leq k \\
+\left[D^\alpha u_i-D^\alpha u_j\right]_{C^{0,\gamma}(\bar{\Omega})}\leq \epsilon & \text{For }\abs{\alpha}=k.
+\end{cases}
+\end{equation*}
+Since $D^\alpha u_i$ is uniformly Cauchy for $\abs{\alpha}\leq k$, $D^\alpha u_i$ converges to $u_\alpha$ for $\abs{\alpha}\leq k$ pointwisely. Also, this convergence is uniform...
+\end{enumerate}
 \end{proof}
+\section*{Problem 4}
+I'll follow the proof in Evans.
+\begin{proof}
+Since $U$ is bounded, open subset of $\rr^n$, and $\partial \Omega$ is $C^1$,
+\begin{equation*}
+W^{1,p}(\Omega)\subset C^{0, \alpha}(\bar{\Omega}),~\norm{u}_{C^{0, \alpha}(\bar{\Omega})}\leq C\norm{u}_{W^{1,p}(\Omega)}
+\end{equation*}
+for $\alpha=1-n/p$ and $C$ depends only on $p,n$ and $\Omega$. Now, we need to show that each bounded sequence in $W^{1,p}(\Omega)$ is precompact in $C^{0, \alpha}(\bar{\Omega})$. Let a bounded sequence in $W^{1,p}(\Omega)$: $\{u_m\}_{m=1}^\infty$.
+
+Using Extension Theorem, we can assume that $\Omega=\rr^n$, all $\{u_m\}$ have compact support in some bounded open set $V\subset \rr^n$, and
+\begin{equation*}
+\sup\limits_m \norm{u_m}_{W^{1,p}(V)}<\infty
+\end{equation*}
+... (make support $B_R$
+\end{proof}
+\section*{Problem 5}
+Fix $\epsilon>0$. Define $\Omega_\epsilon\coloneqq\{x\in \Omega|d(x,\partial \Omega)>\epsilon\}$. Let's mollify the $u$ with standard mollifier $\eta_\epsilon$ and denote it $u^\epsilon$. Then,
+\begin{equation*}
+Du^\epsilon=\eta_\epsilon*Du=0
+\end{equation*}
+in $\Omega_\epsilon$. It implies that if $B(x, r)\in \Omega_\epsilon$ for small enough $r>0$, $u_\epsilon$ is constant on $B(x,r)$ since the derivative of $u^\epsilon$ is zero on the set. In other words, it is locally constant in $\Omega_\epsilon$.
+
+Let $x\in U$ and $B(x, r)$ be an open neighborhood of $x$ in $\Omega$, then there exists $\epsilon$ such that $B(x, r)\subset \Omega_\epsilon$ and by previous, we know that $u^\epsilon$ is constant on $B(x,r)$. Let the constant value $c^\epsilon$. We know that $u^\epsilon\rightarrow u$ as $\epsilon\rightarrow 0$ and it means on $u$ is constant a.e. on $B(x,r)$.(If not, there always exists non measure zero set such that $u^\epsilon$ is different with $u$ on $B(x,r)$.) Therefore, $u$ is locally constant function in a.e. sense).
+
+Let take a partition such that $x\sim y$ if $u(x)=u(y)$. Since $\Omega$ is locally constant, any element in partition is open set. Assume that there exists at least two element in the partition. This is impossible since $\Omega$ is connected set. Therefore, $u$ is a.e. constant function.
+\section*{Problem 6}
+First, I'll show that $u\in L^n(B_1(\bm{0})$. Note that $u$ is symmetric function about rotation, so we can show that integral on $B_1(\bm{0})$ is finite by showing that integral is finite for $r$. Also, we can restrict the range of $r$ to $(0, \frac{1}{e-1}$ since $u$ is bounded in outside of the range. In other words,
+\begin{equation*}
+\int_{B_1(\bm{0})}udx\leq C\int_0^{\frac{1}{e-1}} \left(\abs{\log\log\left(1+\frac{1}{r}\right)}\right)^{n}r^{n-1}dr
+\end{equation*}
+for some constant $C<\infty$. Let $y=\log\left(1+\frac{1}{r}\right)$, then
+\begin{equation*}
+\begin{split}
+\abs{\int_0^{\frac{1}{e-1}} \left(\log\log\left(1+\frac{1}{r}\right)\right)^{n}r^{n-1}dr}&\leq\int_{1}^\infty \left(\log y\right)^n \frac{e^y}{(e^y-1)^{n+1}} dy \\
+&\leq \int_{1}^\infty\left(\log y\right)^n \frac{2^{n+1}e^y}{e^{(n+1)y}}dy \\
+&\leq \int_{1}^\infty y^n 2^{n+1}e^{-ny}dy<\infty
+\end{split}
+\end{equation*}
+Therefore, $u\in L^n(B_1(\bm{0}))$, and $u\in L^1(B_1(\bm{0}))$.
+
+Next, I'll show that $u$ has weak derivative in $B_1(\bm{0})$ and belongs to $L^n(B_1(\bm{0}))$. Since $u$ goes to $\infty $ as $x\rightarrow 0$, we need to care when we compute weak derivative. However, we can ignore at $\bm{0}$ by the following argument. Let $V$ be a compactly embedded set in $U$ and $\phi$ be a $C^\infty$ function having support $V$. Assume $\bm{0}\in V$. Without $\bm{0}$, $D u$ should be $\partial_{x_i}u$ for some $i$. Since $u$, $D^\alpha \phi$ for all $\alpha$ are $L^1$ function on $V$, we can use Fubini theorem, and rewrite the integral by
+\begin{equation*}
+\int_U uD \phi dx=\int_{-1}^1 (\cdots) dx_1.
+\end{equation*}
+Since $n>1$, we know that the $n-1$ dim plane through $0$ is measure zero set and it does not effect integral to delete $0$ from integral range of $x_1$. Therefore, the weak derivative is just derivative of $u$ except $\bm{0}$...(Fundamental of Calculus? d/dx1-> int int dx1 dx2->Explicitly show)
+
+I'll show that $Du$ is in $L^n$. Computing partial derivative:
+\begin{equation*}
+\abs{\partial_{x_i} u}=\abs{\frac{1}{\log\left(1+\frac{1}{\abs{x}}\right)}\frac{1}{1+\frac{1}{\abs{x}}}\frac{x_i}{\abs{x}^3}}\leq  \frac{1}{\abs{\log\left(1+\frac{1}{r}\right)}}\frac{1}{r+1}\frac{1}{r}.
+\end{equation*}
+Then, by the same reason before, we just need to check whether the integral in finite for $r$ in $\left(0, \frac{1}{e-1}\right)$.
+\begin{equation*}
+\int_0^{\frac{1}{e-1}} \left(\frac{1}{\log\left(1+\frac{1}{r}\right)}\frac{1}{r+1}\frac{1}{r}\right)^n r^{n-1}dx \leq \int_0^{\frac{1}{e-1}} \left(\frac{1}{\log\left(1+\frac{1}{r}\right)}\right)^n \frac{1}{r}dr
+\end{equation*}
+Let $x=\log\left(1+\frac{1}{r}\right)$, then the integral becomes
+\begin{equation*}
+\int_1^\infty \frac{1}{x^n}\frac{e^x}{e^x-1}dx
+\end{equation*}
+For sufficiently large $R$, $\frac{e^x}{e^x-1}<2$ for $x>R$ and we know that $\int_1^\infty \frac{1}{x^n}$ converges for $n>2$. Therefore, $Du\in L^n(B_1(\bm{0}))$ and $u\in W^{1,n}(B_1(\bm{0}))$.
+\section*{Problem 7}
+Since $u\in L^2(\rr^n)$, $u=(\hat{u})^\vee$ by Theorem 2 in chapter 4.3 Evans. Then,
+\begin{equation*}
+\begin{split}
+\abs{u(x)}&\leq \int_{\rr^n}\abs{e^{ikx}\hat{u}(k)}dk\leq \int_{\rr^n}\abs{\hat{u}(k)}dk \\
+&=\int_{\rr^n}(1+\abs{k}^2)^{s/2}(1+\abs{k}^2)^{-s/2}\abs{\hat{u}(k)}dk \\
+&\left(\leq \int_{\rr^n}(1+\abs{k}^2)^{s}\abs{\hat{u}}^2dk\right)^{1/2}\left(\int_{\rr^n}(1+\abs{k}^2)^{-s}dk\right)^{1/2}
+\end{split}
+\end{equation*}
+For $\abs{k}>1$, $(1+\abs{k}^2)^s> (2\abs{k})^{2s}$
+\begin{equation*}
+\int_{\abs{k}>1} k^{-2s}dk=\sigma(S^{n-1})\int_1^\infty r^{-2s}r^{n-1}dr<\infty
+\end{equation*}
+since $-2s+n-1<-1$ and $\int_1^\infty r^\alpha dr<\infty$ for $\alpha<-1$. Therefore,
+\begin{equation*}
+\abs{u(x)}\leq C\left(\int_{\rr^n}(1+\abs{y}^2)^s \abs{\hat{u}}^2 dy\right)^{1/2}=C\norm{u}_{H^s(\rr^n)}
+\end{equation*}
+This is true for a.e. $x$, so
+\begin{equation*}
+\norm{u}_{L^\infty(\rr^n)}\leq C\norm{H^s(\rr^n)}
+\end{equation*}
 \end{document}
