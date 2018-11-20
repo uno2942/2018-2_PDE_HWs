@@ -52,9 +52,9 @@
  \maketitle
 
 \section*{Problem 1}
-I'll imitate the proof in Evans.
+I'll use the proof in Evans.
 \begin{proof}
-Since each $\Gamma_j$ is compact, $\partial \Omega$ is compact and we can choose finite points $x_i\in \partial \Omega$ with radius $r_i>0$ and $\partial \Omega\subset \cup_{i=1}^n B\left(x_i, \frac{r_i}{2}\right)$. If $x_i$ is not in end point of some $\Gamma_j$ for all $j$, then we can use the argument in the Evans, so we only need to consider the case that $x_i$ is in end point of $\Gamma_j$ for some $j$.
+Before starting, let's arrange the index of $\Gamma_j$ so that the adjacent curve of $\Gamma_j$ be $\Gamma_{j-1}$ and $\Gamma_{j+1}$.
 
 Fix $x^0$ be in end point of $\Gamma_j$ and assume that $x^0$ is also a end point of $\Gamma_{j+1}$. Let $v_{j}$ be the tangential vector of $\Gamma_j$ such that $v_j$ is toward the $\Gamma_j$. In other words, if $\Gamma_j:[a,b]\rightarrow \rr^2$ and $x_0=\Gamma_j(b)$, then $v_j=\lim\limits_{h\rightarrow 0+}\frac{\Gamma_j(b-h)-\Gamma_j(b)}{h}$. For $v_{j+1}$, set it be tangential vector of $\Gamma_{j+1}$ toward $\Gamma_{j+1}$ curve. If $v{j}$ and $v_{j+1}$ are parallel, $\Gamma_j$ and $\Gamma_{j+1}$ can be connected with $C^1$ property, I'll ignore the case. Let the angle between $v_j$ and $v_{j+1}$ be $\theta>0$. Let $e_0$ be a unit vector such that parallel with $\frac{v_j+v_{j+1}}{2}$ and inward direction, i.e., $x_0+\lambda e_0\in \text{int }\Omega$ for small enough $\lambda$.(This requires Jordan curve theorem.)
 
@@ -64,12 +64,12 @@ Now, let's repeat proof in Evans. Let's consider $U\cap B(x_0, r)$ and $V\colone
 \end{proof}
 \section*{Problem 2}
 \begin{enumerate}
-\item[1.] $W_0^{1,p}(\Omega)$ is a vector space: For $f=0$, $f\in W_0^{1,p}(\Omega)$, so $W_0^{1,p}(\Omega)\neq \phi$. For $f_1, f_2\in W_0^{1,p}(\Omega)$, there exists $f_1^j, f_2^j$ such that $(f_1^j), (f_2^j)\in C_c^\infty (\Omega)$ and $f_1^j\rightarrow f_1$, $f_2^j\rightarrow f_2$ in $W^{1,p}(U)$. Since union of two compact set in $\Omega$ is compact in $\Omega$, $f_1^j+f_2^j\in C_c^\infty(\Omega)$ and for large enough $N$ satisfying $\norm{f_1^j-f_1}_{W^{1,p}(\Omega)} , \norm{f_2^j-f_2}_{W^{1,p}(\Omega)}\leq \epsilon/2$ for $j>N$, $\norm{f_1^j+f_2^j-f_1-f_2}_{W^{1,p}(\Omega)}\leq \norm{f_1^j-f_1}_{W^{1,p}(\Omega)}+\norm{f_2^j-f_2}_{W^{1,p}(\Omega)}\leq \epsilon$. Therefore, $f_1^j+f_2^j\rightarrow f_1+f_2$ and $f_1+f_2\in W^{1,p}(\Omega)$. Also, $\lambda f^j\rightarrow \lambda f$ in $W^{1,p}(\Omega)$ for scalar $\lambda$. Therefore, $W^{1,p}$ is vector space.(Other ...)
+\item[1.] $W_0^{1,p}(\Omega)$ is a vector space: For $f=0$, $f\in W_0^{1,p}(\Omega)$, so $W_0^{1,p}(\Omega)\neq \phi$. For $f_1, f_2\in W_0^{1,p}(\Omega)$, there exists $f_1^j, f_2^j$ such that $(f_1^j), (f_2^j)\in C_c^\infty (\Omega)$ and $f_1^j\rightarrow f_1$, $f_2^j\rightarrow f_2$ in $W^{1,p}(\Omega)$. Since union of two compact set in $\Omega$ is compact in $\Omega$, $f_1^j+f_2^j\in C_c^\infty(\Omega)$ and for large enough $N$ satisfying $\norm{f_1^j-f_1}_{W^{1,p}(\Omega)} , \norm{f_2^j-f_2}_{W^{1,p}(\Omega)}\leq \epsilon/2$ for $j>N$, $\norm{f_1^j+f_2^j-f_1-f_2}_{W^{1,p}(\Omega)}\leq \norm{f_1^j-f_1}_{W^{1,p}(\Omega)}+\norm{f_2^j-f_2}_{W^{1,p}(\Omega)}\leq \epsilon$. Therefore, $f_1^j+f_2^j\rightarrow f_1+f_2$ in $W^{1,p}(\Omega)$, so $f_1+f_2\in W_0^{1,p}(\Omega)$. Also, $\lambda f^j\rightarrow \lambda f$ in $W^{1,p}(\Omega)$ for scalar $\lambda$. Therefore, $W_0^{1,p}$ is vector space.
 \item[2.] With the norm $\norm{\cdot}_{W^{1,p}(\Omega)}$, ${W_0^{1,p}(\Omega)}$ is Banach space: Let $f_j$ be a cauchy sequence in ${W_0^{1,p}(\Omega)}$. Since ${W^{1,p}(\Omega)}$ is Banach space, $f_j\rightarrow f$ in $W^{1,p}(\Omega)$. Since $\Omega$ is bounded and $\partial \Omega$ is $C^1$, there exists bounded linear operator $T:{W^{1,p}(\Omega)}\rightarrow L^p(\partial \Omega)$ and $Tf_j\equiv 0$ on $\partial U$ as $f_j\in {W_0^{1,p}(\Omega)}$. Then,
 \begin{equation*}
 \lim\limits_{j\rightarrow\infty}\norm{Tf_j-Tf}_{W^{1,p}(\Omega)}=\lim\limits_{j\rightarrow\infty}\norm{T(f_j-f)}_{W^{1,p}(\Omega)}\leq \lim\limits_{j\rightarrow\infty}\norm{T}_{W^{1,p}(\Omega)}\norm{f_j-f}_{W^{1,p}(\Omega)}=0
 \end{equation*}
-as $\norm{T}_{W^{1,p}(\Omega)}$ is bounded. Therefore, $Tf_j\rightarrow Tf$ and $\lim\limits_{j\rightarrow \infty}\norm{Tf_j}_{W^{1,p}(\Omega)}=\norm{Tf}_{W^{1,p}(\Omega)}=0$. As a result, $f\in W_0^{1,p}(\Omega)$ implying Cauchy sequence in ${W_0^{1,p}(\Omega)}$ converges.
+as $\norm{T}_{W^{1,p}(\Omega)}$ is bounded. Therefore, $Tf_j\rightarrow Tf$ in $W^{1,p}(\Omega)$ and $\lim\limits_{j\rightarrow \infty}\norm{Tf_j}_{W^{1,p}(\Omega)}=\norm{Tf}_{W^{1,p}(\Omega)}=0$. As a result, $f\in W_0^{1,p}(\Omega)$ and it implies Cauchy sequence in ${W_0^{1,p}(\Omega)}$ converges.
 \end{enumerate}
 Therefore, $W_0^{1,p}(\Omega)$ is Banach space.
 \section*{Problem 3}
@@ -106,7 +106,7 @@ Therefore, $\norm{\cdot}_{C^{k,\alpha}(\bar{\Omega})}$ is a norm.
 
 \begin{enumerate}
 \item[(a)] Clearly, $0\in C^{k,p}(\bar{\Omega})$. For $f_1, f_2\in C^{k,p}(\bar{\Omega})$, $f_1+f_2\in C^k(\Omega)$ and $\norm{f_1+f_2}_{C^{k,\alpha}(\bar{\Omega})}\leq \norm{f_1}_{C^{k,\alpha}(\bar{\Omega})}+\norm{f_2}_{C^{k,\alpha}(\bar{\Omega})}< \infty$. Therefore, $f_1+f_2\in {C^{k,\alpha}(\bar{\Omega})}$. $f_1+f_2=f_2+f_1$ and for scalar $\lambda$, $\lambda f_1\in {C^{k,\alpha}(\bar{\Omega})}$ for $\norm{\lambda f_1}_{C^{k,\alpha}(\bar{\Omega})}=\abs{\lambda}\norm{f_1}_{C^{k,\alpha}(\bar{\Omega})}\leq \infty$. Therefore, $C^{k,p}(\bar{\Omega})$ is a vector space.
-\item[(b)] Fix $x\in \Omega$ and take an open neighborhood $B(x,r)\subset \Omega$ for some $r>0$. Then there exists $N\in \mathbb{N}$ such that for $\frac{1}{N}<\epsilon$, then $B(x, \frac{1}{n})\subset \Omega$ for $n>N$. I'll use $C^\infty$ Urysohn lemma to show that there exists infinitely many linearly independent elements in $C^{k,\alpha}(\bar{\Omega})$. For $n>N$, take $K_n=\overline{B(x, \frac{1}{n+1})}$ and $U_n=B\left(x, \frac{1}{n+1}+\left(\frac{1}{n}-\frac{1}{n+1}\right)/2\right)$. Using $C^\infty$ Urysohn lemma, take $\phi^n\in C^\infty$ such that $1$ on $K_n$ and has support in $U$. Take finite elements in the set: $\{\phi^j\}_{j=N_1}^{N_n}$,
+\item[(b)] Fix $x\in \Omega$ and take an open neighborhood $B(x,r)\subset \Omega$ for some $r>0$. Then there exists $N\in \mathbb{N}$ such that for $\frac{1}{N}<\epsilon$, then $B(x, \frac{1}{n})\subset \Omega$ for $n>N$. I'll use $C^\infty$ Urysohn lemma to show that there exists infinitely many linearly independent elements in $C^{k,\alpha}(\bar{\Omega})$. For $n>N$, take $K_n=\overline{B(x, \frac{1}{n+1})}$ and $U_n=B\left(x, \frac{1}{n+1}+\left(\frac{1}{n}-\frac{1}{n+1}\right)/2\right)$. Using $C^\infty$ Urysohn lemma, take $\phi^n\in C^\infty$ such that $1$ on $K_n$ and has support in $U$. Take finite elements in the set: $\{\phi^j\}_{j=N_1}^{N_n}$ with $N_i<N_j$ for $i<j$ and let $\sum\limits_{i=1}^n \lambda_i \phi^i=0$. For $x\in U_{N_1}\setminus B_{N_1+1}$, $\phi^{N_1}(x)=1$ but $\phi^{N_i}(x)=0$ for $i>1$. Therefore, $\lambda_1=0$. Repeating this argument, we can show that $\lambda_i=0$ for all $i$ and it means $\phi^n$ is linearly independent for all $n>N$ and consequently, $C^{k, \alpha}(\bar{\Omega})$ has infinite dimension.
 \item[(c)] Let $\{u_i\}$ be a Cauchy sequence in $C^{k,p}(\bar{\Omega})$. For fixed $\epsilon>0$, there exists $N$ such that $i,j>N\Rightarrow \norm{u_i-u_j}_{C^{k,p}(\bar{\Omega})}\leq \epsilon$. It implies
 \begin{equation*}
 \begin{cases}
@@ -128,39 +128,42 @@ for all $x,y\in \Omega$, $x\neq y$. Therefore, $\frac{\abs{D^\alpha u(x)-D^\alph
 \end{enumerate}
 \end{proof}
 \section*{Problem 4}
-I'll follow the proof in Evans.
 \begin{proof}
 Since $U$ is bounded, open subset of $\rr^n$, and $\partial \Omega$ is $C^1$,
 \begin{equation*}
 W^{1,p}(\Omega)\subset C^{0, \alpha}(\bar{\Omega}),~\norm{u}_{C^{0, \alpha}(\bar{\Omega})}\leq C\norm{u}_{W^{1,p}(\Omega)}
 \end{equation*}
-for $\alpha=1-n/p$ and $C$ depends only on $p,n$ and $\Omega$. Also, $C^{0, \alpha}(\bar{\Omega})\subset C^{0, \tilde{\alpha}}(\Omega)$ since $\norm{u}_{C(\bar{U})}$ is same for both norm and if $[u]_{C^{0, \alpha}(\bar{\Omega})}<\infty$, then as $\abs{x-y}\rightarrow 0$, $\frac{\abs{u(x)-u(y)}}{\abs{x-y}^{\tilde{\alpha}}}\rightarrow 0$ because $\frac{\abs{u(x)-u(y)}}{\abs{x-y}^{\alpha}}<\infty$ for all $x,y\in \Omega$, $x\neq y$, $[u]_{C^{0,\tilde{\alpha}}(\bar{\Omega})}<\infty$ and $u\in C^{0, \tilde{\alpha}}(\bar{\Omega})$.
+for $\alpha=1-n/p$ and $C$ depends only on $p,n$ and $\Omega$. Also, $C^{0, \alpha}(\bar{\Omega})\subset C^{0, \tilde{\alpha}}(\bar{\Omega})$ since $\norm{u}_{C(\bar{U})}$ is same for both norm and if $[u]_{C^{0, \alpha}(\bar{\Omega})}<\infty$, then as $\abs{x-y}\rightarrow 0$, $\frac{\abs{u(x)-u(y)}}{\abs{x-y}^{\tilde{\alpha}}}\rightarrow 0$ because $\frac{\abs{u(x)-u(y)}}{\abs{x-y}^{\alpha}}<\infty$ for all $x,y\in \Omega$, $x\neq y$, $[u]_{C^{0,\tilde{\alpha}}(\bar{\Omega})}<\infty$ and $u\in C^{0, \tilde{\alpha}}(\bar{\Omega})$.
 
 Now, we need to show that each bounded sequence in $W^{1,p}(\Omega)$ is precompact in $C^{0, \alpha}(\bar{\Omega})$. Let a bounded sequence in $W^{1,p}(\Omega)$: $\{u_m\}_{m=1}^\infty$ and $\sup\limits_m\left\{\norm{u_m}_{W^{1,p}(\Omega)}\right\}=K$. 
-By Morney's inequality, we can assume that $\{u_m\}\subset C^{0, \alpha}(\bar{\Omega})\subset C^{0, \tilde{\alpha}}(\bar{\Omega})$ and there exists constant $K'$ such that $\norm{u}_{C^{0, \alpha}(\bar{\Omega})}\leq K'$ for all $m$. Let's check the condition for Arzela-Ascoli theorem
+By Morney's inequality, we can assume that $\{u_m\}\subset C^{0, \alpha}(\bar{\Omega})\subset C^{0, \tilde{\alpha}}(\bar{\Omega})$ and there exists constant $K'$ such that $\norm{u}_{C^{0, \alpha}(\bar{\Omega})}\leq K'$ for all $m$: For $\abs{x-y}\leq 1$, $\frac{\abs{u(x)-u(y)}}{\abs{x-y}^{\tilde{\alpha}}}\leq \frac{\abs{u(x)-u(y)}}{\abs{x-y}^{\alpha}}\abs{x-y}^{-\tilde{\alpha}+\alpha}\leq \frac{\abs{u(x)-u(y)}}{\abs{x-y}^{\alpha}} R^{-\tilde{\alpha}+\alpha}$ where $R$ is a constant such that $\Omega\subset B(0, R)$.
+
+To use Arzela-Ascoli theorem, we need functions having compact domain. I'll denote $\bar{u_m}$ be a a function such that $\bar{u}_m=u_m$ in $\Omega$ and for $x\in \partial \Omega$, $u_m(x)=\lim\limits_{r\rightarrow 0} u_m(y)$ where $y\in B(x, r)\cap \Omega$. I'll show that $\bar{u}_m$ is continuous function on $\bar{\Omega}$. Fix $x\in \partial \Omega$. Since $u$ is bounded, $u_m(x)$ is uniformly bounded in $\partial \Omega$ if they exist. Fix $r>0$ and let $a=\lim\limits_{r\rightarrow 0}\left\{\inf\limits_{y\in B(x,r)\cap \Omega} u_m(y)\right\}$ and $b=\lim\limits_{r\rightarrow 0}\left\{\sup\limits_{y\in B(x,r)\cap \Omega} u_m(y)\right\}$. If $a\neq b$, then it means there exists $x,y\in \Omega$ such that $\abs{x-y}<r$ but $\abs{f(x)-f(y)}>(b-a)/2$ for all $r>0$ which is contradiction to continuity of $u$. Therefore, the limit $u_m(x)$ for $x\in \partial \Omega$ is well defined and $\bar{u}_m$ is continuous on $\bar{\Omega}$.
+
+Let's check the condition for Arzela-Ascoli theorem for $\bar{u}_m$.
 \begin{enumerate}
-\item[1.] For each $m$, $u_m$ is continuous on compact set $\bar{\Omega}$.
-\item[2.] Since $\norm{u_m}_{C(\bar{\Omega})}\leq K'$, $\{u_m\}$ is pointwisely bounded.
-\item[3.] $\frac{\abs{u_m(x)-u_m(y)}}{\abs{x-y}^{\alpha}}\leq K'$ for all $x,y\in \Omega$, $x\neq y$. Therefore, $\abs{u_m(x)-u_m(y)}\leq K'\abs{x-y}^\alpha$ for $x,y\in \bar{\Omega}$ for all $m$ and it means $\{u_m\}$ is equicontinuous on $\bar{\Omega}$.
+\item[1.] For each $m$, $\bar{u}_m$ is continuous on compact set $\bar{\Omega}$.
+\item[2.] Since $\norm{\bar{u}_m}_{C(\bar{\Omega})}\leq K'$, $\{\bar{u}_m\}$ is pointwisely bounded.
+\item[3.] Assume $\tilde{\alpha}>0$ $\frac{\abs{\bar{u}_m(x)-\bar{u}_m(y)}}{\abs{x-y}^{\alpha}}\leq K'$ for all $x,y\in \Omega$, $x\neq y$. Therefore, $\abs{\bar{u}_m(x)-\bar{u}_m(y)}\leq K'\abs{x-y}^\alpha$ for $x,y\in \bar{\Omega}$ for all $m$ and it means $\{u_m\}$ is equicontinuous on $\bar{\Omega}$.
 \end{enumerate}
-Therefore, we can use Arzela-Ascoli theorem and find a uniformly convergent subsequence $\{u_{m_j}\}$ in $C^{0, \tilde{\alpha}}(\bar{\Omega})$. Since $C^{0, \tilde{\alpha}}(\bar{\Omega})$ is Banach space, the converging point is in $C^{0, \tilde{\alpha}}(\bar{\Omega})$. Hence,
+Therefore, we can use Arzela-Ascoli theorem and find a uniformly convergent subsequence $\{\bar{u}_{m_j}\}$ in $C^{0, \tilde{\alpha}}(\bar{\Omega})$ and it means $\{u_{m_j}\}$ is uniformly converges in $C^{0, \tilde{\alpha}}(\bar{\Omega})$. Since $C^{0, \tilde{\alpha}}(\bar{\Omega})$ is Banach space, the converging point is in $C^{0, \tilde{\alpha}}(\bar{\Omega})$. Hence,
 \begin{equation*}
 W^{1,p}(\Omega)\subset\subset C^{0, \tilde{\alpha}}(\bar{\Omega})
 \end{equation*}
-for all $\tilde{\alpha}\in [0, \alpha)$.
+for all $\tilde{\alpha}\in (0, \alpha)$. If $\tilde{\alpha}=0$, then find $0<\tilde{\alpha}'<\alpha$ and do the same procedure above. Since $C^{0, \tilde{\alpha}'}(\bar{\Omega})\subset C^{0, 0}(\bar{\Omega})$, the above compact inclusion  is true for $\tilde{\alpha}=0$.
 \end{proof}
 \section*{Problem 5}
 Fix $\epsilon>0$. Define $\Omega_\epsilon\coloneqq\{x\in \Omega|d(x,\partial \Omega)>\epsilon\}$. Let's mollify the $u$ with standard mollifier $\eta_\epsilon$ and denote it $u^\epsilon$. Then,
 \begin{equation*}
 Du^\epsilon=\eta_\epsilon*Du=0
 \end{equation*}
-in $\Omega_\epsilon$. It implies that if $B(x, r)\in \Omega_\epsilon$ for small enough $r>0$, $u_\epsilon$ is constant on $B(x,r)$ since the derivative of $u^\epsilon$ is zero on the set. In other words, it is locally constant in $\Omega_\epsilon$.
+in $\Omega_\epsilon$. It implies that if $B(x, r)\subset \Omega_\epsilon$ for small enough $r>0$, $u^\epsilon$ is constant on $B(x,r)$ since the derivative of $u^\epsilon$ is zero on the set. In other words, it is locally constant in $\Omega_\epsilon$.
 
-Let $x\in U$ and $B(x, r)$ be an open neighborhood of $x$ in $\Omega$, then there exists $\epsilon$ such that $B(x, r)\subset \Omega_\epsilon$ and by previous, we know that $u^\epsilon$ is constant on $B(x,r)$. Let the constant value $c^\epsilon$. We know that $u^\epsilon\rightarrow u$ as $\epsilon\rightarrow 0$ and it means on $u$ is constant a.e. on $B(x,r)$.(If not, there always exists non measure zero set such that $u^\epsilon$ is different with $u$ on $B(x,r)$.) Therefore, $u$ is locally constant function in a.e. sense).
+Let $x\in U$ and $B(x, r)$ be an open neighborhood of $x$ in $\Omega$ and it is compactly embedded, then there exists $\epsilon$ such that $B(x, r)\subset \Omega_\epsilon$ and by previous, we know that $u^\epsilon$ is constant on $B(x,r)$. Let the constant value $c^\epsilon$. We know that $u^\epsilon\rightarrow u$ as $\epsilon\rightarrow 0$ and it means on $u$ is constant a.e. on $B(x,r)$.(If not, there always exists non measure zero set such that $u^\epsilon$ is different with $u$ on $B(x,r)$.) Also, it behave well since all any compactly embedded open neighborhood $B(x, r')$, the constant value should be same as $B(x,r)$ since $u$ is constant in $B(x,r')\cup B(x,r)$. Therefore, $u$ is locally constant function in a.e. sense).
 
-Let take a partition such that $x\sim y$ if $u(x)=u(y)$. Since $\Omega$ is locally constant, any element in partition is open set. Assume that there exists at least two element in the partition. This is impossible since $\Omega$ is connected set. Therefore, $u$ is a.e. constant function.
+Let take a partition such that $x\sim y$ if for $B(x,r_x)\subset\subset \Omega$ and $B(y, r_y)\subset\subset \Omega$, the constant values of the functions on the balls are same. Since $\Omega$ is locally constant, any element in partition is open set. Assume that there exists at least two element in the partition. This is impossible since $\Omega$ is connected set. Therefore, $u$ is a.e. constant function.
 \section*{Problem 6}
-First, I'll show that $u\in L^n(B_1(\bm{0})$. Note that $u$ is symmetric function about rotation, so we can show that integral on $B_1(\bm{0})$ is finite by showing that integral is finite for $r$. Also, we can restrict the range of $r$ to $(0, \frac{1}{e-1}$ since $u$ is bounded in outside of the range. In other words,
+First, I'll show that $u\in L^n(B_1(\bm{0}))$. Note that $u$ is symmetric function about rotation, so we can show that integral on $B_1(\bm{0})$ is finite by showing that integral is finite for $r$. Also, we can restrict the range of $r$ to $(0, \frac{1}{e-1}$ since $u$ is bounded in outside of the range. In other words,
 \begin{equation*}
 \int_{B_1(\bm{0})}udx\leq C\int_0^{\frac{1}{e-1}} \left(\abs{\log\log\left(1+\frac{1}{r}\right)}\right)^{n}r^{n-1}dr
 \end{equation*}
@@ -176,9 +179,17 @@ Therefore, $u\in L^n(B_1(\bm{0}))$, and $u\in L^1(B_1(\bm{0}))$.
 
 Next, I'll show that $u$ has weak derivative in $B_1(\bm{0})$ and belongs to $L^n(B_1(\bm{0}))$. Since $u$ goes to $\infty $ as $x\rightarrow 0$, we need to care when we compute weak derivative. However, we can ignore at $\bm{0}$ by the following argument. Let $V$ be a compactly embedded set in $U$ and $\phi$ be a $C^\infty$ function having support $V$. Assume $\bm{0}\in V$. Without $\bm{0}$, $D u$ should be $\partial_{x_i}u$ for some $i$. Since $u$, $D^\alpha \phi$ for all $\alpha$ are $L^1$ function on $V$, we can use Fubini theorem, and rewrite the integral by
 \begin{equation*}
-\int_U uD \phi dx=\int_{-1}^1 (\cdots) dx_1.
+\int_U uD \phi ~dx=\int_{-1}^1 (\cdots) dx_i
 \end{equation*}
-Since $n>1$, we know that the $n-1$ dim plane through $0$ is measure zero set and it does not effect integral to delete $0$ from integral range of $x_1$. Therefore, the weak derivative is just derivative of $u$ except $\bm{0}$...(Fundamental of Calculus? d/dx1-> int int dx1 dx2->Explicitly show)
+for $1\leq i \leq n$. Since $n>1$, we know that the $(n-1)$ dim plane through $0$ is measure zero set and it does not effect integral to delete $0$ from integral range of $x_1$. Therefore, the weak derivative is just derivative of $u$ except $\bm{0}$ More explicitly, for $\partial_{x_i}\phi$, take $j\neq i$. Then,
+\begin{equation*}
+\begin{split}
+\int_U u\partial_{x_i}\phi dx&=\int_{(-1, 1)}\cdots \int_{x_1}^{x_2} u\partial_{x_i}\phi~ dx_i \cdots dx_j \\
+&= \int_{(-1, 1)\setminus\{0\}}\cdots \int_{x_1}^{x_2} u\partial_{x_i}\phi ~dx_i \cdots dx_j\\
+&= \int_{(-1, 1)\setminus\{0\}}\cdots \int_{x_1}^{x_2} \phi\partial_{x_i} u~ dx_i \cdots dx_j=\int_U \phi\partial_{x_i} u~dx.
+\end{split}
+\end{equation*}
+Also, for any compact set not containing $\bm{0}$, we can just use $\int_U u\partial_{x_i}\phi~dx=\int_U \phi\partial_{x_i}u~dx$. Thus, $\partial_{x_i}u$ is weak derivative of $u$ except $\bm{0}$.
 
 I'll show that $Du$ is in $L^n$. Computing partial derivative:
 \begin{equation*}
@@ -192,7 +203,7 @@ Let $x=\log\left(1+\frac{1}{r}\right)$, then the integral becomes
 \begin{equation*}
 \int_1^\infty \frac{1}{x^n}\frac{e^x}{e^x-1}dx
 \end{equation*}
-For sufficiently large $R$, $\frac{e^x}{e^x-1}<2$ for $x>R$ and we know that $\int_1^\infty \frac{1}{x^n}$ converges for $n>2$. Therefore, $Du\in L^n(B_1(\bm{0}))$ and $u\in W^{1,n}(B_1(\bm{0}))$.
+For sufficiently large $R$, $\frac{e^x}{e^x-1}<2$ for $x>R$ and we know that $\int_1^\infty \frac{1}{x^n}$ converges for $n>1$. Therefore, $Du\in L^n(B_1(\bm{0}))$ and $u\in W^{1,n}(B_1(\bm{0}))$.
 \section*{Problem 7}
 Since $u\in L^2(\rr^n)$, $u=(\hat{u})^\vee$ by Theorem 2 in chapter 4.3 Evans. Then,
 \begin{equation*}
@@ -202,7 +213,7 @@ Since $u\in L^2(\rr^n)$, $u=(\hat{u})^\vee$ by Theorem 2 in chapter 4.3 Evans. T
 &\left(\leq \int_{\rr^n}(1+\abs{k}^2)^{s}\abs{\hat{u}}^2dk\right)^{1/2}\left(\int_{\rr^n}(1+\abs{k}^2)^{-s}dk\right)^{1/2}
 \end{split}
 \end{equation*}
-For $\abs{k}>1$, $(1+\abs{k}^2)^s> (2\abs{k})^{2s}$
+For $\abs{k}>1$, $(1+\abs{k}^2)^s> \abs{k}^{2s}$ and
 \begin{equation*}
 \int_{\abs{k}>1} k^{-2s}dk=\sigma(S^{n-1})\int_1^\infty r^{-2s}r^{n-1}dr<\infty
 \end{equation*}
@@ -210,8 +221,8 @@ since $-2s+n-1<-1$ and $\int_1^\infty r^\alpha dr<\infty$ for $\alpha<-1$. There
 \begin{equation*}
 \abs{u(x)}\leq C\left(\int_{\rr^n}(1+\abs{y}^2)^s \abs{\hat{u}}^2 dy\right)^{1/2}=C\norm{u}_{H^s(\rr^n)}
 \end{equation*}
-This is true for a.e. $x$, so
+for some constant $C>0$ depends only on $s$ and $n$. This is true for a.e. $x$, so
 \begin{equation*}
-\norm{u}_{L^\infty(\rr^n)}\leq C\norm{H^s(\rr^n)}
+\norm{u}_{L^\infty(\rr^n)}\leq C\norm{u}_{H^s(\rr^n)}
 \end{equation*}
 \end{document}
