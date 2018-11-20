@@ -56,11 +56,11 @@ I'll use the proof in Evans.
 \begin{proof}
 Before starting, let's arrange the index of $\Gamma_j$ so that the adjacent curve of $\Gamma_j$ be $\Gamma_{j-1}$ and $\Gamma_{j+1}$.
 
-Fix $x^0$ be in end point of $\Gamma_j$ and assume that $x^0$ is also a end point of $\Gamma_{j+1}$. Let $v_{j}$ be the tangential vector of $\Gamma_j$ such that $v_j$ is toward the $\Gamma_j$. In other words, if $\Gamma_j:[a,b]\rightarrow \rr^2$ and $x_0=\Gamma_j(b)$, then $v_j=\lim\limits_{h\rightarrow 0+}\frac{\Gamma_j(b-h)-\Gamma_j(b)}{h}$. For $v_{j+1}$, set it be tangential vector of $\Gamma_{j+1}$ toward $\Gamma_{j+1}$ curve. If $v{j}$ and $v_{j+1}$ are parallel, $\Gamma_j$ and $\Gamma_{j+1}$ can be connected with $C^1$ property, I'll ignore the case. Let the angle between $v_j$ and $v_{j+1}$ be $\theta>0$. Let $e_0$ be a unit vector such that parallel with $\frac{v_j+v_{j+1}}{2}$ and inward direction, i.e., $x_0+\lambda e_0\in \text{int }\Omega$ for small enough $\lambda$.(This requires Jordan curve theorem.)
+Fix $x^0$ be in end point of $\Gamma_j$ and assume that $x^0$ is also a end point of $\Gamma_{j+1}$. Let $v_{j}$ be the tangential vector of $\Gamma_j$ such that $v_j$ is toward the $\Gamma_j$. In other words, if $\Gamma_j:[a,b]\rightarrow \rr^2$ and $x_0=\Gamma_j(b)$, then $v_j=\lim\limits_{h\rightarrow 0+}\frac{\Gamma_j(b-h)-\Gamma_j(b)}{h}$. For $v_{j+1}$, set it be tangential vector of $\Gamma_{j+1}$ toward $\Gamma_{j+1}$ curve. If $v_{j}$ and $v_{j+1}$ are parallel, $\Gamma_j$ and $\Gamma_{j+1}$ can be connected with $C^1$ property, I'll ignore the case. Let the angle between $v_j$ and $v_{j+1}$ be $\theta>0$. Let $e_0$ be a unit vector such that parallel with $\frac{v_j+v_{j+1}}{2}$ and inward direction, i.e., $x_0+\lambda e_0\in \text{int }\Omega$ for small enough $\lambda$.(This requires Jordan curve theorem.)
 
 As $\Gamma_j$, $\Gamma_{j+1}$ are $C^1$, there exists $r>0$ such that with $B(x_0, r)$, the tangential direction of $\Gamma_j$ and $\Gamma_{j+1}$ does not change much. More precisely, if we let $w_j$ be a tangential vector of $\Gamma_j$ at $y\in B(x_0, r)$, then the angle between $w_j$ and $v_j$ is less than $\theta/10$, and this is true for $\Gamma_{j+1}$. Let $w^1_j$ (resp. $w^2_j$) be the vector made by rotating $v_j$ by $\theta/10$ clockwise (resp. counter-clockwise). Do the same for $w^1_{j+1}$, $w^2_{j+1}$.
 
-Now, let's repeat proof in Evans. Let's consider $U\cap B(x_0, r)$ and $V\coloneqq U\cap B(x_0, r/2)$. Define $x_\epsilon\coloneqq x+\epsilon e_0$ for $x\in V$, small enough $\epsilon>0$ satisfying $x+\epsilon e_0\in U\cap B(x_0, r)$. WLOG, I'll assume that $x$ is inside the interior enclosed by $\Gamma_j$ and the line through $x_0$ with tangential vector $\frac{v_j+v_{j+1}}{2}$. Now, we draw lines through $x$ such that the tangential vectors $w^1_j$ and $w^2_j$. Then, we know that the angle between $e_0$ and $w^1_j$ or $w^2_j$ is $(1/2-1/10)\theta$ and there is a room to set small enough $\lambda<1$ such that $B(x+\epsilon e_0, \lambda \epsilon)\subset U\cap B(x_0, r)$. In this room, we can mollify $u_\epsilon(x)=u(x_\epsilon)$ and denote it $v_\epsilon$, and make $\epsilon\rightarrow 0$. The remaining part is same as the proof in Evans: Since $\partial U$ is compact, we can choose finitely many points $x_0^i\in \partial U$ including end point of $\Gamma_j$ and make Global approximation.
+Now, let's repeat proof in Evans. Let's consider $U\cap B(x_0, r)$ and $V\coloneqq U\cap B(x_0, r/2)$. Define $x_\epsilon\coloneqq x+\epsilon e_0$ for $x\in V$, small enough $\epsilon>0$ satisfying $x+\epsilon e_0\in U\cap B(x_0, r)$. WLOG, I'll assume that $x$ is inside the interior enclosed by $\Gamma_j$ and the line through $x_0$ with tangential vector $e_0$. Now, we draw lines through $x$ such that the tangential vectors $w^1_j$ and $w^2_j$. Then, we know that the angle between $e_0$ and $w^1_j$ or $w^2_j$ is $(1/2-1/10)\theta$ and there is a room to set small enough $\lambda<1$ such that $B(x+\epsilon e_0, \lambda \epsilon)\subset U\cap B(x_0, r)$. In this room, we can mollify $u_\epsilon(x)=u(x_\epsilon)$ and denote it $v_\epsilon$, and make $\epsilon\rightarrow 0$. The remaining part is same as the proof in Evans: Since $\partial U$ is compact, we can choose finitely many points $x_0^i\in \partial U$ including end point of $\Gamma_j$ and make Global approximation.
 \end{proof}
 \section*{Problem 2}
 \begin{enumerate}
@@ -94,7 +94,7 @@ Therefore, $\norm{u+v}_{C^{k,\alpha}(\bar{\Omega})}\leq \norm{u}_{C^{k,\alpha}(\
 \item[2.] For $\lambda\in \rr$,
 \begin{equation*}
 \begin{split}
-\norm{\lambda}_{C^{k,\alpha}(\bar{\Omega})}&=\sum\limits_{\abs{\alpha}\leq k}\sup_{x\in \Omega}\abs{D^\alpha \lambda u}+\sum\limits_{\abs{\alpha}=k}\sup_{\substack{x,y\in \Omega \\ x\neq y}} \left\{  \frac{\abs{D^\alpha \lambda u(x)-D^\alpha \lambda u(y)}}{\abs{x-y}^\alpha}\right\} \\
+\norm{\lambda u}_{C^{k,\alpha}(\bar{\Omega})}&=\sum\limits_{\abs{\alpha}\leq k}\sup_{x\in \Omega}\abs{D^\alpha \lambda u}+\sum\limits_{\abs{\alpha}=k}\sup_{\substack{x,y\in \Omega \\ x\neq y}} \left\{  \frac{\abs{D^\alpha \lambda u(x)-D^\alpha \lambda u(y)}}{\abs{x-y}^\alpha}\right\} \\
 &=\abs{\lambda}\sum\limits_{\abs{\alpha}\leq k}\sup_{x\in \Omega}\abs{D^\alpha  u}+\abs{\lambda}\sum\limits_{\abs{\alpha}=k}\sup_{\substack{x,y\in \Omega \\ x\neq y}} \left\{  \frac{\abs{D^\alpha  u(x)-D^\alpha  u(y)}}{\abs{x-y}^\alpha}\right\}\\
 &=\lambda\norm{u}_{C^{k,\alpha}(\bar{\Omega})}.
 \end{split}
@@ -163,9 +163,9 @@ Let $x\in U$ and $B(x, r)$ be an open neighborhood of $x$ in $\Omega$ and it is 
 
 Let take a partition such that $x\sim y$ if for $B(x,r_x)\subset\subset \Omega$ and $B(y, r_y)\subset\subset \Omega$, the constant values of the functions on the balls are same. Since $\Omega$ is locally constant, any element in partition is open set. Assume that there exists at least two element in the partition. This is impossible since $\Omega$ is connected set. Therefore, $u$ is a.e. constant function.
 \section*{Problem 6}
-First, I'll show that $u\in L^n(B_1(\bm{0}))$. Note that $u$ is symmetric function about rotation, so we can show that integral on $B_1(\bm{0})$ is finite by showing that integral is finite for $r$. Also, we can restrict the range of $r$ to $(0, \frac{1}{e-1}$ since $u$ is bounded in outside of the range. In other words,
+First, I'll show that $u\in L^n(B_1(\bm{0}))$. Note that $u$ is symmetric function about rotation, so we can show that integral on $B_1(\bm{0})$ is finite by showing that integral is finite for $r$. Also, we can restrict the range of $r$ to $\left(0, \frac{1}{e-1}\right)$ since $u$ is bounded in outside of the range. In other words,
 \begin{equation*}
-\int_{B_1(\bm{0})}udx\leq C\int_0^{\frac{1}{e-1}} \left(\abs{\log\log\left(1+\frac{1}{r}\right)}\right)^{n}r^{n-1}dr
+\int_{B_1(\bm{0})}udx\leq C\int_0^{\frac{1}{e-1}} \abs{\log\log\left(1+\frac{1}{r}\right)}^{n}r^{n-1}dr
 \end{equation*}
 for some constant $C<\infty$. Let $y=\log\left(1+\frac{1}{r}\right)$, then
 \begin{equation*}
@@ -191,7 +191,7 @@ for $1\leq i \leq n$. Since $n>1$, we know that the $(n-1)$ dim plane through $0
 \end{equation*}
 Also, for any compact set not containing $\bm{0}$, we can just use $\int_U u\partial_{x_i}\phi~dx=\int_U \phi\partial_{x_i}u~dx$. Thus, $\partial_{x_i}u$ is weak derivative of $u$ except $\bm{0}$.
 
-I'll show that $Du$ is in $L^n$. Computing partial derivative:
+I'll show that $Du$ is in $L^n(B_1(\bm{0}))$. Computing partial derivative:
 \begin{equation*}
 \abs{\partial_{x_i} u}=\abs{\frac{1}{\log\left(1+\frac{1}{\abs{x}}\right)}\frac{1}{1+\frac{1}{\abs{x}}}\frac{x_i}{\abs{x}^3}}\leq  \frac{1}{\abs{\log\left(1+\frac{1}{r}\right)}}\frac{1}{r+1}\frac{1}{r}.
 \end{equation*}
