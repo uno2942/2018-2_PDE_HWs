@@ -52,10 +52,183 @@
  \maketitle
 
 \section*{Problem 1}
-
+If $\eta\in \rho(A)$, $A-\eta \text{Id}$ is one-to-one and onto by definition. Therefore, we can consider the inverse $(A-\eta \text{Id})^{-1}$. I'll first show that this is closed linear map.
+\begin{enumerate}
+\item[Linearity:] Fix $y_1, y_2\in X$ and $r\in \rr$ or $\mathbb{C}$. Then, there uniquely exists $x_1$ and $x_2$ in $X$ such that $(A-\eta \text{Id})(x_i)=y_i$ for each $i$ and $(A-\eta \text{Id})(rx_i)=ry_i$. Therefore, $(A-\eta \text{Id})^{-1}(y_i)=x_i$ and $(A-\eta \text{Id})^{-1}(y_1+ry_2)=x_1+rx_2$. Thus, $(A-\eta \text{Id})$ is bijective and linear.
+\item[Closedness:] Suppose $y_n\rightarrow y$ in $X$ and $(A-\eta \text{Id})^{-1}(y_n)\rightarrow x$. We need to show that $(A-\eta \text{Id})^{-1}(y)=x$. The second assumption implies that $y_n\rightarrow (A-\eta \text{Id})(x)$ since $(A-\eta \text{Id})$ is continuous. (Note that boundedness implies continuity if $X$ is normed vector space and the map is linear.) The normed topology in Banach space gives Hausdorff property: if $x_1\neq x_2$, $r=\norm{x_1-x_2}>0$ and $B(x_1, r/3)$, $B(x_2, r/3)$ gives disjoint neighborhoods of each $x_i$. Therefore, $y_n$ converges to same point and $(A-\eta \text{Id})(x)=y$.
+\end{enumerate}
+Since $X$ is Banach space and $(A-\eta \text{Id})^{-1}:X\rightarrow X$ is closed linear map, it is bounded.
 \section*{Problem 2}
+\begin{enumerate}
+\item[(a)] I'll check the condition for inner product.
+\begin{enumerate}
+\item[(1)] For all $u,u_*\in \mathcal{H}$,
+\begin{equation*}
+\begin{split}
+\overline{(u_*,u)}_{\mathcal{H}}&=\overline{\int_\Omega (v_*+iw_*)(v-iw)+(Dv_*+iDw_*)(Dv-iDw)dx} \\
+&=\int_\Omega (v_*-iw_*)(v+iw)+(Dv_*-iDw_*)(Dv+iDw)dx~~\text{since }v,w,v_*,w_*:X\rightarrow \mathbb{R} \\
+&=(u, u_*)_{\mathcal{H}}.
+\end{split}
+\end{equation*}
+\item[(2)] For $a,b\in \mathbb{C}$ and $u,u_*,u_{**}\in \mathcal{H}$,
+\begin{equation*}
+\begin{split}
+\int_\Omega (au+bu_*,u_{**})_{\mathcal{H}}&=\int_\Omega ((av+bv_*)+i(aw+bw_*))(v_{**}-iw_{**})+(D(av+bv_*)+iD(aw+bw_*))(Dv_{**}-iDw_{**})dx \\
+&=a\int_\Omega (v+iw)(v_{**}-iw_{**})+(Dv+iDw)(Dv_{**}-iDw_{**})dx+b\int_\Omega (v_*+iw_*)(v_{**}-iw_{**})+(Dv_*+iDw_*)(Dv_{**}-iDw_{**})dx \\
+&=a(u, u_{**})_{\mathcal{H}}+b(u_*, u_{**})_{\mathcal{H}}.
+\end{split}
+\end{equation*}
+\item[(3)] For $u\in \mathcal{H}$,
+\begin{equation*}
+\begin{split}
+(u,u)_{\mathcal{H}}&=\int_\Omega (v+iw)(v-iw)+(Dv+iDw)(Dv-iDw)dx \\
+&=\int_\Omega u\overline{u}+Du\overline{Du}dx \\
+&=\norm{u}^2_{H^1_0(\Omega)}\in (0,\infty)....
+\end{split}
+\end{equation*}
+\end{enumerate}
+Therefore, $(\cdot,\cdot)_{\mathcal{H}}$ yields an inner product in $\mathcal{H}$.
+\item[(b)] First, note that $\mathcal{H}$ is a Hilbert space...(Maybe I need to show this.)
+
+I'll first show that the bilinear form $B$ is bounded linear functional
+\begin{enumerate}
+\item[Linearity:] For $u_1,u_2,v_1,v_2\in \mathcal{H}$ and $c\in \mathbb{C}$...(??? is it really linaer?),
+\begin{equation*}
+\begin{split}
+B[cu_1+u_2,v_1]=\int_\Omega a_{ij}\partial_i (cu_1+u_2)\partial \overline{v}_1~dx \\
+&=c\int_\Omega a_{ij}\partial_i u_1\partial \overline{v}_1~dx+\int_\Omega a_{ij}\partial_i u_2\partial \overline{v}_1~dx \\
+&=cB[u_1,v_1]+B[u_2,v_1]
+\end{split}
+\end{equation*}
+and
+\begin{equation*}
+\begin{split}
+B[u_1,cv+1+v_2]=\int_\Omega a_{ij}\partial_i u_1\partial (c\overline{v}_1+\overline{v}_2)~dx \\
+&=c\int_\Omega a_{ij}\partial_i u_1\partial \overline{v}_1~dx+\int_\Omega a_{ij}\partial_i u_2\partial \overline{v}_1~dx \\
+&=cB[u_1,v_1]+B[u_2,v_1]
+\end{split}
+\end{equation*}
+...
+\item[Boundedness:]  For $u,v\in \mathcal{H}$,
+\begin{equation*}
+\begin{split}
+\abs{B[u,v]}&=\abs{\int_\Omega a_{ij}\partial_i u\partial_j \overline{v}~dx} \\
+&=\abs{\int_\Omega a_{ij}\partial_i (\text{Re}(u)+i\text{Im}(u))\partial_j (\text{Re}(v)-i\text{Im}(v))~dx} \\
+&=\abs{\int_\Omega a_{ij} (\partial_i\text{Re}(u)\partial_j\text{Re}(v)-\partial_i\text{Im}(u)\partial_j\text{Im}(v)))~dx}\\
+&+\abs{\int_\Omega a_{ij} (\partial_i\text{Re}(u)\partial_j\text{Im}(v)+\partial_i\text{Im}(u)\partial_j\text{Re}(v)))~dx}\\
+&\leq 
+\end{split}
+\end{equation*}
+\end{enumerate}
+\end{enumerate}
 \section*{Problem 3}
+Since $u\in H^1(\Omega)$ is a weak solution to
+\begin{equation*}
+\begin{cases}
+Lu=f & \text{in }\Omega \\
+u=g & \text{in }\partial \Omega,
+\end{cases}
+\end{equation*}
+for all $v\in H^1_0(\Omega)$,
+\begin{equation*}
+B[u,v]=\int_\Omega fv~dx
+\end{equation*}
+where the bilinear form $B[\cdot,\cdot]$ is defined by
+\begin{equation*}
+\int_\Omega \sum\limits_{i,j}a_{ij}\partial_i u \partial _j v + \sum\limits_{i}b_i v \partial_i u+cuv~dx.
+\end{equation*}
+Define $w=u-g\in H^1(\Omega)$ (since $g\in H^1(\Omega)$), then $B[u,v]=B[w+g, v]=B[w,v]+B[g,v]$, and
+\begin{equation*}
+B[w,v]=\int_{\Omega} fv- \sum\limits_{i,j}a_{ij}\partial_i g \partial _j v + \sum\limits_{i}b_i v \partial_i g+cgv~dx
+\end{equation*}
+and $w$ is a weak solution for
+\begin{equation*}
+\begin{cases}
+Lw=Lu-Lg=f-Lg & \text{in }\Omega \\
+w=0 & \text{on }\partial \Omega.
+\end{cases}
+\end{equation*}
+.
 \section*{Problem 4}
+\begin{enumerate}
+\item[(a)] By computation,
+\begin{equation*}
+\begin{split}
+\int_\Omega -v\Laplace u+cuv~dx&=\int_\Omega -\sum\limits_{i=1}^n \partial_i (v\partial_i u)+\partial_i v \partial_i u+cuv~dx \\
+&=\int_{\partial \Omega} -\sum\limits_{i=1}^n \left(v\partial_i u\right)\nu^i dS+\int_\Omega -\partial_i v \partial_i u+cuv~dx \\
+&=\int_{\partial \Omega} v\nabla u \cdot \bm{\nu}_{\text{in}}dS+\int_\Omega \partial_i v \partial_i u+cuv~dx \\
+&=\int_{\partial \Omega} gv~dS+\int_\Omega \partial_i v \partial_i u+cuv~dx \\
+&=\int_\Omega fv~dx
+\end{split}
+\end{equation*}
+for $u,v\in H^1(\Omega)$ and $\bm{\nu}_{\text{out}}=(\nu^1,\nu^2, \ldots, \nu^n)$ outward unit normal vector on $\partial \Omega$. Therefore, the definition of weak solution of this problem:
+\begin{equation*}
+B[u,v]=\int_\Omega \nabla u \nabla v + cuv~dx=\int_\Omega fv~dx-\int_{\partial \Omega} gv~dS
+\end{equation*}
+makes sense.
+\item[(b)] First, note that $H^1(\Omega)$ is a Hilbert space... Define a bilinear form $B[\cdot,\cdot]$ by
+\begin{equation*}
+\int_\Omega \nabla u \nabla v + cuv~dx.
+\end{equation*}
+I'll show that this is well-defined elliptic form on $H^1(\Omega)$.
+\begin{enumerate}
+\item[Bilinear:] For $u_1,u_2,v_1, v_2\in H^1(\Omega)$ and $a\in \rr$ or $\mathbb{C}$,
+\begin{equation*}
+\begin{split}
+B[au_1+u_2,v_1]&=\int_\Omega \nabla (au_1+u_2) \nabla v_1 + c(au_1+u_2)v_1~dx\\
+&=a\int_\Omega \nabla u_1\nabla v_1 + c u_1v_1~dx+\int_\Omega \nabla u_2 \nabla v_1 + cu_2v_1~dx\\
+&=aB[u_1,v_1]+B[u_2,v_1]
+\end{split}
+\end{equation*}
+and
+\begin{equation*}
+\begin{split}
+B[u_1,av_1+v_2]&=\int_\Omega \nabla u_1 \nabla (av_1+v_2) + cu_1(av_1+v_2)~dx\\
+&=a\int_\Omega \nabla u_1 \nabla v_1 + cu_1v_1~dx+\int_\Omega \nabla u_1 \nabla v_2 + cu_1v_2~dx\\
+&=aB[u_1,v_1]+B[u_1,v_2]
+\end{split}
+\end{equation*}
+\item[Boundedness:] For $u,v\in H^1(\Omega)$,
+\begin{equation*}
+\begin{split}
+\abs{B[u,v]}=\abs{\int_\Omega \nabla u \nabla v + cuv~dx} \\
+&\leq\norm{Du}^{1/2}_{L^2(\Omega)}\norm{Dv}^{1/2}_{L^2(\Omega)}+\norm{c}_{L^\infty(\Omega)}\norm{u}_{L^2(\Omega)}\norm{v}_{L^2(\Omega)}\\
+&\leq C(\norm{u}_{L^2(\Omega)}+\norm{Du}_{L^2(\Omega)})(\norm{v}_{L^2(\Omega)}+\norm{Dv}_{L^2(\Omega)}) \\
+&=C\norm{u}_{H^1(\Omega)}\norm{v}_{H^1(\Omega)}
+\end{split}
+\end{equation*}
+for constant $C$ depending only on $\Omega$ and $c$.
+\item[Coercivity:] For $u\in H^1{\Omega}$,
+\begin{equation*}
+\begin{split}
+B[u,u]&=\int_\Omega \nabla u \nabla u + cu^2~dx \\
+&=\norm{Du}^2_{L^2(\Omega)}+\norm{c}_{L^\infty(\Omega)}\norm{u}^2_{L^2(\Omega)}\\
+&\geq \min\{1,\mu_0\}\norm{u}^2_{H^1(\Omega)}
+\end{split}
+\end{equation*}
+\end{enumerate}
+Furthermore, define $I(f,g):H^1(\Omega)\rightarrow \rr$ by
+\begin{equation*}
+I:v\mapsto \int_{\Omega} fv~dx-\int_{\Omega} gv~dS.
+\end{equation*}
+Then, this is bounded linear function on $H^1(\Omega)$ since it is definitely linear and $I(v)=\abs{\int_{\Omega} fv~dx}+\abs{\int_{\Omega} gv~dS}\leq \norm{f}_{L^2(\Omega)}\norm{v}_{H^1(\Omega)}+C\norm{g}_{L^2(\partial \Omega)}\norm{v}_{H^1(\Omega)}$. (In the final step, I used trace inequality.)
+
+By Lax-Millgram theorem, there exists a unique element $u\in H^1(\Omega)$ such that
+\begin{equation*}
+B[u,v]=I(v)
+\end{equation*}
+for all $v\in H^1(\Omega)$. Therefore, there exists unique weak solution to the boundary value problem.
+\item[(c)] If $u\in H^1(\Omega)$ is a weak solution to the boundary value problem,
+\begin{equation*}
+\min\{1,\mu_0\}\norm{u}^2_{H^1(\Omega)}\leq \abs{B[u,u]}=\abs{I(u)}\leq \norm{f}_{L^2(\Omega)}\norm{u}_{H^1(\Omega)}+C\norm{g}_{L^2(\partial \Omega)}\norm{u}_{H^1(\Omega)}
+\end{equation*}
+so,
+\begin{equation*}
+\norm{u}_{H^1(\Omega)}\leq C'(\norm{f}_{L^2(\Omega)}+\norm{g}_{L^2(\partial \Omega)})
+\end{equation*}
+for some $C<C'$ constants depending only on $c,\Omega$.
+\end{enumerate}
 \section*{Problem 5}
+
 \section*{Problem 6}
 \end{document}
