@@ -52,12 +52,45 @@
  \maketitle
 
 \section*{Problem 1}
+I'll use some theorem from topology and functional analysis, and I'll follow the proof in Real Analysis, Gerland B. Folland.
+\begin{theorem}
+(The Baire Category Theorem) Let $X$ be a complete metric space. Then,
+\begin{enumerate}
+\item[(a)] If $\{U_n\}_1^\infty$ is a sequence of open dense subsets of $X$, i,e, $\overline{\cup_1^\infty U_n}=X$, then $\cap_1^\infty U_n$ is dense in $X$.
+\item[(b)] $X$ is not a countable union of nowhere dense sets.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+For (a), I'll show that nonempty open set $V$ in $X$ have intersection with $\cap_1^\infty U_n$ using induction. Since $U_1$ is open dense subset of $X$, $U_1\cap W$ is open and nonempty, so there exists $B(x_0, r_0)\subset U_1\cap W$ such that $0<r_0<1$. For $n>0$, choose $x_n$ and $r_n$ by follows: assume that for $j<n$, $x_j$ and $r_j$ are chosen. Then, $B(x_{n-1},r_{n-1})\cap U_n$ is nonempty and open. Choose $x_n\in B(x_{n-1},r_{n-1})\cap U_n$ and choose $0<r_n<2^{-n}$ such that $\overline{B(x_n,r_n)}\subset B(x_{n-1},r_{n-1})$. For $n,m\geq N$, $x_n,x_m\in B(x_N, r_N)$, and $r_N\rightarrow 0$ as $N\rightarrow \infty$. Therefore, $\{x_n\}$ is a Cauchy sequence in $X$ and have limit point $x\in X$. Since $x_n\in B(r_N, x_N)$ for all $n\geq N$, $x\in \overline{B(x_N, r_N)}\subset U_N\cap B(x_0, r_0)\subset U_N\cap W$ for all $N$, implying $\left(\cap_{n=1}^\infty U_n\right)\cap W\neq \phi$.
+
+For (b), If $\{E_n\}_{n=1}^\infty$ is a sequence of nowhere dense subsets in $X$, then $\{\overline{E_n}^c\}$ are a open dense sets since for fixed $n$ and for any $x\in \overline{E}$, $B(x,r)\cap \overline{E}^c\neq \phi$ for all $r>0$. Since $\cap\left(\overline{E_n}\right)^c\neq \phi$, $\cup E_n\subset \cup \overline{E_n}\neq X$.
+\end{proof}
+\begin{theorem}
+(Open Mapping Theorem) Let $X$ and $Y$ be Banach spaces. If $T$ is a surjective bounded linear functional from $X$ to $Y$, $T$ is a open map.
+\end{theorem}
+\begin{proof}
+If $T(B(0, 1))$ contains a ball of radius $r>0$, $T$ is open map since for any open set $x\in U$ in $X$, it contains open ball $B(x,r)$, $r>0$ and $T(B(x,r))=T(x)+T(B(0, r))=T(x)+rT(B(0, 1))$, which is open set in $Y$ centered at $T(x)$. Therefore, I'll show that $T(B(0, 1))$ contains a ball of radius $r>0$. I'll denote $B(0,r)=B_r$.
+
+Since $X=\cup_{n=1}^\infty B_n$ and $T$ is surjective, $Y=T(\cup_{n=1}^\infty B_n)$. If $T(B_1)$ is nowhere dense, $T(B_n)$ are nowhere dense since dialation in $Y$ induces homeomorphism. However, this is impossible by the Baire Category Theorem since $Y$ is complete. Therefore, $\overline{T(B_1)}$ contains an open ball in $Y$ and let it $B(y_0, 4r)$ for some $y_0\in Y$, $r>0$. Choose $y_1=Tx_1\in T(B_1)$ such that $\norm{y_1-y_0}\leq 2r$; then $B(y_1,2r)\subset B(y_0, 4r)\subset \overline{T(B_1)}$, so if $\norm{y}<2r$,
+\begin{equation*}
+y=-Tx_1+(y_1+y)\in \overline{T(-x_1+B_1)}\subset \overline{T(B_2)}.
+\end{equation*}
+Dividing both by $2$, we get if $\norm{y}<r$, $y\in \overline{T(B_1)}$. I need to change $\overline{T(B_1)}$ to $T(B_1)$.
+
+As noted above, dialation induces homeomorphism, so if $\norm{y}<r/2^n$, $y\in \overline{T(B_{1/2^n})}$. Suppose that $y\in r/2$, then there exists $x_1\in B_{1/2}$ such that $\norm{y-Tx_1}\leq r/4$. Proceeding this argument, we can find $x_n$ satisfying $\norm{y-T\sum\limits_{i=1}^n x_i}\leq r/2^{n+1}$. Since $X$ is complete and $\norm{\sum\limits_{i=n}^m x_i}\leq 2^{-n+1}$, it has convergent point $x$ and $\norm{x}\leq 1$ and $Tx=y$ since $\norm{Tx-y}=0$ in $Y$. Therefore, $T(B_1)$ contains all $y$ in $\norm{y}<r/2$.
+\end{proof}
+\begin{theorem}
+(Closed Graph Theorem) If $X$ and $Y$ are Banach spaces and $T:X\rightarrow Y$ is a closed linear map, then $T$ is bounded.
+\end{theorem}
+\begin{proof}
+Let $\pi_1$ and $\pi_2$ be the projection of $\Gamma(T)\coloneqq\{(x, Tx)\in X\times Y\}$ to $X$ and $Y$, then these maps are onto. It is clear that $\pi_1$ and $\pi_2$ are bounded linear functional. ALso, $X\times Y$ and $\Gamma(T)$ is complete since $X$ and $Y$ are complete and $\Gamma(T)$ is closed as $T$ is closed. Since $\pi_1$ is a bijection between $\Gamma(T)$ and $X$, $\pi_1^{-1}$ is continuous since $\pi_1$ bounded and continuous. Thus, $T=\pi_2\circ \pi_1^{-1}$ is bounded.
+\end{proof}
 If $\eta\in \rho(A)$, $A-\eta \text{Id}$ is one-to-one and onto by definition. Therefore, we can consider the inverse $(A-\eta \text{Id})^{-1}$. I'll first show that this is closed linear map.
 \begin{enumerate}
 \item[Linearity:] Fix $y_1, y_2\in X$ and $r\in \rr$ or $\mathbb{C}$. Then, there uniquely exists $x_1$ and $x_2$ in $X$ such that $(A-\eta \text{Id})(x_i)=y_i$ for each $i$ and $(A-\eta \text{Id})(rx_i)=ry_i$. Therefore, $(A-\eta \text{Id})^{-1}(y_i)=x_i$ and $(A-\eta \text{Id})^{-1}(y_1+ry_2)=x_1+rx_2$. Thus, $(A-\eta \text{Id})$ is bijective and linear.
 \item[Closedness:] Suppose $y_n\rightarrow y$ in $X$ and $(A-\eta \text{Id})^{-1}(y_n)\rightarrow x$. We need to show that $(A-\eta \text{Id})^{-1}(y)=x$. The second assumption implies that $y_n\rightarrow (A-\eta \text{Id})(x)$ since $(A-\eta \text{Id})$ is continuous. (Note that boundedness implies continuity if $X$ is normed vector space and the map is linear.) The normed topology in Banach space gives Hausdorff property: if $x_1\neq x_2$, $r=\norm{x_1-x_2}>0$ and $B(x_1, r/3)$, $B(x_2, r/3)$ gives disjoint neighborhoods of each $x_i$. Therefore, $y_n$ converges to same point and $(A-\eta \text{Id})(x)=y$.
 \end{enumerate}
-Since $X$ is Banach space and $(A-\eta \text{Id})^{-1}:X\rightarrow X$ is closed linear map, it is bounded.
+Since $X$ is Banach space and $(A-\eta \text{Id})^{-1}:X\rightarrow X$ is closed linear map, it is bounded by the Closed Graph Theorem.
 \section*{Problem 2}
 \begin{enumerate}
 \item[(a)] I'll check the condition for inner product.
@@ -73,7 +106,7 @@ Since $X$ is Banach space and $(A-\eta \text{Id})^{-1}:X\rightarrow X$ is closed
 \item[(2)] For $a,b\in \mathbb{C}$ and $u,u_*,u_{**}\in \mathcal{H}$,
 \begin{equation*}
 \begin{split}
-\int_\Omega (au+bu_*,u_{**})_{\mathcal{H}}&=\int_\Omega ((av+bv_*)+i(aw+bw_*))(v_{**}-iw_{**})+(D(av+bv_*)+iD(aw+bw_*))(Dv_{**}-iDw_{**})dx \\
+(au+bu_*,u_{**})_{\mathcal{H}}&=\int_\Omega ((av+bv_*)+i(aw+bw_*))(v_{**}-iw_{**})+(D(av+bv_*)+iD(aw+bw_*))(Dv_{**}-iDw_{**})dx \\
 &=a\int_\Omega (v+iw)(v_{**}-iw_{**})+(Dv+iDw)(Dv_{**}-iDw_{**})dx+b\int_\Omega (v_*+iw_*)(v_{**}-iw_{**})+(Dv_*+iDw_*)(Dv_{**}-iDw_{**})dx \\
 &=a(u, u_{**})_{\mathcal{H}}+b(u_*, u_{**})_{\mathcal{H}}.
 \end{split}
@@ -115,12 +148,78 @@ B[u_1,cv+1+v_2]=\int_\Omega a_{ij}\partial_i u_1\partial (c\overline{v}_1+\overl
 \abs{B[u,v]}&=\abs{\int_\Omega a_{ij}\partial_i u\partial_j \overline{v}~dx} \\
 &=\abs{\int_\Omega a_{ij}\partial_i (\text{Re}(u)+i\text{Im}(u))\partial_j (\text{Re}(v)-i\text{Im}(v))~dx} \\
 &=\abs{\int_\Omega a_{ij} (\partial_i\text{Re}(u)\partial_j\text{Re}(v)-\partial_i\text{Im}(u)\partial_j\text{Im}(v)))~dx}\\
-&+\abs{\int_\Omega a_{ij} (\partial_i\text{Re}(u)\partial_j\text{Im}(v)+\partial_i\text{Im}(u)\partial_j\text{Re}(v)))~dx}\\
-&\leq 
+&+\abs{\int_\Omega a_{ij} (\partial_i\text{Re}(u)\partial_j\text{Im}(v)+\partial_i\text{Im}(u)\partial_j\text{Re}(v)))~dx}~~(*)\\
+&\leq\int_\Omega \frac{1}{\mu} (\abs{D(\text{Re}(u))}\abs{D(\text{Re}(v))}+\abs{D(\text{Im}(u))}\abs{D(\text{Im}(v))})~dx\\
+&+\int_\Omega \frac{1}{\mu} (\abs{D(\text{Re}(u))}\abs{D(\text{Im}(v))}+\abs{D(\text{Im}(u))}\abs{D(\text{Re}(v))})~dx\\
+&=\frac{1}{\mu}\left(\norm{D(\text{Re}(u))}_{L^2(\Omega)}+\norm{D(\text{Im}(u))}_{L^2(\Omega)}\right)\left(\norm{D(\text{Re}(v))}_{L^2(\Omega)}+\norm{D(\text{Im}(v))}_{L^2(\Omega)}\right) \\
+&\leq \frac{1}{\mu}\norm{u}_{\mathcal{H}}\norm{v}_{\mathcal{H}}.
 \end{split}
 \end{equation*}
+In the middle step $(*)$, I used the diagonalizable of positive definite matrix of $A$: For unit vector $\eta_1\in \mathbb{R}^n$, it can be decomposed by the eigenvectors of $A$, so if
+\begin{equation*}
+\eta_1=\sum\limits_{i=1}^n b_i \xi_i
+\end{equation*}
+for unit eigenvectors of $A$ $\{\xi_i\}$, then
+\begin{equation*}
+A\eta_1 = \sum\limits_{i=1}^n\lambda_i b_i \xi_i
+\end{equation*}
+and, for unit vector $\eta_2\in \rr^n$ with decomposition $\eta_2= \sum\limits_{i=1}^n c_i \xi_i$,
+\begin{equation*}
+\eta_2^T A \eta_1=\sum\limits_{i=1}^n\lambda_i c_i b_i\leq \max\{\abs{\lambda_i}\}=\frac{1}{\mu}
+\end{equation*}
+since all the eigenvalues are not bigger than $\frac{1}{\mu}$ and are not smaller than $\mu>0$.
+
+Therefore, it is bounded in $\mathcal{H}$. Fix $u\in \mathcal{H}$ and consider a bounded linear functional $T$ on $\mathcal{H}$ such that $T(v)=B[u,v]$ for all $v\in \mathcal{H}$. I can use the Riesz Representation Thereom and find a unique element $w\in \mathcal{H}$ satisfying
+\begin{equation*}
+B[u,v]=(w,v)_{\mathcal{H}}
+\end{equation*}
+for all $v\in \mathcal{H}$. It means we can find $w\in \mathcal{H}$ satisfying above for each $u\in \mathcal{H}$, so we can construct $\mathcal{L}:\mathcal{H}\rightarrow\mathcal{H}$ such that $\mathcal{L}(u)=w$. I need to show that this is bounded linear functional.
+\begin{enumerate}
+\item[Linearity:] For $\lambda_1,\lambda_2\in \mathbb{C}$, $u_1,u_2,v\in \mathcal{H}$...,
+\begin{equation*}
+\begin{split}
+(\mathcal{L}(\lambda_1 u_1+\lambda_2 u_2),v)_{\mathcal{H}}&=B[\lambda_1 u_1+\lambda_2 u_2,v]\\
+&=\lambda_1 B[u_1,v]+\lambda_2 B[u_2,v]\\
+&=\lambda_1 (\mathcal{L}(u_1),v)_{\mathcal{H}}+\lambda_2 (\mathcal{L}(u_2),v)_{\mathcal{H}}\\
+&=(\lambda_1\mathcal{L}(u_1)+\lambda_2\mathcal{L}(u_2),v)_{\mathcal{H}}
+\end{split}
+\end{equation*}
+for all $v\in \mathcal{H}$. By the uniqueness part of the Riesz Representation Theorem, $\mathcal{L}(\lambda_1 u_1+\lambda_2 u_2)=\lambda_1\mathcal{L}(u_1)+\lambda_2\mathcal{L}(u_2)$.
+\item[Boundedness:] For $u\in \mathcal{H}$,
+\begin{equation*}
+\norm{\mathcal{L}u}^2_\mathcal{H}=(\mathcal{L}u,\mathcal{L}u)_{\mathcal{H}}=B[u, \mathcal{L}u]\leq \frac{1}{\mu}\norm{u}_{\mathcal{H}}\norm{\mathcal{L}u}_{\mathcal{H}}
+\end{equation*}
+Therefore, $\norm{\mathcal{L}u}_{\mathcal{H}}\leq \frac{1}{\mu}\norm{u}_{\mathcal{H}}$ and $\mathcal{L}$ is bounded.
+\end{enumerate}
+\item[(c)] First, $\mathcal{L}^*$ is well-defined since if $v_1=v_2$ in $\mathcal{H}$, $(u,\mathcal{L}^* v_1)=(\mathcal{L}u,v_1)=(\mathcal{L}u,v_2)=(u,\mathcal{L}^*v_2)$ for all $u\in \mathcal{H}$, so $\mathcal{L}^*v_1=\mathcal{L}^*v_2$.
+
+Since $(a_{ij})$ is real valued and $a_{ij}=a_{ji}$, $B[u,v]=B[\overline{v},\overline{u}]=\overline{B[v,u]}$. Using this relation, for fixed $u\in\mathcal{H}$ and all $v\in \mathcal{H}$,
+\begin{equation*}
+\begin{split}
+(\mathcal{L}^*u, v)_{\mathcal{H}}=\overline{(v,\mathcal{L}^*u)_{\mathcal{H}}}=\overline{(\mathcal{L}v,u)_{\mathcal{H}}}=\overline{B[v,u]}=B[\overline{v},\overline{u}] =B[u,v] =(\mathcal{L}u,v)_{\mathcal{H}}.
+\end{split}
+\end{equation*}
+Therefore, $(\mathcal{L}u,v)_{\mathcal{H}}=(\mathcal{L}^*u,v)_{\mathcal{H}}$ for all $v$ and by Riesz Representation Theorem again, $\mathcal{L}^*u=\mathcal{L}u$ for all $u\in \mathcal{H}$.
+\item[(d)] Suppose $u$ is a nontrivial weak solution for the eigenvalue problem. By computing inner product;
+\begin{equation*}
+\int_\Omega (Lu)\overline{v}=\int_\Omega -\partial_j(a_{ij}\partial_i u)\overline{v}=\int_\Omega a_{ij}\partial_i u\partial_j \overline{v}=B[u,v]
+\end{equation*}
+for all $v\in \mathcal{H}$ since the real part and imaginary part of $u,v$ are in $H^1_0(\Omega)$. Therefore, we can define the condition of weak solution $u$ to satisfy
+\begin{equation*}
+B[u,v]=(\lambda u,v)_{L^2(\Omega)}...(p.316)
+\end{equation*}
+for all $v\in\mathcal{H}$. However,
+\begin{equation*}
+B[u,u]=(\mathcal{L}u,u)_{\mathcal{H}}=(\mathcal{L}^*u,u)_{\mathcal{H}}=(u,\mathcal{L}u)_{\mathcal{H}}=\overline{(\mathcal{L}u,u)_{\mathcal{H}}}=\overline{B[u,u]}
+\end{equation*}
+and it makes $\lambda(u,u)_{L^2(\Omega)}=(\lambda u,u)_{L^2(\Omega)}=\overline{(\lambda u,u)_{L^2(\Omega)}}=\overline{\lambda}\overline{(u,u)_{L^2(\Omega)}}$. Since $(u,u)_{L^2(\Omega)}\neq 0$ since $u\neq 0$ in $L^2(\Omega)$...(This may not true, so I may need to change the weak sol. def to $H^1_0(\Omega)$.) and $(u,u)_{L^2(\Omega)}\in \rr$, $\lambda\in \rr$.
 \end{enumerate}
 \end{enumerate}
+
+
+
+
+
 \section*{Problem 3}
 Since $u\in H^1(\Omega)$ is a weak solution to
 \begin{equation*}
@@ -149,6 +248,63 @@ w=0 & \text{on }\partial \Omega.
 \end{cases}
 \end{equation*}
 .
+
+I'll show the boundedness by contradiction. Assume that there exists $\{u'_k\}_{k=1}^\infty$, $\{f'_k\}$, $\{g'_k\}$ satisfying
+\begin{equation*}
+\norm{u'_k}_{L^2(\Omega)}>k\left(\norm{f'_k}_{L^2(\Omega)}+\norm{g'_k}_{H^1(\Omega)}\right)
+\end{equation*}
+and the boundary value problem. Let $u_k=\frac{u'_k}{\norm{u'_k}_{L^2(\Omega)}}$, $f_k=f'_k/{\norm{u'_k}_{L^2(\Omega)}}$, $g_k=g'_k/{\norm{u'_k}_{L^2(\Omega)}}$, then $u_k$ also satisfies the boundary value problem for $f_k$ and $g_k$ and the inequality
+\begin{equation*}
+\norm{u_k}_{L^2(\Omega)}>k\left(\norm{f_k}_{L^2(\Omega)}+\norm{g_k}_{H^1(\Omega)}\right).
+\end{equation*}
+Since $\norm{u_k}_{L^2(\Omega)}=1$ for all $k$, $\norm{f_k}_{L^2(\Omega)}, \norm{g_k}_{H^1(\Omega)}\rightarrow 0$ as $k\rightarrow \infty$. By usual energy estimation,
+\begin{equation*}
+\norm{u_k}^2_{H^1(\Omega)}\leq C\left(\norm{f_k}_{L^2(\Omega)}\norm{u_k}_{L^2(\Omega)}+\norm{u_k}^2_{L^2(\Omega)}\right)
+\end{equation*}
+(In the estimation in the book, the proof does not use the property of $u\in H^1_0(\Omega)$.)...(If time permit, I can write explicitly.(must))for the constant $C$ not depending on $f_k$ and $u_k$ and since $\norm{f_k}_{L^2(\Omega)}\rightarrow 0$ and $\norm{u_k}^2_{L^2(\Omega)}=1$, $\norm{u_k}_{H^1(\Omega)}$ is uniformly bounded. Therefore, by compact embedding theorem,(...$n=2,1$) there exists subsequence $\{u_{k_j}\}_{j=1}^\infty$ such that
+\begin{equation*}
+\begin{cases}
+u_{k_j}\rightharpoonup u & \text{weakly in }H^1(\Omega) \\
+u_{k_j}\rightarrow u & \text{in }L^2(\Omega)
+\end{cases}
+\end{equation*}
+where $u\in H^1(\Omega)$. (Note that $H^1(\Omega)$ is a Hilbert space.)
+
+Since $\norm{u_{k_j}}_{L^2(\Omega)}=1$ for all $j$, $\norm{u}_{L^2(\Omega)}=1$. Also,
+\begin{equation*}
+\begin{cases}
+\lim\limits_{k_j\rightarrow \infty}B[u_{k_j},\eta]=\lim\limits_{k_j\rightarrow \infty}(f_{k_j},\eta)_{L^2(\Omega)}=0 & \text{By }L^2\text{ convergence} \\
+\lim\limits_{k_j\rightarrow \infty}B[u_{k_j},\eta]=B[u,\eta] & \text{By }H^1\text{ weak convergence}.
+\end{cases}
+\end{equation*}
+for all $\eta\in H^1_0(\Omega)$. Therefore, $u$ is a nontrivial weak solution of the BVP:
+\begin{equation*}
+\begin{cases}
+Lu=0 & \text{in }\Omega \\
+u=0 & \text{in }\partial \Omega,
+\end{cases}
+\end{equation*}
+However, this is impossible by the given condition. Therefore, there exists $C$ not depending on $u, f, g$ such that
+\begin{equation*}
+\norm{u}_{L^2(\Omega)}\leq C\left(\norm{f}_{L^2(\Omega)}+\norm{g}_{H^1(\Omega)}\right)
+\end{equation*}
+Also, by the above equation,
+\begin{equation*}
+\begin{split}
+\norm{u}^2_{H^1(\Omega)}&\leq C\left(\norm{f}_{L^2(\Omega)}\norm{u}_{L^2(\Omega)}+\norm{u}^2_{L^2(\Omega)}\right) \\
+&\leq C\left(\norm{f}_{L^2(\Omega)}\norm{u}_{H^1(\Omega)}+\norm{u}_{L^2(\Omega)}\norm{u}_{H^1(\Omega)}\right) \\
+&\leq C'\left(\norm{f}_{L^2(\Omega)}+\norm{g}_{H^1(\Omega)}\right)\norm{u}_{H^1(\Omega)}
+\end{split}
+\end{equation*}
+and
+\begin{equation*}
+\norm{u}_{H^1(\Omega)}\leq C\left(\norm{f}_{L^2(\Omega)}+\norm{g}_{H^1(\Omega)}\right)\norm{u}_{H^1(\Omega)}
+\end{equation*}
+where the constant $C$ not depending on $u,f,g$.
+
+
+
+
 \section*{Problem 4}
 \begin{enumerate}
 \item[(a)] By computation,
@@ -228,7 +384,107 @@ so,
 \end{equation*}
 for some $C<C'$ constants depending only on $c,\Omega$.
 \end{enumerate}
-\section*{Problem 5}
 
+
+
+\section*{Problem 5}
+\begin{enumerate}
+\item[(a)] For $u,v\in H^1(\Omega)$,
+\begin{enumerate}
+\item[(i)]
+\begin{equation*}
+\begin{split}
+(v,u)_{H^1}&=\int_\Omega \nabla u\cdot \nabla v~dx+\int_{\partial \Omega} uv~dS\\
+&=\int_\Omega \nabla v\cdot \nabla u~dx+\int_{\partial \Omega} vu~dS \\
+&=(u,v)_{H^1}
+\end{split}
+\end{equation*}
+Therefore, $(u,v)_{H^1}=(v,u)_{H^1}$.
+\item[(ii)] Since $\Omega$ is bounded and $\partial U$ is $C^\infty$, consider a trace operator, which is bounded linear operator,
+\begin{equation*}
+T:H^1(\Omega)\rightarrow L^2(\partial \Omega)
+\end{equation*}
+such that $Tu=u|_{\partial \Omega}$ for $u\in H^2(\Omega)\cap C(\bar{\Omega})$ and $\norm{Tu}_{L^2(\partial\Omega)}\leq C\norm{u}_{H^1(\Omega)}$ for all $u\in H^1(\Omega)$ with the constant $C$ only depending on $p$ and $\Omega$.(Is $u\in C(\bar{\Omega})$??...)
+\begin{equation*}
+\begin{split}
+\abs{(u,v)_{H^1}}&=\abs{\int_\Omega \nabla u\cdot \nabla v~dx+\int_{\partial \Omega} uv~dS} \\
+&\leq \int_\Omega \abs{Du}\abs{Dv}~dx+\int_{\partial \Omega} \abs{u}\abs{v}~dS \\
+&\leq \norm{Du}_{L^2(\Omega)}\norm{Dv}_{L^2(\Omega)}+\norm{Tu}_{L^2(\Omega)}\norm{Tv}_{L^2(\Omega)}\\
+&\leq C(\norm{Du}_{L^2(\Omega)}\norm{Dv}_{L^2(\Omega)}+\norm{u}_{H^1(\Omega)}\norm{v}_{H^1(\Omega)}) \\
+&\leq C'(\norm{u}_{H^1(\Omega)}\norm{v}_{H^1(\Omega)}
+\end{split}
+\end{equation*}
+for some $C, C'$ constant independent on $u,v$.
+\item[(iii)] For nonzero $u\in H^1(\Omega)$,
+\begin{equation*}
+\begin{split}
+(u,u)_{H^1}&=\int_\Omega \nabla u\cdot \nabla u~dx+\int_{\partial \Omega} u^2~dS\\
+&=\norm{Du}^2_{L^2(\Omega)}+\norm{Tu}^2_{L^2(\partial \Omega)}\in (0,\infty)
+\end{split}
+\end{equation*}
+Therefore, $(\cdot,\cdot)_{H^1}$ is an inner product on $H^1(\Omega)$.(Linearity: For $a,b\in\rr$ and $u_1,u_2,v\in H^1(\Omega)$, $(au_1+bu_2,v)_{H^1}=\int_\Omega \nabla (au_1+bu_2)\cdot \nabla v~dx+\int_{\partial \Omega} (au_1+bu_2)v~dS=a\int_\Omega \nabla u_1\cdot \nabla v~dx+a\int_{\partial \Omega} u_1v~dS+b\int_\Omega \nabla u_2\cdot \nabla v~dx+b\int_{\partial \Omega} u_2v~dS=a(u_1,v)_{H^1}+b(u_2,v)_{H^1}$.) I need to show the coercivity.
+
+I'll prove the coercivity by contradiction. Suppose there exists a sequence $\{u_k\}_{k=1}^\infty\subset H^1(\Omega)$ such that
+\begin{equation*}
+\norm{u_k}^2_{H^1(\Omega)}> k(u_k,u_k)_{H^1}.
+\end{equation*}
+For such $u_k$, take $v_k=u_k/\norm{u_k}_{H^1(\Omega)}$. Then, $\norm{v_k}_{H^1(\Omega)}=1$ and satisfies the above relation. As $k\rightarrow \infty$, $(v_k,v_k)_{H^1}\rightarrow 0$.
+
+Since $\{v_k\}$ is a bounded sequence in $H^1(\Omega)$, which is compactly embedded in $L^2(\Omega)$, (For $n>2$ case, this is from Rellich-Kondrachov Compactness Theorem and for $n=2$, ...) so there exists a subsequence $\{v_{k_j}\}_{j=1}^\infty$ such that 
+\begin{equation*}
+\begin{cases}
+v_{k_j}\rightharpoonup v & \text{weakly in }H^1(\Omega) \\
+v_{k_j}\rightarrow v & \text{in }L^2(\Omega)
+\end{cases}
+\end{equation*}
+since $H^1(\Omega)$ is Hilbert space...(Should I write the unique limit point?) As $v\in H^1(\Omega)$ and $\norm{v_{k_j}}_{H^1(\Omega)}=1$ for all $k_j$, $\norm{v}_{H^1(\Omega)}\leq 1$. Since $\norm{Dv_{k_j}}^2_{L^2(\Omega)}\leq (v_{k_j},v_{k_j})_{H^1}\leq \frac{1}{_{k_j}}$, $\norm{Dv_{k_j}}^2_{L^2(\Omega)}\rightarrow 0$ as $_{k_j}\rightarrow \infty$ and it means $\norm{v}_{L^2(\Omega)}=1$, $\norm{v}_{H^1(\Omega)}=0$ and $\norm{Dv}_{L^2(\Omega)}=0$. (If not, for some $N$, $\norm{v_N}^2_{H^1(\Omega)}=\norm{v_N}^2_{L^2(\Omega)}+\norm{Dv_N}^2_{L^2(\Omega)}<1$, which is contradiction.) Also,
+\begin{equation*}
+\norm{v_k-v}^2_{H^1(\Omega)}=\norm{v_{k_j}-v}^2_{L^2(\Omega)}+\norm{D(v_{k_j}-v)}^2_{L^2(\Omega)}\leq \norm{v_{k_j}-v}^2_{L^2(\Omega)}+\norm{Dv_{k_j}}^2_{L^2(\Omega)}+\norm{D(v_{k_j}-v)}^2_{L^2(\Omega)}\rightarrow 0
+\end{equation*}
+as ${k_j}\rightarrow \infty$, $v_{k_j}\rightarrow v$ in $H^1(\Omega)$.
+
+Since $\norm{Tv_{k_j}}^2_{L^2(\partial \Omega)}\leq (v_{k_j},v_{k_j})_{H^1}<\frac{1}{k_j}$,
+\begin{equation*}
+\norm{Tv}_{L^2(\partial \Omega)}\leq \norm{T(v-v_{k_j})}_{L^2(\partial \Omega)}+\norm{Tv_{k_j}}_{L^2(\partial \Omega)}\leq \frac{1}{\sqrt{k_j}}+C\norm{v-v_{k_j}}_{H^1(\Omega)}
+\end{equation*}
+where the $C$ is given by the Trace Theorem. Therefore, $\norm{Tv}_{L^2(\partial \Omega)}=0$.
+
+Summarising the fact, $v\in H^1(\Omega)$ and $Tv=0$ on $\partial \Omega$, so $v\in H^1_0(\Omega)$ and $\norm{Dv}_{L^2(\Omega)}=0$. For $n>2$, $\norm{v}_{L^2(\Omega)}\leq C\norm{Dv}_{L^2(\Omega)}$ for the constant $C$ depending only on $n$, and $\Omega$, so $\norm{v}_{L^2(\Omega)}=0$. For $n=2$, we can find $p$ near to $2$ and get $\norm{v}_{L^2(\Omega)}\leq C\norm{Dv}_{L^p(\Omega)}$. Since $\norm{Dv}_{L^2(\Omega)}=0\Rightarrow \norm{Dv}_{L^p(\Omega)}=0$, $\norm{v}_{L^2(\Omega)}=0$. For $n=1$, since $Dv=0$ a.e. in $\Omega$, $v$ is constant a.e. in $\Omega$ and since $p=2>1$, we can identify this as a continuous function.(Modify the measure zero part.) Since $v\in C(\overline{U})$, $Tv=v|_\partial{U}$ and if $\norm{v}_{L^2(\Omega)}=\neq 0$, $Tv\neq 0$, which is contradiction. Therefore, $\norm{v}_{L^2(\Omega)}=0$ also in $n=1$ case. Finally, this result shows that $v=0$, but $\norm{v}_{H^1(\Omega)}\neq 0$, which is contradiction.
+
+Thus, there exists $C$ not depending on $u\in H^1(\Omega)$ such that
+\begin{equation*}
+\norm{u}^2_{H^1(\Omega)}\leq C(u,u)_{H^1}.
+\end{equation*}
+\end{enumerate}
+\item[(b)]
+\item[(c)] I'll rewrite $(u,v)_{H^1}$ by $B[u,v]$. Consider a BVP:
+\begin{equation*}
+\begin{cases}
+-\Laplace u=f & \text{in }\Omega\\
+\nabla u\cdot \bm{n}_{\text{in}}-u=0
+\end{cases}
+\end{equation*}
+for $f\in L^2(\Omega)$. Then, the weak solution of the BVP should satisfy
+\begin{equation*}
+B[u,v]=\int_\Omega f v~dx
+\end{equation*}
+for all $v\in H^1(\Omega)$. (This result is from problem 4 (a)) Since $B$ is symmetric bounded linear function with coercivity, By the Lax-Millgram Theorem, there exists unique weak solution $u\in H^1(\Omega)$ to the BVP for each $f$. Let's define $L^{-1}:L^2(\Omega)\rightarrow L^2(\Omega)$ by sending $f$ to $u$. ($L^{-1}$ is compact p. 324)
+
+$u$ is a weak solution of the EVP in the problem if and only if $L^{-1}(\lambda u)=u$ if and only if $u-\lambda L^{-1}u=0$. Since $\lambda>0$, we can denote $\left(L^{-1}-\frac{1}{\lambda}\text{Id}\right)u=0$... Therefore, $\lambda\in \Sigma$ if and only if $\frac{1}{\lambda}\in \sigma_p(L^{-1})\setminus\{0\}$ and $\Sigma=\left\{\lambda\in \rr\mid \frac{1}{\lambda}\in \sigma_p\left(L^{-1}\right)\setminus\{0\}\right\}$.
+
+Since $L^{-1}:L^2(\Omega)\rightarrow L^2(\Omega)$ and $L^2(\Omega)$ separable...
+Also, $L^{-1}$: symmetric: Fix $f,g\in L^2(\Omega)$ and let $\omega=L^{-1}f$, $\xi=L^{-1}g$, then $\omega,\xi\in H^1(\Omega)$ and
+\begin{equation*}
+\begin{split}
+(L^{-1}f, g)_{L^2(\Omega)}&=\int_\Omega g\omega dx\\
+&=\int_\Omega \nabla \xi\cdot \nabla \omega dx+\int_{\partial \Omega} \xi \omega dS \\
+&=\int_\Omega \nabla \omega\cdot \nabla \xi dx+\int_{\partial \Omega} \omega\xi dS \\
+&=\int_\Omega f \xi dx \\
+&=(f, L^{-1}g).
+\end{split}
+\end{equation*}
+Therefore, there exists countable orthonormal basis of $L^2(\Omega)$ consisting of eigenvectors of $L^{-1}$. By Fredholm alternative, the dimension of null space of $\left(\text{Id}-\lambda L^{-1}\right)$ for $\lambda\in \Sigma$ is finite. Therefore, $\abs{\Sigma}=\infty$. Since $L^{-1}$ is compact and the dimension of $L^2(\Omega)$ is infinite, $\sigma(L^{-1})\setminus\{0\}=\sigma_p(L^{-1})\setminus\{0\}$ and $\sigma(L^{-1})\setminus\{0\}$ is a sequence tending to $0$. Therefore, $\Sigma$ consists of the eigenvalues monotonic increasing to $\infty$.
+\item[(d)]
+\end{enumerate}
 \section*{Problem 6}
 \end{document}
