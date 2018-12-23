@@ -106,26 +106,29 @@ Since $X$ is Banach space and $(A-\eta \text{Id})^{-1}:X\rightarrow X$ is closed
 \item[(2)] For $a,b\in \mathbb{C}$ and $u,u_*,u_{**}\in \mathcal{H}$,
 \begin{equation*}
 \begin{split}
-(au+bu_*,u_{**})_{\mathcal{H}}&=\int_\Omega ((av+bv_*)+i(aw+bw_*))(v_{**}-iw_{**})+(D(av+bv_*)+iD(aw+bw_*))(Dv_{**}-iDw_{**})dx \\
-&=a\int_\Omega (v+iw)(v_{**}-iw_{**})+(Dv+iDw)(Dv_{**}-iDw_{**})dx+b\int_\Omega (v_*+iw_*)(v_{**}-iw_{**})+(Dv_*+iDw_*)(Dv_{**}-iDw_{**})dx \\
+(au+bu_*,u_{**})_{\mathcal{H}}&=\int_\Omega ((av+bv_*)+i(aw+bw_*))(v_{**}-iw_{**})\\
+&+(D(av+bv_*)+iD(aw+bw_*))(Dv_{**}-iDw_{**})dx \\
+&=a\int_\Omega (v+iw)(v_{**}-iw_{**})+(Dv+iDw)(Dv_{**}-iDw_{**})dx\\
+&+b\int_\Omega (v_*+iw_*)(v_{**}-iw_{**})+(Dv_*+iDw_*)(Dv_{**}-iDw_{**})dx \\
 &=a(u, u_{**})_{\mathcal{H}}+b(u_*, u_{**})_{\mathcal{H}}.
 \end{split}
 \end{equation*}
-\item[(3)] For $u\in \mathcal{H}$,
+\item[(3)] For nonzero $u\in \mathcal{H}$,
 \begin{equation*}
 \begin{split}
 (u,u)_{\mathcal{H}}&=\int_\Omega (v+iw)(v-iw)+(Dv+iDw)(Dv-iDw)dx \\
-&=\int_\Omega u\overline{u}+Du\overline{Du}dx \\
-&=\norm{u}^2_{H^1_0(\Omega)}\in (0,\infty)....
+&=\int_\Omega v^2+w^2+\abs{Dv}^2+\abs{Dw}^2dx \\
+&=\norm{v}^2_{H^1_0(\Omega)}+\norm{w}^2_{H^1_0(\Omega)}\in (0,\infty).
 \end{split}
 \end{equation*}
+If both $\norm{v}^2_{H^1_0(\Omega)}$ and $\norm{w}^2_{H^1_0(\Omega)}$ are zero, $v=w=0$ in $H^1_0(\Omega)$ and it means $u=0$, which is contradiction.
 \end{enumerate}
 Therefore, $(\cdot,\cdot)_{\mathcal{H}}$ yields an inner product in $\mathcal{H}$.
-\item[(b)] First, note that $\mathcal{H}$ is a Hilbert space...(Maybe I need to show this.)
+\item[(b)] First, note that $\mathcal{H}$ is a Hilbert space.(First, $H^1_0(\Omega)$ is a Hilbert space as a closed subspace of Hilbert space $H^1(\Omega)$. Assume that $\{u_j\}_{j=1}^\infty$ is a Cauchy sequence in $\mathcal{H}$ about the norm defined above. By (3) in (a), $(u_i-u_j,u_i-u_j)_{\mathcal{H}}=\norm{\text{Re}(u_i-u_j)}^2_{H^1_0(\Omega)}+\norm{\text{Im}(u_i-u_j)}^2_{H^1_0(\Omega)}$ and both $\text{Re}(u_i-u_j)$ and $\text{Im}(u_i-u_j)$ are Cauchy sequence. Therefore, it has a convergent subsequence and $\mathcal{H}$ is a Hilbert space.)
 
-I'll first show that the bilinear form $B$ is bounded linear functional
+I'll first show that the bilinear form $B$ is bounded.
 \begin{enumerate}
-\item[Linearity:] For $u_1,u_2,v_1,v_2\in \mathcal{H}$ and $c\in \mathbb{C}$...(??? is it really linaer?),
+\item[Bilinearity:] For $u_1,u_2,v_1,v_2\in \mathcal{H}$ and $c\in \mathbb{C}$,
 \begin{equation*}
 \begin{split}
 B[cu_1+u_2,v_1]=\int_\Omega a_{ij}\partial_i (cu_1+u_2)\partial \overline{v}_1~dx \\
@@ -136,12 +139,11 @@ B[cu_1+u_2,v_1]=\int_\Omega a_{ij}\partial_i (cu_1+u_2)\partial \overline{v}_1~d
 and
 \begin{equation*}
 \begin{split}
-B[u_1,cv+1+v_2]=\int_\Omega a_{ij}\partial_i u_1\partial (c\overline{v}_1+\overline{v}_2)~dx \\
-&=c\int_\Omega a_{ij}\partial_i u_1\partial \overline{v}_1~dx+\int_\Omega a_{ij}\partial_i u_2\partial \overline{v}_1~dx \\
-&=cB[u_1,v_1]+B[u_2,v_1]
+B[u_1,cv_1+v_2]=\int_\Omega a_{ij}\partial_i u_1\partial (c\overline{v}_1+\overline{v}_2)~dx \\
+&=\overline{c}\int_\Omega a_{ij}\partial_i u_1\partial \overline{v}_1~dx+\int_\Omega a_{ij}\partial_i u_2\partial \overline{v}_1~dx \\
+&=\overline{c}B[u_1,v_1]+B[u_2,v_1]
 \end{split}
 \end{equation*}
-...
 \item[Boundedness:]  For $u,v\in \mathcal{H}$,
 \begin{equation*}
 \begin{split}
@@ -175,7 +177,7 @@ B[u,v]=(w,v)_{\mathcal{H}}
 \end{equation*}
 for all $v\in \mathcal{H}$. It means we can find $w\in \mathcal{H}$ satisfying above for each $u\in \mathcal{H}$, so we can construct $\mathcal{L}:\mathcal{H}\rightarrow\mathcal{H}$ such that $\mathcal{L}(u)=w$. I need to show that this is bounded linear functional.
 \begin{enumerate}
-\item[Linearity:] For $\lambda_1,\lambda_2\in \mathbb{C}$, $u_1,u_2,v\in \mathcal{H}$...,
+\item[Linearity:] For $\lambda_1,\lambda_2\in \mathbb{C}$, $u_1,u_2,v\in \mathcal{H}$,
 \begin{equation*}
 \begin{split}
 (\mathcal{L}(\lambda_1 u_1+\lambda_2 u_2),v)_{\mathcal{H}}&=B[\lambda_1 u_1+\lambda_2 u_2,v]\\
@@ -208,11 +210,11 @@ for all $v\in \mathcal{H}$ since the real part and imaginary part of $u,v$ are i
 \begin{equation*}
 B[u,v]=(\lambda u,v)_{L^2(\Omega)}...(p.316)
 \end{equation*}
-for all $v\in\mathcal{H}$. However,
+for all $v\in\mathcal{H}$. However, as $u=0$ on $\partial \Omega$, $u\in \mathcal{H}$ and
 \begin{equation*}
 B[u,u]=(\mathcal{L}u,u)_{\mathcal{H}}=(\mathcal{L}^*u,u)_{\mathcal{H}}=(u,\mathcal{L}u)_{\mathcal{H}}=\overline{(\mathcal{L}u,u)_{\mathcal{H}}}=\overline{B[u,u]}
 \end{equation*}
-and it makes $\lambda(u,u)_{L^2(\Omega)}=(\lambda u,u)_{L^2(\Omega)}=\overline{(\lambda u,u)_{L^2(\Omega)}}=\overline{\lambda}\overline{(u,u)_{L^2(\Omega)}}$. Since $(u,u)_{L^2(\Omega)}\neq 0$ since $u\neq 0$ in $L^2(\Omega)$...(This may not true, so I may need to change the weak sol. def to $H^1_0(\Omega)$.) and $(u,u)_{L^2(\Omega)}\in \rr$, $\lambda\in \rr$.
+and it makes $\lambda(u,u)_{L^2(\Omega)}=(\lambda u,u)_{L^2(\Omega)}=\overline{(\lambda u,u)_{L^2(\Omega)}}=\overline{\lambda}\overline{(u,u)_{L^2(\Omega)}}$. Since $(u,u)_{L^2(\Omega)}\neq 0$ since $u\neq 0$ in $\mathcal{H}$...
 \end{enumerate}
 \end{enumerate}
 
@@ -257,11 +259,11 @@ and the boundary value problem. Let $u_k=\frac{u'_k}{\norm{u'_k}_{L^2(\Omega)}}$
 \begin{equation*}
 \norm{u_k}_{L^2(\Omega)}>k\left(\norm{f_k}_{L^2(\Omega)}+\norm{g_k}_{H^1(\Omega)}\right).
 \end{equation*}
-Since $\norm{u_k}_{L^2(\Omega)}=1$ for all $k$, $\norm{f_k}_{L^2(\Omega)}, \norm{g_k}_{H^1(\Omega)}\rightarrow 0$ as $k\rightarrow \infty$. By usual energy estimation,
+Since $\norm{u_k}_{L^2(\Omega)}=1$ for all $k$, $\norm{f_k}_{L^2(\Omega)}, \norm{g_k}_{H^1(\Omega)}\rightarrow 0$ as $k\rightarrow \infty$. By a variation of energy estimation,
 \begin{equation*}
 \norm{u_k}^2_{H^1(\Omega)}\leq C\left(\norm{f_k}_{L^2(\Omega)}\norm{u_k}_{L^2(\Omega)}+\norm{u_k}^2_{L^2(\Omega)}\right)
 \end{equation*}
-(In the estimation in the book, the proof does not use the property of $u\in H^1_0(\Omega)$.)...(If time permit, I can write explicitly.(must))for the constant $C$ not depending on $f_k$ and $u_k$ and since $\norm{f_k}_{L^2(\Omega)}\rightarrow 0$ and $\norm{u_k}^2_{L^2(\Omega)}=1$, $\norm{u_k}_{H^1(\Omega)}$ is uniformly bounded. Therefore, by compact embedding theorem,(...$n=2,1$) there exists subsequence $\{u_{k_j}\}_{j=1}^\infty$ such that
+for the constant $C$ not depending on $f_k$ and $u_k$.(By the ellipticity condition, there exists $\theta>0$ such that Since $\norm{f_k}_{L^2(\Omega)}\rightarrow 0$ and $\norm{u_k}^2_{L^2(\Omega)}=1$, $\norm{u_k}_{H^1(\Omega)}$ is uniformly bounded. Therefore, by compact embedding theorem,(...$n=2,1$) there exists subsequence $\{u_{k_j}\}_{j=1}^\infty$ such that
 \begin{equation*}
 \begin{cases}
 u_{k_j}\rightharpoonup u & \text{weakly in }H^1(\Omega) \\
@@ -487,4 +489,121 @@ Therefore, there exists countable orthonormal basis of $L^2(\Omega)$ consisting 
 \item[(d)]
 \end{enumerate}
 \section*{Problem 6}
+\begin{enumerate}
+\item[(Step 1)] In problem 5 (d), we found a set of functions $\{w_k\}_{k=1}^\infty\subset H^1(\Omega)\cap C^\infty (\Omega)$ such that
+\begin{enumerate}
+\item[(i)] $\{w_k\}$ forms an orthornormal basis of $L^2(\Omega)$, and
+\item[(ii)] $\{w_k\}$ forms an orthogonal basis of $H^1(\Omega)$ with respect to the inner product $(\cdot,\cdot)_{H^1}=B[\cdot,\cdot]$.
+
+The weak solution of (IBVP-P) should satisfies
+\begin{equation*}
+(u'(t),v)_{L^2(\Omega)}+B[u(t),v]=(f(t),v)_{L^2(\Omega)}
+\end{equation*}
+for $v\in H^1(\Omega)$ and a.e. time $0\leq t\leq T$ and $u(0)=g$.
+\end{enumerate}
+\item[(Step 2)] I'll use Galerkin approximation. Fix $m\in \mathbb{N}$ and set $u_m(t,x)=\sum\limits_{k=1}^m d_k(t)w_k(x)$. I need to find $\{d_k\}_{k=1}^m$ satisfying
+\begin{enumerate}
+\item[(i)] $(u_m'(t,\cdot),w_k)_{L^2(\Omega)}+B[u_m(t), w_k]=(f(t,\cdot), w_k)_{L^2(\Omega)}$ for $1\leq j\leq m$.
+\item[(ii)] $u_m(0,x)=\sum\limits_{k=1}^m d_k(0)w_k(x)=g^{(m)}(x)$ where $g^{(m)}(x)=\sum\limits_{k=1}^m G_k w_k(x)$, $G_k=(g, w_k)_{L^2(\Omega)}$.
+\end{enumerate}
+Note that $u_m$ satisfies boundary condition $\nabla u_m\cdot \bm{n}_{\text{in}}-u_m=0$ on $(0,T]\times \partial \Omega$ since $w_k=0$ on $\partial \Omega$ for all $k$.
+
+Define $f^{(m)}(t,x)\coloneqq \sum\limits_{k=1}^m F_k(t)w_k(x)$ where $F_k(t)=(f(t, \cdot),w_k)_{L^2(\Omega)}$.
+
+Note that (i) holds if and only if $d'_j(t)+\lambda_j d_j(t)=F_j(t)$ for $0<t\leq T$ and $1\leq j\leq m$, and (ii) holds if and only if $d_j(0)=G_j=(g,w_j)_{L^2(\Omega)}$:
+\begin{equation*}
+(\sum\limits_{k=1}^m d'_k(t)w_k(x),w_j)_{L^2(\Omega)}+B[\sum\limits_{k=1}^m d_k(t)w_k(x), w_j]=(f(t,\cdot), w_j)_{L^2(\Omega)}\Leftrightarrow d'_j(t)+\lambda_j d_j(t)=F_j(t)
+\end{equation*}
+and
+\begin{equation*}
+\begin{split}
+\sum\limits_{k=1}^m d_k(0)w_k(x)&=\sum\limits_{k=1}^m G_k w_k(x) \\
+&\Leftrightarrow \left(\sum\limits_{k=1}^m d_k(0)w_k(x), w_j(x)\right)_{L^2(\Omega)}=\left(\sum\limits_{k=1}^m G_k w_k(x), w_j(x)\right)_{L^2(\Omega)}~\text{For all }1\leq j\leq m \\
+&\Leftrightarrow d_j(0)=G_j~\text{For all }1\leq j\leq m
+\end{split}
+\end{equation*}
+Since each $F_j(t),G_j(t)$ are smooth, by the uniqueness existence of ODEs, the initial value problem for each $j$:
+\begin{equation*}
+\begin{cases}
+d'_j(t)+\lambda_j d_j(t)=F_j(t) & 0<t\leq T\\
+d_j(0)=G_j=(g,w_j)_{L^2(\Omega)}
+\end{cases}
+\end{equation*}
+has a unique smooth solution $d_j$ for $1\leq j\leq m$. With these $d_j$, $u_m(t,x)=\sum\limits_{k=1}^m d_k(t)w_k(t)$ satisfies (i),(ii) and $0$ on $(0,T]\times \partial \Omega$.
+
+What I want is that as $m\rightarrow \infty$, $u_m\rightarrow u\in L^2((0,T);H^1(\Omega)	)$, $u'\in L^2((0,T);H^1_*(\Omega))$.
+
+For now, I'll accept the proposition:
+\begin{proposition}
+For each $u_m$ satisfies
+\begin{equation*}
+\max_{t\in [0,T]}\norm{u_m(t)}_{L^2(\Omega)}+\norm{u_m(t)}_{L^2(0, t;H^1(\Omega))}+\norm{u'_m}_{L^2(0,T;H	_*^1(\Omega))}\leq C\left(\norm{f}_{L^2(0,T;L^2(\Omega))}+\norm{g}_{L^2(\Omega)}\right)
+\end{equation*}
+for some constant $C$ depending only on $\Omega,T$.
+\end{proposition}
+\item[(Step 3)]
+By the proposition, we get the fact that $\{u_m\}$ is uniformly bounded in $L^2(0,T;H^1(\Omega))$ and $\{u'_m\}$ is uniformly bounded in $L^2(0,T;H	_*^1(\Omega))$. Since $L^2(0,T;H^1(\Omega))$ and $L^2(0,T;H	_*^1(\Omega))$ are Hilbert space since $L^2(0,T)$ is..., there is a subsequence such that
+\begin{equation*}
+\begin{cases}
+u_{m_k}\rightharpoonup u & \text{in }L^2(0,T;H^1(\Omega)) \\
+u'_{m_k}\rightharpoonup u' & \text{in }L^2(0,T;H	_*^1(\Omega))
+\end{cases}
+\end{equation*}
+(We know that $u'_{m_k}\rightharpoonup w\in L^2(0,T;H	_*^1(\Omega))$. I'll show that $u'=w$. For $\phi\in C^\infty_c(0,T)$ and $v\in H^1(\Omega)$,
+\begin{equation*}
+\begin{split}
+\langle \int_0^T \phi'(t)u(t) dt,v\rangle&=\int_0^T  \langle \phi'(t)u(t), v\rangle dt =\int_0^T  \langle u(t), \phi'(t)v\rangle dt\\
+&=\int_0^T  \lim\limits_{m_k\rightarrow\infty}\langle u_{m_k}(t), \phi'(t)v\rangle dt =\lim\limits_{m_k\rightarrow\infty}\int_0^T \langle u_{m_k}(t), \phi'(t)v\rangle dt \\
+&=\lim\limits_{m_k\rightarrow\infty}\langle\int_0^T  u_{m_k}(t)\phi'(t) dt, v\rangle =\lim\limits_{m_k\rightarrow\infty}\langle\int_0^T  u'_{m_k}(t)\phi(t) dt, v\rangle \\
+&=\int_0^T  \lim\limits_{m_k\rightarrow\infty}\langle u'_{m_k}(t), \phi(t)v\rangle dt =\int_0^T \langle w(t), \phi(t)v\rangle dt \\
+&=\langle\int_0^T  w(t)\phi(t) dt, v\rangle.
+\end{split}
+\end{equation*}
+The $\langle\cdot,\cdot,\rangle$ represent the action of $H^1_*(\Omega)$ to $H^1(\Omega)$ and the commutativity of $\langle\cdot,\cdot,\rangle$ and integral is by smoothness of $\phi$ and riemann sum argument. The commutativity of limit and integral is by the boundedness of $U$ and $(0,T)$ and integrability of $u,v,\phi$ with dominance convergence theorem. Therefore, $u'=w$.)
+
+Now, I'll show that $u$ is the weak solution to (IBVP-P). 
+
+Since $\nabla u_{m_k}\cdot \bm{n}_{\text{in}}-u_{m_k}=0$ on $(0,T]\times \partial \Omega$ for all $m_k$, $\nabla u\cdot \bm{n}_{\text{in}}-u=0$ on $(0,T]\times \partial \Omega$.
+
+Fix $N\in \mathbb{N}$ and fix $m_k\geq N$. Consider $u_{m_k}=\sum\limits_{i=1}^{m_k} d_i(t)w_i(x)$. Fix $j\in\{1,\cdots, N\}$ and let $\alpha(t)$ be a smooth function. Then,
+\begin{equation*}
+\begin{split}
+&\int_0^T \alpha(s)\left((u'_{m_k}(s),w_j)_{L^2(\Omega)}+B[u_{m_k}(s),w_j]\right)ds=\int_0^T (f^{(m_l)}(t),w_j)_{L^2(\Omega)}\alpha(s)ds \\
+&\Leftrightarrow \int_0^T (u'_{m_k}(s),\alpha(s)w_j)_{L^2(\Omega)}+B[u_{m_k}(s),\alpha(s)w_j]ds=\int_0^T (f^{(m_k)}(t),w_j)_{L^2(\Omega)}\alpha(s)ds
+\end{split}
+\end{equation*}
+By the weak convergence, as $m_k\rightarrow \infty$,
+\begin{equation*}
+\int_0^T (u'(s),\alpha(s)w_j)_{L^2(\Omega)}+B[u(s),\alpha(s)w_j]ds=\int_0^T (f(t),w_j)_{L^2(\Omega)}\alpha(s)ds
+\end{equation*}
+Since $\alpha(s)$ is arbitrary, we can let $\alpha(s)\rightarrow \delta(s-t)$ (such as standard mollifier) and get
+\begin{equation*}
+(u'(t),w_j)_{L^2(\Omega)}+B[u(t),w_j]=(f(t),w_j)_{L^2(\Omega)}
+\end{equation*}
+Since $N$ is arbitrarily fixed, this is true for all $j$. Since the function $\sum\limits_{i=1}^n d_i(x)w_i(x)$ with coefficient $d_i(x)\in H^1(\Omega)$ is dense in $H^1(\Omega)$, we get
+\begin{equation*}
+(u'(t),v)_{L^2(\Omega)}+B[u(t),v]=(f(t),v)_{L^2(\Omega)}
+\end{equation*}
+for $v\in H^1(\Omega)$ and a.e. time $0\leq t\leq T$.
+
+I still need to check the initial condition. For the same circumstance with one more condition $\alpha(T)=0$,
+\begin{equation*}
+\begin{split}
+&\int_0^T (u'(s),\alpha(s)w_j)_{L^2(\Omega)}+B[u(s),\alpha(s)w_j]ds=\int_0^T (f(t),w_j)_{L^2(\Omega)}\alpha(s)ds \\
+&\Rightarrow \int_0^T -(u(s),(\alpha(s)w_j)')_{L^2(\Omega)}+B[u(s),\alpha(s)w_j]ds=\int_0^T (f(t),w_j)_{L^2(\Omega)}\alpha(s)ds+(u(0),\alpha(0)w_j))
+\end{split}
+\end{equation*}
+and
+\begin{equation*}
+\begin{split}
+&\int_0^T (u'_{m_k}(s),\alpha(s)w_j)_{L^2(\Omega)}+B[u_{m_k}(s),\alpha(s)w_j]ds=\int_0^T (f^{(m_k)}(t),w_j)_{L^2(\Omega)}\alpha(s)ds \\
+&\Rightarrow \int_0^T -(u_{m_k}(s),(\alpha(s)w_j)')_{L^2(\Omega)}+B[u_{m_k}(s),\alpha(s)w_j]ds=\int_0^T (f^{(m_k)}(t),w_j)_{L^2(\Omega)}\alpha(s)ds+(u_{m_k}(0),(\alpha(0)w_j)).
+\end{split}
+\end{equation*}
+Letting $m_k\rightarrow\infty$ and by weak convergence,
+\begin{equation*}
+\int_0^T -(u(s),(\alpha(s)w_j)')_{L^2(\Omega)}+B[u(s),\alpha(s)w_j]ds=\int_0^T (f(t),w_j)_{L^2(\Omega)}\alpha(s)ds+(g(0),(\alpha(0)w_j))
+\end{equation*}
+as $u_{m_k}(0)=g^{(m_k)}$ and $\lim\limits_{m_k\rightarrow\infty} u_{m_k}(0)=\lim\limits_{m_k\rightarrow\infty}g^{(m_k)}=g$. This is true for all $\alpha\in C^\infty((0, T))$ and for all $j$, $u(0)=g(0)$.
+\end{enumerate}
 \end{document}
