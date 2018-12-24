@@ -131,7 +131,7 @@ I'll first show that the bilinear form $B$ is bounded.
 \item[Bilinearity:] For $u_1,u_2,v_1,v_2\in \mathcal{H}$ and $c\in \mathbb{C}$,
 \begin{equation*}
 \begin{split}
-B[cu_1+u_2,v_1]=\int_\Omega a_{ij}\partial_i (cu_1+u_2)\partial \overline{v}_1~dx \\
+B[cu_1+u_2,v_1]&=\int_\Omega a_{ij}\partial_i (cu_1+u_2)\partial \overline{v}_1~dx \\
 &=c\int_\Omega a_{ij}\partial_i u_1\partial \overline{v}_1~dx+\int_\Omega a_{ij}\partial_i u_2\partial \overline{v}_1~dx \\
 &=cB[u_1,v_1]+B[u_2,v_1]
 \end{split}
@@ -139,7 +139,7 @@ B[cu_1+u_2,v_1]=\int_\Omega a_{ij}\partial_i (cu_1+u_2)\partial \overline{v}_1~d
 and
 \begin{equation*}
 \begin{split}
-B[u_1,cv_1+v_2]=\int_\Omega a_{ij}\partial_i u_1\partial (c\overline{v}_1+\overline{v}_2)~dx \\
+B[u_1,cv_1+v_2]&=\int_\Omega a_{ij}\partial_i u_1\partial (c\overline{v}_1+\overline{v}_2)~dx \\
 &=\overline{c}\int_\Omega a_{ij}\partial_i u_1\partial \overline{v}_1~dx+\int_\Omega a_{ij}\partial_i u_2\partial \overline{v}_1~dx \\
 &=\overline{c}B[u_1,v_1]+B[u_2,v_1]
 \end{split}
@@ -195,13 +195,21 @@ Therefore, $\norm{\mathcal{L}u}_{\mathcal{H}}\leq \frac{1}{\mu}\norm{u}_{\mathca
 \end{enumerate}
 \item[(c)] First, $\mathcal{L}^*$ is well-defined since if $v_1=v_2$ in $\mathcal{H}$, $(u,\mathcal{L}^* v_1)=(\mathcal{L}u,v_1)=(\mathcal{L}u,v_2)=(u,\mathcal{L}^*v_2)$ for all $u\in \mathcal{H}$, so $\mathcal{L}^*v_1=\mathcal{L}^*v_2$.
 
-Since $(a_{ij})$ is real valued and $a_{ij}=a_{ji}$, $B[u,v]=B[\overline{v},\overline{u}]=\overline{B[v,u]}$. Using this relation, for fixed $u\in\mathcal{H}$ and all $v\in \mathcal{H}$,
+Since $(a_{ij})$ is real valued and $a_{ij}=a_{ji}$, $B[u,v]=B[\overline{v},\overline{u}]=\overline{B[v,u]}$ as
+\begin{equation*}
+\begin{split}
+B[\overline{u},\overline{v}]&=\int_\Omega a_{ij} \partial_i \overline{u}\partial_j v dx \\
+&=\int_\Omega a_{ji} \partial_j v \partial_i \overline{u} dx \\
+&=B[v,u]
+\end{split}
+\end{equation*}
+Using this relation, for fixed $u\in\mathcal{H}$ and all $v\in \mathcal{H}$,
 \begin{equation*}
 \begin{split}
 (\mathcal{L}^*u, v)_{\mathcal{H}}=\overline{(v,\mathcal{L}^*u)_{\mathcal{H}}}=\overline{(\mathcal{L}v,u)_{\mathcal{H}}}=\overline{B[v,u]}=B[\overline{v},\overline{u}] =B[u,v] =(\mathcal{L}u,v)_{\mathcal{H}}.
 \end{split}
 \end{equation*}
-Therefore, $(\mathcal{L}u,v)_{\mathcal{H}}=(\mathcal{L}^*u,v)_{\mathcal{H}}$ for all $v$ and by Riesz Representation Theorem again, $\mathcal{L}^*u=\mathcal{L}u$ for all $u\in \mathcal{H}$.
+Therefore, $(\mathcal{L}u,v)_{\mathcal{H}}=(\mathcal{L}^*u,v)_{\mathcal{H}}$ for all $v$ and by uniqueness part of Riesz Representation Theorem again, $\mathcal{L}^*u=\mathcal{L}u$ for all $u\in \mathcal{H}$.(More precisely, we can define $T'v=(u,\mathcal{L}^*v)$ and since $Tv=T'v$, $T'$ is bounded linear operator, so by Riesz representation theorem, $\exists w'\in \mathcal{H}$ such that $(w',v)_\mathcal{H}=T'v$. Since $T'v=Tv$ for all $v$, $w'=w$ in $\mathcal{H}$.)
 \item[(d)] Suppose $u$ is a nontrivial weak solution for the eigenvalue problem. By computing inner product;
 \begin{equation*}
 \int_\Omega (Lu)\overline{v}=\int_\Omega -\partial_j(a_{ij}\partial_i u)\overline{v}=\int_\Omega a_{ij}\partial_i u\partial_j \overline{v}=B[u,v]
@@ -210,7 +218,7 @@ for all $v\in \mathcal{H}$ since the real part and imaginary part of $u,v$ are i
 \begin{equation*}
 B[u,v]=(\lambda u,v)_{L^2(\Omega)}
 \end{equation*}
-for all $v\in\mathcal{H}$. However, as $u=0$ on $\partial \Omega$, $u\in \mathcal{H}$ and
+for all $v\in\mathcal{H}$. However,
 \begin{equation*}
 B[u,u]=(\mathcal{L}u,u)_{\mathcal{H}}=(\mathcal{L}^*u,u)_{\mathcal{H}}=(u,\mathcal{L}u)_{\mathcal{H}}=\overline{(\mathcal{L}u,u)_{\mathcal{H}}}=\overline{B[u,u]}
 \end{equation*}
@@ -242,18 +250,6 @@ where the bilinear form $B[\cdot,\cdot]$ is defined by
 \begin{equation*}
 \int_\Omega \sum\limits_{i,j}a_{ij}\partial_i u \partial _j v + \sum\limits_{i}b_i v \partial_i u+cuv~dx.
 \end{equation*}
-Define $w=u-g\in H^1(\Omega)$ (since $g\in H^1(\Omega)$), then $B[u,v]=B[w+g, v]=B[w,v]+B[g,v]$, and
-\begin{equation*}
-B[w,v]=\int_{\Omega} fv- \sum\limits_{i,j}a_{ij}\partial_i g \partial _j v + \sum\limits_{i}b_i v \partial_i g+cgv~dx
-\end{equation*}
-and $w$ is a weak solution for
-\begin{equation*}
-\begin{cases}
-Lw=Lu-Lg=f-Lg & \text{in }\Omega \\
-w=0 & \text{on }\partial \Omega.
-\end{cases}
-\end{equation*}
-.
 
 I'll show the boundedness by contradiction. Assume that there exists $\{u'_k\}_{k=1}^\infty$, $\{f'_k\}$, $\{g'_k\}$ satisfying
 \begin{equation*}
@@ -300,13 +296,13 @@ u_{k_j}\rightharpoonup u & \text{weakly in }H^1(\Omega) \\
 u_{k_j}\rightarrow u & \text{in }L^2(\Omega)
 \end{cases}
 \end{equation*}
-where $u\in H^1(\Omega)$. (Note that $H^1(\Omega)$ is a Hilbert space.)
+where $u\in H^1(\Omega)$. (Note that $H^1(\Omega)$ is a Hilbert space and bounded sequence in it have weakly convergent subsequence.)
 
 Since $\norm{u_{k_j}}_{L^2(\Omega)}=1$ for all $j$, $\norm{u}_{L^2(\Omega)}=1$. Also,
 \begin{equation*}
 \begin{cases}
-\lim\limits_{k_j\rightarrow \infty}B[u_{k_j},\eta]=\lim\limits_{k_j\rightarrow \infty}(f_{k_j},\eta)_{L^2(\Omega)}=0 & \text{By }L^2\text{ convergence} \\
-\lim\limits_{k_j\rightarrow \infty}B[u_{k_j},\eta]=B[u,\eta] & \text{By }H^1\text{ weak convergence}.
+\lim\limits_{k_j\rightarrow \infty}B[u_{k_j},\eta]=\lim\limits_{k_j\rightarrow \infty}(f_{k_j},\eta)_{L^2(\Omega)}=0 & \text{by }L^2\text{ convergence} \\
+\lim\limits_{k_j\rightarrow \infty}B[u_{k_j},\eta]=B[u,\eta] & \text{by }H^1\text{ weak convergence}.
 \end{cases}
 \end{equation*}
 for all $\eta\in H^1_0(\Omega)$. Therefore, $u$ is a nontrivial weak solution of the BVP:
@@ -330,7 +326,7 @@ Also, by the above equation,
 \end{equation*}
 and
 \begin{equation*}
-\norm{u}_{H^1(\Omega)}\leq C\left(\norm{f}_{L^2(\Omega)}+\norm{g}_{H^1(\Omega)}\right)\norm{u}_{H^1(\Omega)}
+\norm{u}_{H^1(\Omega)}\leq C\left(\norm{f}_{L^2(\Omega)}+\norm{g}_{H^1(\Omega)}\right)
 \end{equation*}
 where the constant $C$ not depending on $u,f,g$.
 
@@ -339,11 +335,11 @@ where the constant $C$ not depending on $u,f,g$.
 
 \section*{Problem 4}
 \begin{enumerate}
-\item[(a)] By computation,
+\item[(a)] In the computation, I'll assume that $u,v$ are smooth function.
 \begin{equation*}
 \begin{split}
-\int_\Omega -v\Laplace u+cuv~dx&=\int_\Omega -\sum\limits_{i=1}^n \partial_i (v\partial_i u)+\partial_i v \partial_i u+cuv~dx \\
-&=\int_{\partial \Omega} -\sum\limits_{i=1}^n \left(v\partial_i u\right)\nu^i dS+\int_\Omega -\partial_i v \partial_i u+cuv~dx \\
+\int_\Omega -v\Laplace u+cuv~dx&=\int_\Omega -\sum\limits_{i=1}^n \partial_i (v\partial_i u)+\partial_i v \partial_i u+cuv~dx~\text{Integration by parts} \\
+&=\int_{\partial \Omega} -\sum\limits_{i=1}^n \left(v\partial_i u\right)\nu^i dS+\int_\Omega -\partial_i v \partial_i u+cuv~dx~\text{Stokes' theorem} \\
 &=\int_{\partial \Omega} v\nabla u \cdot \bm{\nu}_{\text{in}}dS+\int_\Omega \partial_i v \partial_i u+cuv~dx \\
 &=\int_{\partial \Omega} gv~dS+\int_\Omega \partial_i v \partial_i u+cuv~dx \\
 &=\int_\Omega fv~dx
@@ -351,35 +347,35 @@ where the constant $C$ not depending on $u,f,g$.
 \end{equation*}
 for $u,v\in H^1(\Omega)$ and $\bm{\nu}_{\text{out}}=(\nu^1,\nu^2, \ldots, \nu^n)$ outward unit normal vector on $\partial \Omega$. Therefore, the definition of weak solution of this problem:
 \begin{equation*}
-B[u,v]=\int_\Omega \nabla u \nabla v + cuv~dx=\int_\Omega fv~dx-\int_{\partial \Omega} gv~dS
+B[u,v]=\int_\Omega \nabla u\cdot \nabla v + cuv~dx=\int_\Omega fv~dx-\int_{\partial \Omega} gv~dS
 \end{equation*}
 makes sense.
 \item[(b)] First, note that $H^1(\Omega)$ is a Hilbert space. Define a bilinear form $B[\cdot,\cdot]$ by
 \begin{equation*}
-\int_\Omega \nabla u \nabla v + cuv~dx.
+\int_\Omega \nabla u \cdot\nabla v + cuv~dx.
 \end{equation*}
 I'll show that this is well-defined elliptic form on $H^1(\Omega)$.
 \begin{enumerate}
 \item[Bilinear:] For $u_1,u_2,v_1, v_2\in H^1(\Omega)$ and $a\in \rr$ or $\mathbb{C}$,
 \begin{equation*}
 \begin{split}
-B[au_1+u_2,v_1]&=\int_\Omega \nabla (au_1+u_2) \nabla v_1 + c(au_1+u_2)v_1~dx\\
-&=a\int_\Omega \nabla u_1\nabla v_1 + c u_1v_1~dx+\int_\Omega \nabla u_2 \nabla v_1 + cu_2v_1~dx\\
+B[au_1+u_2,v_1]&=\int_\Omega \nabla (au_1+u_2)\cdot \nabla v_1 + c(au_1+u_2)v_1~dx\\
+&=a\int_\Omega \nabla u_1\cdot\nabla v_1 + c u_1v_1~dx+\int_\Omega \nabla u_2 \cdot\nabla v_1 + cu_2v_1~dx\\
 &=aB[u_1,v_1]+B[u_2,v_1]
 \end{split}
 \end{equation*}
 and
 \begin{equation*}
 \begin{split}
-B[u_1,av_1+v_2]&=\int_\Omega \nabla u_1 \nabla (av_1+v_2) + cu_1(av_1+v_2)~dx\\
-&=a\int_\Omega \nabla u_1 \nabla v_1 + cu_1v_1~dx+\int_\Omega \nabla u_1 \nabla v_2 + cu_1v_2~dx\\
+B[u_1,av_1+v_2]&=\int_\Omega \nabla u_1\cdot \nabla (av_1+v_2) + cu_1(av_1+v_2)~dx\\
+&=a\int_\Omega \nabla u_1\cdot \nabla v_1 + cu_1v_1~dx+\int_\Omega \nabla u_1\cdot \nabla v_2 + cu_1v_2~dx\\
 &=aB[u_1,v_1]+B[u_1,v_2]
 \end{split}
 \end{equation*}
 \item[Boundedness:] For $u,v\in H^1(\Omega)$,
 \begin{equation*}
 \begin{split}
-\abs{B[u,v]}=\abs{\int_\Omega \nabla u \nabla v + cuv~dx} \\
+\abs{B[u,v]}&=\abs{\int_\Omega \nabla u \cdot\nabla v + cuv~dx} \\
 &\leq\norm{Du}^{1/2}_{L^2(\Omega)}\norm{Dv}^{1/2}_{L^2(\Omega)}+\norm{c}_{L^\infty(\Omega)}\norm{u}_{L^2(\Omega)}\norm{v}_{L^2(\Omega)}\\
 &\leq C(\norm{u}_{L^2(\Omega)}+\norm{Du}_{L^2(\Omega)})(\norm{v}_{L^2(\Omega)}+\norm{Dv}_{L^2(\Omega)}) \\
 &=C\norm{u}_{H^1(\Omega)}\norm{v}_{H^1(\Omega)}
@@ -389,7 +385,7 @@ for constant $C$ depending only on $\Omega$ and $c$.
 \item[Coercivity:] For $u\in H^1{\Omega}$,
 \begin{equation*}
 \begin{split}
-B[u,u]&=\int_\Omega \nabla u \nabla u + cu^2~dx \\
+B[u,u]&=\int_\Omega \nabla u \cdot\nabla u + cu^2~dx \\
 &=\norm{Du}^2_{L^2(\Omega)}+\norm{c}_{L^\infty(\Omega)}\norm{u}^2_{L^2(\Omega)}\\
 &\geq \min\{1,\mu_0\}\norm{u}^2_{H^1(\Omega)}
 \end{split}
@@ -399,7 +395,7 @@ Furthermore, define $I(f,g):H^1(\Omega)\rightarrow \rr$ by
 \begin{equation*}
 I:v\mapsto \int_{\Omega} fv~dx-\int_{\Omega} gv~dS.
 \end{equation*}
-Then, this is bounded linear function on $H^1(\Omega)$ since it is definitely linear and $I(v)=\abs{\int_{\Omega} fv~dx}+\abs{\int_{\Omega} gv~dS}\leq \norm{f}_{L^2(\Omega)}\norm{v}_{H^1(\Omega)}+C\norm{g}_{L^2(\partial \Omega)}\norm{v}_{H^1(\Omega)}$. (In the final step, I used trace inequality.)
+Then, this is a bounded linear functional on $H^1(\Omega)$ since it is definitely linear and $I(v)=\abs{\int_{\Omega} fv~dx}+\abs{\int_{\Omega} gv~dS}\leq \norm{f}_{L^2(\Omega)}\norm{v}_{H^1(\Omega)}+C\norm{g}_{L^2(\partial \Omega)}\norm{v}_{H^1(\Omega)}$. (In the final step, I used trace inequality.)
 
 By Lax-Millgram theorem, there exists a unique element $u\in H^1(\Omega)$ such that
 \begin{equation*}
@@ -420,6 +416,7 @@ for some $C<C'$ constants depending only on $c,\Omega$.
 
 
 \section*{Problem 5}
+$n=1$일 때 Boundary condition이 잘 안 맞고, $n=1$일 때 Boundary가 $C^\infty$라는 것이 non-sense라고 생각하여 $n\geq 2$를 가정하고 하였습니다.
 \begin{enumerate}
 \item[(a)] For $u,v\in H^1(\Omega)$,
 \begin{enumerate}
@@ -443,7 +440,7 @@ such that $Tu=u|_{\partial \Omega}$ for $u\in H^2(\Omega)\cap C(\bar{\Omega})$ a
 &\leq \int_\Omega \abs{Du}\abs{Dv}~dx+\int_{\partial \Omega} \abs{u}\abs{v}~dS \\
 &\leq \norm{Du}_{L^2(\Omega)}\norm{Dv}_{L^2(\Omega)}+\norm{Tu}_{L^2(\Omega)}\norm{Tv}_{L^2(\Omega)}\\
 &\leq C(\norm{Du}_{L^2(\Omega)}\norm{Dv}_{L^2(\Omega)}+\norm{u}_{H^1(\Omega)}\norm{v}_{H^1(\Omega)}) \\
-&\leq C'(\norm{u}_{H^1(\Omega)}\norm{v}_{H^1(\Omega)}
+&\leq C'(\norm{u}_{H^1(\Omega)}\norm{v}_{H^1(\Omega)})
 \end{split}
 \end{equation*}
 for some $C, C'$ constant independent on $u,v$.
@@ -451,10 +448,10 @@ for some $C, C'$ constant independent on $u,v$.
 \begin{equation*}
 \begin{split}
 (u,u)_{H^1}&=\int_\Omega \nabla u\cdot \nabla u~dx+\int_{\partial \Omega} u^2~dS\\
-&=\norm{Du}^2_{L^2(\Omega)}+\norm{Tu}^2_{L^2(\partial \Omega)}\in (0,\infty)
+&=\norm{Du}^2_{L^2(\Omega)}+\norm{Tu}^2_{L^2(\partial \Omega)}<\infty
 \end{split}
 \end{equation*}
-Therefore, $(\cdot,\cdot)_{H^1}$ is an inner product on $H^1(\Omega)$.(Linearity: For $a,b\in\rr$ and $u_1,u_2,v\in H^1(\Omega)$, $(au_1+bu_2,v)_{H^1}=\int_\Omega \nabla (au_1+bu_2)\cdot \nabla v~dx+\int_{\partial \Omega} (au_1+bu_2)v~dS=a\int_\Omega \nabla u_1\cdot \nabla v~dx+a\int_{\partial \Omega} u_1v~dS+b\int_\Omega \nabla u_2\cdot \nabla v~dx+b\int_{\partial \Omega} u_2v~dS=a(u_1,v)_{H^1}+b(u_2,v)_{H^1}$.) I need to show the coercivity.
+If $norm{Du}^2_{L^2(\Omega)}=\norm{Tu}^2_{L^2(\partial \Omega)}=0$, then $u\in H^1_0(\Omega)$ and if $n>2$, it means $\norm{u}_{H^1}=0$ since $\norm{u}_{L^2(\Omega)}\leq C\norm{Du}_{L^2(\Omega)}$ for constant $C$. For $n=2$, choose $p$ close enough to 2, then $\norm{u}_{L^2(\Omega)}\leq C\norm{Du}_{L^p(\Omega)}\leq C'\norm{Du}_{L^2(\Omega)}$. Therefore, $(\cdot,\cdot)_{H^1}$ is an inner product on $H^1(\Omega)$.(Linearity: For $a,b\in\rr$ and $u_1,u_2,v\in H^1(\Omega)$, $(au_1+bu_2,v)_{H^1}=\int_\Omega \nabla (au_1+bu_2)\cdot \nabla v~dx+\int_{\partial \Omega} (au_1+bu_2)v~dS=a\int_\Omega \nabla u_1\cdot \nabla v~dx+a\int_{\partial \Omega} u_1v~dS+b\int_\Omega \nabla u_2\cdot \nabla v~dx+b\int_{\partial \Omega} u_2v~dS=a(u_1,v)_{H^1}+b(u_2,v)_{H^1}$.) I need to show the coercivity.
 
 I'll prove the coercivity by contradiction. Suppose there exists a sequence $\{u_k\}_{k=1}^\infty\subset H^1(\Omega)$ such that
 \begin{equation*}
@@ -469,7 +466,7 @@ v_{k_j}\rightharpoonup v & \text{weakly in }H^1(\Omega) \\
 v_{k_j}\rightarrow v & \text{in }L^2(\Omega)
 \end{cases}
 \end{equation*}
-since $H^1(\Omega)$ is Hilbert space...(Should I write the unique limit point?) As $v\in H^1(\Omega)$ and $\norm{v_{k_j}}_{H^1(\Omega)}=1$ for all $k_j$, $\norm{v}_{H^1(\Omega)}\leq 1$. Since $\norm{Dv_{k_j}}^2_{L^2(\Omega)}\leq (v_{k_j},v_{k_j})_{H^1}\leq \frac{1}{_{k_j}}$, $\norm{Dv_{k_j}}^2_{L^2(\Omega)}\rightarrow 0$ as $_{k_j}\rightarrow \infty$ and it means $\norm{v}_{L^2(\Omega)}=1$, $\norm{v}_{H^1(\Omega)}=0$ and $\norm{Dv}_{L^2(\Omega)}=0$. (If not, for some $N$, $\norm{v_N}^2_{H^1(\Omega)}=\norm{v_N}^2_{L^2(\Omega)}+\norm{Dv_N}^2_{L^2(\Omega)}<1$, which is contradiction.) Also,
+since $H^1(\Omega)$ is Hilbert space.(Since strong convergence implies weak convergence and weak limit in Hilbert space is unique. Therefore, the limit coincide in $L^2(\Omega)$.) As $v\in H^1(\Omega)$ and $\norm{v_{k_j}}_{H^1(\Omega)}=1$ for all $k_j$, $\norm{v}_{H^1(\Omega)}\leq 1$. Since $\norm{Dv_{k_j}}^2_{L^2(\Omega)}\leq (v_{k_j},v_{k_j})_{H^1}\leq \frac{1}{_{k_j}}$, $\norm{Dv_{k_j}}^2_{L^2(\Omega)}\rightarrow 0$ as $_{k_j}\rightarrow \infty$ and it means $\norm{v}_{L^2(\Omega)}=1$, $\norm{v}_{H^1(\Omega)}=0$ and $\norm{Dv}_{L^2(\Omega)}=0$. (If not, for some $N$, $\norm{v_N}^2_{H^1(\Omega)}=\norm{v_N}^2_{L^2(\Omega)}+\norm{Dv_N}^2_{L^2(\Omega)}<1$, which is contradiction.) Also,
 \begin{equation*}
 \norm{v_k-v}^2_{H^1(\Omega)}=\norm{v_{k_j}-v}^2_{L^2(\Omega)}+\norm{D(v_{k_j}-v)}^2_{L^2(\Omega)}\leq \norm{v_{k_j}-v}^2_{L^2(\Omega)}+\norm{Dv_{k_j}}^2_{L^2(\Omega)}+\norm{D(v_{k_j}-v)}^2_{L^2(\Omega)}\rightarrow 0
 \end{equation*}
@@ -481,7 +478,7 @@ Since $\norm{Tv_{k_j}}^2_{L^2(\partial \Omega)}\leq (v_{k_j},v_{k_j})_{H^1}<\fra
 \end{equation*}
 where the $C$ is given by the Trace Theorem. Therefore, $\norm{Tv}_{L^2(\partial \Omega)}=0$.
 
-Summarising the fact, $v\in H^1(\Omega)$ and $Tv=0$ on $\partial \Omega$, so $v\in H^1_0(\Omega)$ and $\norm{Dv}_{L^2(\Omega)}=0$. For $n>2$, $\norm{v}_{L^2(\Omega)}\leq C\norm{Dv}_{L^2(\Omega)}$ for the constant $C$ depending only on $n$, and $\Omega$, so $\norm{v}_{L^2(\Omega)}=0$. For $n=2$, we can find $p$ near to $2$ and get $\norm{v}_{L^2(\Omega)}\leq C\norm{Dv}_{L^p(\Omega)}$. Since $\norm{Dv}_{L^2(\Omega)}=0\Rightarrow \norm{Dv}_{L^p(\Omega)}=0$, $\norm{v}_{L^2(\Omega)}=0$. For $n=1$, since $Dv=0$ a.e. in $\Omega$, $v$ is constant a.e. in $\Omega$ and since $p=2>1$, we can identify this as a continuous function.(Modify the measure zero part.) Since $v\in C(\overline{U})$, $Tv=v|_\partial{U}$ and if $\norm{v}_{L^2(\Omega)}=\neq 0$, $Tv\neq 0$, which is contradiction. Therefore, $\norm{v}_{L^2(\Omega)}=0$ also in $n=1$ case. Finally, this result shows that $v=0$, but $\norm{v}_{H^1(\Omega)}\neq 0$, which is contradiction.
+Summarising the fact, $v\in H^1(\Omega)$ and $Tv=0$ on $\partial \Omega$, so $v\in H^1_0(\Omega)$ and $\norm{Dv}_{L^2(\Omega)}=0$. For $n>2$, $\norm{v}_{L^2(\Omega)}\leq C\norm{Dv}_{L^2(\Omega)}$ for the constant $C$ depending only on $n$, and $\Omega$, so $\norm{v}_{L^2(\Omega)}=0$. For $n=2$, we can find $p$ near to $2$ and get $\norm{v}_{L^2(\Omega)}\leq C\norm{Dv}_{L^p(\Omega)}$. Since $\norm{Dv}_{L^2(\Omega)}=0\Rightarrow \norm{Dv}_{L^p(\Omega)}=0$, $\norm{v}_{L^2(\Omega)}=0$. Therefore, $\norm{v}_{L^2(\Omega)}=0$ also in $n=1$ case. Finally, this result shows that $v=0$, but $\norm{v}_{H^1(\Omega)}\neq 0$, which is contradiction.
 
 Thus, there exists $C$ not depending on $u\in H^1(\Omega)$ such that
 \begin{equation*}
@@ -520,7 +517,7 @@ Lu=0 & \text{in }\Omega\\
 and since we just showed that $\lambda=0$ can not be an eigenvalue, this is impossible. Finally, $L^{-1}$ is compact: if $\{f_k\}_{k=1}^\infty$ is uniformly bounded in $L^2(\Omega)$ and let $u_k=L^{-1}f_k$, then by coercivity, there exists $\beta>0$ such that $\beta\norm{u_k}^2_{H^1(\Omega)} \leq B[u_k,u_k]=(f_k,u_k)_{L^2(\Omega)}\leq \norm{f_k}_{L^2(\Omega)}\norm{u_k}_{H^1(\Omega)}$ and $\norm{u_k}_{H^1(\Omega)}\leq C$ for all $k$. By Rellich-Kondrachov Compactness Theorem (and for $n=2,1$ cases as described in previous) there exists $u_k\rightarrow u $ in $L^2(\Omega)$ and it means $L^{-1}$ is compact.
 
 
-$u$ is a weak solution of the EVP in the problem if and only if $L^{-1}(\lambda u)=u$ if and only if $u-\lambda L^{-1}u=0$. Since $\lambda>0$, we can denote $\left(L^{-1}-\frac{1}{\lambda}\text{Id}\right)u=0$... Therefore, $\lambda\in \Sigma$ if and only if $\frac{1}{\lambda}\in \sigma_p(L^{-1})\setminus\{0\}$ and $\Sigma=\left\{\lambda\in \rr\mid \frac{1}{\lambda}\in \sigma_p\left(L^{-1}\right)\setminus\{0\}\right\}$.
+$u$ is a weak solution of the EVP in the problem if and only if $L^{-1}(\lambda u)=u$ if and only if $u-\lambda L^{-1}u=0$. Since $\lambda>0$, we can denote $\left(L^{-1}-\frac{1}{\lambda}\text{Id}\right)u=0$. Therefore, $\lambda\in \Sigma$ if and only if $\frac{1}{\lambda}\in \sigma_p(L^{-1})\setminus\{0\}$ and $\Sigma=\left\{\lambda\in \rr\mid \frac{1}{\lambda}\in \sigma_p\left(L^{-1}\right)\setminus\{0\}\right\}$.
 
 Since $L^{-1}:L^2(\Omega)\rightarrow L^2(\Omega)$ and $L^2(\Omega)$ separable as the domain of the function is open set $\Omega\subset \rr^n$.
 Also, $L^{-1}$: symmetric: Fix $f,g\in L^2(\Omega)$ and let $\omega=L^{-1}f$, $\xi=L^{-1}g$, then $\omega,\xi\in H^1(\Omega)$ and
@@ -597,7 +594,7 @@ For each $u_m$ satisfies
 for some constant $C$ depending only on $\Omega,T$.
 \end{proposition}
 \item[(Step 3)]
-By the proposition, we get the fact that $\{u_m\}$ is uniformly bounded in $L^2(0,T;H^1(\Omega))$ and $\{u'_m\}$ is uniformly bounded in $L^2(0,T;H	_*^1(\Omega))$. Since $L^2(0,T;H^1(\Omega))$ and $L^2(0,T;H	_*^1(\Omega))$ are Hilbert space since $L^2(0,T)$ is..., there is a subsequence such that
+By the proposition, we get the fact that $\{u_m\}$ is uniformly bounded in $L^2(0,T;H^1(\Omega))$ and $\{u'_m\}$ is uniformly bounded in $L^2(0,T;H	_*^1(\Omega))$. Since $L^2(0,T;H^1(\Omega))$ and $L^2(0,T;H	_*^1(\Omega))$ are Hilbert space since $L^2(0,T)$ is, there is a subsequence such that
 \begin{equation*}
 \begin{cases}
 u_{m_k}\rightharpoonup u & \text{in }L^2(0,T;H^1(\Omega)) \\
