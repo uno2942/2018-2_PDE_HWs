@@ -208,13 +208,17 @@ Therefore, $(\mathcal{L}u,v)_{\mathcal{H}}=(\mathcal{L}^*u,v)_{\mathcal{H}}$ for
 \end{equation*}
 for all $v\in \mathcal{H}$ since the real part and imaginary part of $u,v$ are in $H^1_0(\Omega)$. Therefore, we can define the condition of weak solution $u$ to satisfy
 \begin{equation*}
-B[u,v]=(\lambda u,v)_{L^2(\Omega)}...(p.316)
+B[u,v]=(\lambda u,v)_{L^2(\Omega)}
 \end{equation*}
 for all $v\in\mathcal{H}$. However, as $u=0$ on $\partial \Omega$, $u\in \mathcal{H}$ and
 \begin{equation*}
 B[u,u]=(\mathcal{L}u,u)_{\mathcal{H}}=(\mathcal{L}^*u,u)_{\mathcal{H}}=(u,\mathcal{L}u)_{\mathcal{H}}=\overline{(\mathcal{L}u,u)_{\mathcal{H}}}=\overline{B[u,u]}
 \end{equation*}
-and it makes $\lambda(u,u)_{L^2(\Omega)}=(\lambda u,u)_{L^2(\Omega)}=\overline{(\lambda u,u)_{L^2(\Omega)}}=\overline{\lambda}\overline{(u,u)_{L^2(\Omega)}}$. Since $(u,u)_{L^2(\Omega)}\neq 0$ since $u\neq 0$ in $\mathcal{H}$...
+and it makes $\lambda(u,u)_{L^2(\Omega)}=(\lambda u,u)_{L^2(\Omega)}=\overline{(\lambda u,u)_{L^2(\Omega)}}=\overline{\lambda}\overline{(u,u)_{L^2(\Omega)}}$. The only case to consider is that $(u,u)_{L^2(\Omega)}\neq 0$. Assume that $(u,u)_{L^2(\Omega)}=0$, then $\norm{u}_{\mathcal{H}}=\norm{Du}_{H^1_0(\Omega)}>0$. However, it means
+\begin{equation*}
+\abs{B[u,u]}=\abs{\int_\Omega a_{ij}\partial_i u\partial_j \overline{u}~dx}\geq \mu \norm{Du}^2>0
+\end{equation*}
+which is contradiction since $B[u,u]=(\lambda u, u)_{L^2(\Omega)}=\lambda(u,u)_{L^2(\Omega)}=0$. Therefore, $\lambda\in \rr$.
 \end{enumerate}
 \end{enumerate}
 
@@ -263,7 +267,33 @@ Since $\norm{u_k}_{L^2(\Omega)}=1$ for all $k$, $\norm{f_k}_{L^2(\Omega)}, \norm
 \begin{equation*}
 \norm{u_k}^2_{H^1(\Omega)}\leq C\left(\norm{f_k}_{L^2(\Omega)}\norm{u_k}_{L^2(\Omega)}+\norm{u_k}^2_{L^2(\Omega)}\right)
 \end{equation*}
-for the constant $C$ not depending on $f_k$ and $u_k$.(By the ellipticity condition, there exists $\theta>0$ such that Since $\norm{f_k}_{L^2(\Omega)}\rightarrow 0$ and $\norm{u_k}^2_{L^2(\Omega)}=1$, $\norm{u_k}_{H^1(\Omega)}$ is uniformly bounded. Therefore, by compact embedding theorem,(...$n=2,1$) there exists subsequence $\{u_{k_j}\}_{j=1}^\infty$ such that
+for the constant $C$ not depending on $f_k$ and $u_k$.(By the ellipticity condition, there exists $\theta>0$ such that
+\begin{equation*}
+\begin{split}
+\theta\int_\Omega \abs{Du}^2dx & \leq \int_\Omega a_{ij}\partial_i u\partial_j u dx \\
+&=B[u,u]-\int_\Omega b_iu\partial_i u+cu^2 dx \\
+&=B[u,u]+\sum\limits_{i}\norm{b_i}_{L^\infty}\int_\Omega \int_\Omega \abs{Du}\abs{u}dx+\norm{c}_{L^\infty}\int_\Omega u^2 dx
+\end{split}
+\end{equation*}
+and by Cauchy's inequality,
+\begin{equation*}
+\int_\Omega \int_\Omega \abs{Du}\abs{u}dx\leq \epsilon\int_\Omega \abs{Du}^2 dx+\frac{1}{4\epsilon}\int_\Omega u^2 dx
+\end{equation*}
+for $\epsilon>0$. By choosing small enough $\epsilon$ to satisfy 
+\begin{equation*}
+\epsilon\sum\limits_{i} \norm{b_i}_{L^\infty}<\theta/2,
+\end{equation*}
+we get
+\begin{equation*}
+\frac{\theta}{2}\int_\Omega \abs{Du}^2 dx\leq B[u,u]+C\int_\Omega u^2 dx
+\end{equation*}
+for constant $C$. By adding $\frac{\theta}{2}\int_\Omega u^2 dx$ on both side, we get
+\begin{equation*}
+\norm{u}^2_{H^1(\Omega)}\leq C(B[u,u]+\norm{u}^2_{L^2(\Omega)})\leq C'\left(\norm{f_k}_{L^2(\Omega)}\norm{u_k}_{L^2(\Omega)}+\norm{u_k}^2_{L^2(\Omega)}\right)
+\end{equation*}
+which is the above inequality.)
+
+Since $\norm{f_k}_{L^2(\Omega)}\rightarrow 0$ and $\norm{u_k}^2_{L^2(\Omega)}=1$, $\norm{u_k}_{H^1(\Omega)}$ is uniformly bounded. Therefore, by compact embedding theorem,(For $n>2$, we can use Rellich-Kondrachov Theorem and for $n=2$, we choose $p$ close enough to $n=2$ such that $2<p^*$ and as $H^1(\Omega)\subset W^{1,p}(\Omega)$, we again use Rellich-Kondrachov Theorem. For $n=1$, since $n<p=2$, it can be done by Morrey's inequality and Arzela-Ascoli compactness theorem, which was the last HW.) there exists subsequence $\{u_{k_j}\}_{j=1}^\infty$ such that
 \begin{equation*}
 \begin{cases}
 u_{k_j}\rightharpoonup u & \text{weakly in }H^1(\Omega) \\
@@ -324,7 +354,7 @@ for $u,v\in H^1(\Omega)$ and $\bm{\nu}_{\text{out}}=(\nu^1,\nu^2, \ldots, \nu^n)
 B[u,v]=\int_\Omega \nabla u \nabla v + cuv~dx=\int_\Omega fv~dx-\int_{\partial \Omega} gv~dS
 \end{equation*}
 makes sense.
-\item[(b)] First, note that $H^1(\Omega)$ is a Hilbert space... Define a bilinear form $B[\cdot,\cdot]$ by
+\item[(b)] First, note that $H^1(\Omega)$ is a Hilbert space. Define a bilinear form $B[\cdot,\cdot]$ by
 \begin{equation*}
 \int_\Omega \nabla u \nabla v + cuv~dx.
 \end{equation*}
@@ -406,7 +436,7 @@ Therefore, $(u,v)_{H^1}=(v,u)_{H^1}$.
 \begin{equation*}
 T:H^1(\Omega)\rightarrow L^2(\partial \Omega)
 \end{equation*}
-such that $Tu=u|_{\partial \Omega}$ for $u\in H^2(\Omega)\cap C(\bar{\Omega})$ and $\norm{Tu}_{L^2(\partial\Omega)}\leq C\norm{u}_{H^1(\Omega)}$ for all $u\in H^1(\Omega)$ with the constant $C$ only depending on $p$ and $\Omega$.(Is $u\in C(\bar{\Omega})$??...)
+such that $Tu=u|_{\partial \Omega}$ for $u\in H^2(\Omega)\cap C(\bar{\Omega})$ and $\norm{Tu}_{L^2(\partial\Omega)}\leq C\norm{u}_{H^1(\Omega)}$ for all $u\in H^1(\Omega)$ with the constant $C$ only depending on $p$ and $\Omega$.
 \begin{equation*}
 \begin{split}
 \abs{(u,v)_{H^1}}&=\abs{\int_\Omega \nabla u\cdot \nabla v~dx+\int_{\partial \Omega} uv~dS} \\
@@ -432,7 +462,7 @@ I'll prove the coercivity by contradiction. Suppose there exists a sequence $\{u
 \end{equation*}
 For such $u_k$, take $v_k=u_k/\norm{u_k}_{H^1(\Omega)}$. Then, $\norm{v_k}_{H^1(\Omega)}=1$ and satisfies the above relation. As $k\rightarrow \infty$, $(v_k,v_k)_{H^1}\rightarrow 0$.
 
-Since $\{v_k\}$ is a bounded sequence in $H^1(\Omega)$, which is compactly embedded in $L^2(\Omega)$, (For $n>2$ case, this is from Rellich-Kondrachov Compactness Theorem and for $n=2$, ...) so there exists a subsequence $\{v_{k_j}\}_{j=1}^\infty$ such that 
+Since $\{v_k\}$ is a bounded sequence in $H^1(\Omega)$, which is compactly embedded in $L^2(\Omega)$, (I already explained how to deal for various dimension $n$ in Problem 3.) so there exists a subsequence $\{v_{k_j}\}_{j=1}^\infty$ such that 
 \begin{equation*}
 \begin{cases}
 v_{k_j}\rightharpoonup v & \text{weakly in }H^1(\Omega) \\
@@ -458,23 +488,41 @@ Thus, there exists $C$ not depending on $u\in H^1(\Omega)$ such that
 \norm{u}^2_{H^1(\Omega)}\leq C(u,u)_{H^1}.
 \end{equation*}
 \end{enumerate}
-\item[(b)]
-\item[(c)] I'll rewrite $(u,v)_{H^1}$ by $B[u,v]$. Consider a BVP:
+\item[(b)] I'll rewrite $(u,v)_{H^1}$ by $B[u,v]$. Consider a BVP:
 \begin{equation*}
 \begin{cases}
 -\Laplace u=f & \text{in }\Omega\\
-\nabla u\cdot \bm{n}_{\text{in}}-u=0
+\nabla u\cdot \bm{n}_{\text{in}}-u=0 & \text{on }\partial \Omega
 \end{cases}
 \end{equation*}
 for $f\in L^2(\Omega)$. Then, the weak solution of the BVP should satisfy
 \begin{equation*}
 B[u,v]=\int_\Omega f v~dx
 \end{equation*}
-for all $v\in H^1(\Omega)$. (This result is from problem 4 (a)) Since $B$ is symmetric bounded linear function with coercivity, By the Lax-Millgram Theorem, there exists unique weak solution $u\in H^1(\Omega)$ to the BVP for each $f$. Let's define $L^{-1}:L^2(\Omega)\rightarrow L^2(\Omega)$ by sending $f$ to $u$. ($L^{-1}$ is compact p. 324)
+for all $v\in H^1(\Omega)$. (This result is from problem 4 (a).)
+
+Assume that there exists eigenvalue $\lambda$ and the corresponding nontrivial weak solution $u\in H^1(\Omega)$. Then, for all $v\in H^1(\Omega)$,
+\begin{equation*}
+B[u,v]=(\lambda u, v)_{L^2(\Omega)}
+\end{equation*}
+If we put $u$ as $v$,
+\begin{equation*}
+B[u,u]=(\lambda u, u)_{L^2(\Omega)}=\lambda\norm{u}_{L^2(\Omega)}>0
+\end{equation*}
+since $\norm{u}_{H^1(\Omega)}>0$. If $\lambda$ is not real, it is nonsense. Also, if $\lambda\leq 0$, it is contradiction to coercivity of $B$. Therefore, every eigenvalue of (EVP) is a positive real.
+\item[(c)] Since $B$ is symmetric bounded linear function with coercivity, By the Lax-Millgram Theorem, there exists unique weak solution $u\in H^1(\Omega)$ to the BVP for each $f$. Let's define $L^{-1}:L^2(\Omega)\rightarrow L^2(\Omega)$ by sending $f$ to $u$. Now, I claim that $L^{-1}$ is bounded, linear, compact operator. It is linear since if $L^{-1}(f_1)=u_1$ and $L^{-1}(f_2)=u_2$, then the unique weak solution to $rf_1+f_2$ is $ru_1+u_2$ for $r\in \rr$ and $L^{-1}(rf_1+f_2)=ru_1+u_2$. Also, $L^{-1}$ is bounded. It requires same argument used in problem 3. If there is no constant $C$ such that $\norm{u}_{L^2(\Omega)}\leq C\norm{f}_{L^2(\Omega)}$, there is a nontrivial weak solution to
+\begin{equation*}
+\begin{cases}
+Lu=0 & \text{in }\Omega\\
+\nabla u\cdot \bm{n}_{\text{in}}-u=0 & \text{on }\partial \Omega
+\end{cases}
+\end{equation*}
+and since we just showed that $\lambda=0$ can not be an eigenvalue, this is impossible. Finally, $L^{-1}$ is compact: if $\{f_k\}_{k=1}^\infty$ is uniformly bounded in $L^2(\Omega)$ and let $u_k=L^{-1}f_k$, then by coercivity, there exists $\beta>0$ such that $\beta\norm{u_k}^2_{H^1(\Omega)} \leq B[u_k,u_k]=(f_k,u_k)_{L^2(\Omega)}\leq \norm{f_k}_{L^2(\Omega)}\norm{u_k}_{H^1(\Omega)}$ and $\norm{u_k}_{H^1(\Omega)}\leq C$ for all $k$. By Rellich-Kondrachov Compactness Theorem (and for $n=2,1$ cases as described in previous) there exists $u_k\rightarrow u $ in $L^2(\Omega)$ and it means $L^{-1}$ is compact.
+
 
 $u$ is a weak solution of the EVP in the problem if and only if $L^{-1}(\lambda u)=u$ if and only if $u-\lambda L^{-1}u=0$. Since $\lambda>0$, we can denote $\left(L^{-1}-\frac{1}{\lambda}\text{Id}\right)u=0$... Therefore, $\lambda\in \Sigma$ if and only if $\frac{1}{\lambda}\in \sigma_p(L^{-1})\setminus\{0\}$ and $\Sigma=\left\{\lambda\in \rr\mid \frac{1}{\lambda}\in \sigma_p\left(L^{-1}\right)\setminus\{0\}\right\}$.
 
-Since $L^{-1}:L^2(\Omega)\rightarrow L^2(\Omega)$ and $L^2(\Omega)$ separable...
+Since $L^{-1}:L^2(\Omega)\rightarrow L^2(\Omega)$ and $L^2(\Omega)$ separable as the domain of the function is open set $\Omega\subset \rr^n$.
 Also, $L^{-1}$: symmetric: Fix $f,g\in L^2(\Omega)$ and let $\omega=L^{-1}f$, $\xi=L^{-1}g$, then $\omega,\xi\in H^1(\Omega)$ and
 \begin{equation*}
 \begin{split}
@@ -486,7 +534,14 @@ Also, $L^{-1}$: symmetric: Fix $f,g\in L^2(\Omega)$ and let $\omega=L^{-1}f$, $\
 \end{split}
 \end{equation*}
 Therefore, there exists countable orthonormal basis of $L^2(\Omega)$ consisting of eigenvectors of $L^{-1}$. By Fredholm alternative, the dimension of null space of $\left(\text{Id}-\lambda L^{-1}\right)$ for $\lambda\in \Sigma$ is finite. Therefore, $\abs{\Sigma}=\infty$. Since $L^{-1}$ is compact and the dimension of $L^2(\Omega)$ is infinite, $\sigma(L^{-1})\setminus\{0\}=\sigma_p(L^{-1})\setminus\{0\}$ and $\sigma(L^{-1})\setminus\{0\}$ is a sequence tending to $0$. Therefore, $\Sigma$ consists of the eigenvalues monotonic increasing to $\infty$.
-\item[(d)]
+\item[(d)] In the (c), I showed that there exists countable orthonormal basis of separable space $L^2(\Omega)$ consisting of eigenvectors of compact and symmetric bounded linear operator $L^{-1}$. I need to show that this is orthogonal basis of $H^1(\Omega)$.
+\begin{equation*}
+B[w_i,w_j]=(Lw_i, w_j)_{L^2(\Omega)}=(Lw_j, w_i)_{L^2(\Omega)}=B[w_j,w_i]
+\end{equation*}
+If $i\neq j$, $(Lw_i, w_j)_{L^2(\Omega)}=\lambda_i (w_i,w_j)_{L^2(\Omega)}=0$. If $i=j$, $(Lw_i, w_i)_{L^2(\Omega)}=\lambda_i$. 
+
+Finally, assume that $\{w_i\}$ can not span $H^1(\Omega)$. Then, there exists nontrivial $\xi\in H^1(\Omega)$ such that $B[w_i,\xi]=0$ for all $w_i$. Then, $B[w_i, \xi]=(\lambda_i w_i, \xi)_{L^2(\Omega)}=0$ and $\lambda_i>0$ for all $i$. Therefore, $\xi=0$, which is contradiction. Therefore, $\{w_i\}$ spans $H^1(\Omega)$.
+Thus, $\{w_i\}$ forms a orthogonal basis of $H^1(\Omega)$.
 \end{enumerate}
 \section*{Problem 6}
 \begin{enumerate}
@@ -605,5 +660,82 @@ Letting $m_k\rightarrow\infty$ and by weak convergence,
 \int_0^T -(u(s),(\alpha(s)w_j)')_{L^2(\Omega)}+B[u(s),\alpha(s)w_j]ds=\int_0^T (f(t),w_j)_{L^2(\Omega)}\alpha(s)ds+(g(0),(\alpha(0)w_j))
 \end{equation*}
 as $u_{m_k}(0)=g^{(m_k)}$ and $\lim\limits_{m_k\rightarrow\infty} u_{m_k}(0)=\lim\limits_{m_k\rightarrow\infty}g^{(m_k)}=g$. This is true for all $\alpha\in C^\infty((0, T))$ and for all $j$, $u(0)=g(0)$.
+
+The left one is to show the proposition. For readability, I again write the proposition:
+
+For each $u_m$ satisfies
+\begin{equation*}
+\max_{t\in [0,T]}\norm{u_m(t)}_{L^2(\Omega)}+\norm{u_m(t)}_{L^2(0, t;H^1(\Omega))}+\norm{u'_m}_{L^2(0,T;H	_*^1(\Omega))}\leq C\left(\norm{f}_{L^2(0,T;L^2(\Omega))}+\norm{g}_{L^2(\Omega)}\right)
+\end{equation*}
+for some constant $C$ depending only on $\Omega,T$.
+
+I'll start from this equation:
+\begin{equation*}
+(\sum\limits_{k=1}^m d'_k(t)w_k(x),w_j)_{L^2(\Omega)}+B[\sum\limits_{k=1}^m d_k(t)w_k(x), w_j]=(f(t,\cdot), w_j)_{L^2(\Omega)}
+\end{equation*}
+Note that $d_k(t)$ are calculated for fixed $m$. On each side for fixed $j$, multiply $d_j(t)$ and sum about $j$, then we get
+\begin{equation*}
+(u'_m(t),u_m(t))_{L^2(\Omega)}+B[u_m(t), u'_m(t)]=(f(t,\cdot), u_m(t))_{L^2(\Omega)}
+\end{equation*}
+for a.e. $0\leq t\leq T$. For fixed $t\in [0,T]$, $(u'_m,u_m)_{L^2(\Omega)}=\frac{d}{dt}\left(\frac{1}{2}\norm{u_m}^2_{L^2(\Omega)}\right)$ and $\abs{(f,u_m)}\leq \frac{1}{2}\norm{f}^2_{L^2(\Omega)}+\frac{1}{2}\norm{u_m}^2_{L^2(\Omega)}$. Furthermore, I'll use the proof of variation of energy estimation used in problem 3: there exists $\beta,\gamma>0$ such that
+\begin{equation*}
+\beta\norm{u_m}^2_{H^1(\Omega)}\leq B[u_m, u_m, t]+\gamma \norm{u_m}^2_{L^2(\Omega)}.
+\end{equation*}
+Mixing these inequalities, we get
+\begin{equation}\label{Eq:6-1}
+\frac{d}{dt}\left(\norm{u_m}^2_{L^2(\Omega)}\right)+2\beta\norm{u_m}^2_{H^1(\Omega)}\leq C_1\norm{u_m}^2_{L^2(\Omega)}+C_2\norm{f}^2_{L^2(\Omega)}.
+\end{equation}
+for a.e. $0\leq t\leq T$ and constant $C_1,C_2$ not depending on $u_m, f$.
+
+Now, let 
+\begin{equation*}
+\eta(t)\coloneqq \norm{u_m(t)}^2_{L^2(\Omega)}
+\end{equation*}
+and
+\begin{equation*}
+\xi(t)\coloneqq \norm{f(t)}^2_{L^2(\Omega)}.
+\end{equation*}
+Then,
+\begin{equation*}
+\eta'(t)\leq C_1\eta(t)+C_2\xi(t)
+\end{equation*}
+for a.e. $0\leq t\leq T$ and by differential form of Gronwall's inequality,
+\begin{equation*}
+\eta(t)\leq e^{C_1t}\left(\eta(0)+C_2\int_0^t\xi(s)ds\right)
+\end{equation*}
+for $0\leq t\leq T$. Since $\eta(0)=\norm{u_m(0)}^2_{L^2(\Omega)}\leq \norm{g}^2_{L^2(\Omega)}$, (Note that $u_m(0)$ is the projection of $g$.)
+\begin{equation*}
+\max_{t\in[0,T]}\norm{u_m(t)}^2_{L^2(\Omega)}\leq C\left(\norm{g}^2_{L^2(\Omega)}+\norm{f}^2_{L^2(0, T; L^2(\Omega))}\right).
+\end{equation*}
+Also, integrating \eqref{Eq:6-1} from $0$ to $T$ generates the relation:
+\begin{equation*}
+\norm{u_m}^2_{L^2(0,T;H^1(\Omega))}=\int_0^T \norm{u_m}^2_{H^1(\Omega)}dt\leq C\left(\norm{g}^2_{L^2(\Omega)}+\norm{f}^2_{L^2(0, T; L^2(\Omega))}\right)
+\end{equation*}
+Finally, I'll estimate $\norm{u'_m}_{L^2(0,T;H^1_*(\Omega)}$. Fix $v\in H^1(\Omega)$ with $\norm{v}_{H^1(\Omega)}\leq 1$ and denote $v=v^1+v^2$ by $v_1\in \text{span}\left(\{w_i\}_{i=1}^m\right)$ and $(v_2,w_i)=0$ for $i\in \{1, \ldots, m\}$. Since $v_1$ is the projection to $\text{span}\left(\{w_i\}_{i=1}^m\right)$, $\norm{v^1}_{H^1(\Omega)}\leq \norm{v}_{H^1(\Omega)}\leq 1$. Using the previous equation: $(u_m'(t,\cdot),w_k)_{L^2(\Omega)}+B[u_m(t), w_k]=(f(t,\cdot), w_k)_{L^2(\Omega)}$, we can write
+\begin{equation*}
+(u_m'(t,\cdot),v^1)_{L^2(\Omega)}+B[u_m(t), v^1]=(f(t,\cdot), v^1)_{L^2(\Omega)}
+\end{equation*}
+for a.e. $0\leq t\leq T$. Since $u'_m\in \text{span}\left(\{w_i\}_{i=1}^m\right)$,
+\begin{equation*}
+(u'_m,v)_{L^2(\Omega)}=(u'_m,v^1)_{L^2(\Omega)}=(f,v^1)-B[u_m(t),v^1].
+\end{equation*}
+Therefore,
+\begin{equation*}
+\abs{(u'_m, v)_{L^2(\Omega)}}\leq C\left(\norm{f}_{L^2(\Omega)}+\norm{u_m}_{H^1(\Omega)}\right)
+\end{equation*}
+since $\norm{v^1}_{H^1(\Omega)}\leq 1$.(Also, by boundedness of $B[\cdot,\cdot]$: $\abs{B[u_m,v^1;t]}\leq \theta \norm{u_m(t)}_{H^1(\Omega)}$ for some constant $\theta$.) Since $\norm{v}_{H^1(\Omega)}=1$ and RHS is independent to $v$, 
+\begin{equation*}
+\norm{u'_m}_{H^1_*(\Omega)}\leq C\left(\norm{f}_{L^2(\Omega)}+\norm{u_m}_{H^1(\Omega)}\right)
+\end{equation*}
+and
+\begin{equation*}
+\norm{u'_m}_{L^2(0,T;H^1_*(\Omega))}=\int_0^T \norm{u'_m}_{H^1_*(\Omega)}\ dt\leq C'\left(\norm{g}_{L^2(\Omega)}+\norm{f}_{L^2(0,T;L^2(\Omega))}\right)
+\end{equation*}
+for some constant $C'$.(Note that we already showed that $\norm{u_m}^2_{L^2(0,T;H^1(\Omega)}$ is bounded by $\norm{g}_{L^2(\Omega)}$ and $\norm{f}_{L^2(0,T;L^2(\Omega))}$.
 \end{enumerate}
+Summarizing all the results, we get
+\begin{equation*}
+\max_{t\in [0,T]}\norm{u_m(t)}_{L^2(\Omega)}+\norm{u_m(t)}_{L^2(0, t;H^1(\Omega))}+\norm{u'_m}_{L^2(0,T;H	_*^1(\Omega))}\leq C\left(\norm{f}_{L^2(0,T;L^2(\Omega))}+\norm{g}_{L^2(\Omega)}\right)
+\end{equation*}
+for some $C$. This is true for all $m$ since the estimation constant does not depending on $u_m, f, g$.
 \end{document}
